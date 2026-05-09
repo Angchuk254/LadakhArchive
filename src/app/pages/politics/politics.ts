@@ -90,7 +90,8 @@ export class Politics {
     { year: '2022', title: 'Climate activist Fast', desc: 'Sonam Wangchuk undertakes border march and hunger strikes, drawing global attention. Demands focus on 6th Schedule, environmental protection, and Ladakhi employment rights.', era: 'ut', color: '#0284c7' },
     { year: '2023', title: 'Massive Rallies', desc: 'Leh witnesses one of the largest-ever rallies with 30,000+ people demanding 6th Schedule. Kargil holds parallel demonstrations. Movement gains national media attention.', era: 'ut', color: '#0284c7' },
     { year: '2024', title: 'Delhi Marches & Detentions', desc: 'Sonam Wangchuk leads marches to Delhi, faces detention at borders. Civil society demands intensify. Government appoints high-powered committee to examine demands.', era: 'ut', color: '#0284c7' },
-    { year: '2025', title: 'Ongoing Negotiations', desc: 'High-powered committee engages with Ladakh stakeholders. Demand for constitutional safeguards, elected legislature, and 6th Schedule continues to dominate Ladakh\'s political landscape.', era: 'ut', color: '#0284c7' },
+    { year: '2025', title: 'September Protests & NSA Detentions', desc: 'Protests in Leh escalate into violence in September 2025, resulting in fatalities and injuries. Climate activist Sonam Wangchuk is detained under the National Security Act (NSA). Order No. 644-F shifts project approval powers from the Lt. Governor to the Ministry of Home Affairs in Delhi, deepening local frustration over centralized governance.', era: 'ut', color: '#0284c7' },
+    { year: '2026', title: 'Five New Districts & Ongoing Deadlock', desc: 'Ahead of Home Minister Amit Shah\'s visit in April 2026, the Centre announces the creation of five new districts (expanding from 2 to 7). Local leaders maintain this does not address the fundamental demands for 6th Schedule or statehood. "Decision-level" ministerial talks are demanded, as sub-committee meetings are seen as insufficient for resolving core constitutional grievances.', era: 'ut', color: '#0284c7' },
   ];
 
   sixthSchedule = {
@@ -181,6 +182,38 @@ export class Politics {
       'No elected legislature — Lt. Governor administers directly',
     ],
   };
+
+  // ===== Research Context =====
+  politicalResearch = [
+    {
+      title: '97% Tribal Population — A Constitutional Case',
+      source: 'Census 2011 & Registrar General of India',
+      insight: 'Over 97% of Ladakh\'s population belongs to Scheduled Tribes — including Ladakhi, Balti, Changpa, Brokpa, Purigpa, Garra, and Mon communities. This is the highest tribal percentage of any Union Territory in India, making the case for 6th Schedule inclusion particularly strong from a constitutional standpoint, as the Schedule was specifically designed for tribal area governance.',
+      icon: 'bi-people-fill',
+      color: '#7c3aed'
+    },
+    {
+      title: 'Representation Deficit: One Seat for 59,000 km²',
+      source: 'Election Commission of India',
+      insight: 'Ladakh\'s single Lok Sabha constituency is the largest by area in India at ~59,000 km² — larger than the entire nation of Switzerland. With only one MP representing the vast, geographically fragmented region (and no state legislature), many scholars describe this as a "representation deficit" that leaves Ladakhis with less democratic voice per capita than any other Indian territory.',
+      icon: 'bi-map',
+      color: '#dc2626'
+    },
+    {
+      title: 'Financial Centralization: Order 644-F',
+      source: 'Kashmir Times, December 2025',
+      insight: 'In late 2025, administrative Order No. 644-F transferred project approval authority from the Lt. Governor\'s office to the Ministry of Home Affairs in New Delhi. This further centralized financial governance, meaning even routine development projects now require Delhi\'s approval — adding bureaucratic delays to a region where the construction season lasts only 5–6 months due to extreme winters.',
+      icon: 'bi-file-earmark-lock',
+      color: '#c8702a'
+    },
+    {
+      title: 'Tourism vs. Ecology: A Fragile Balance',
+      source: 'Mongabay India & ICIMOD Reports (2024)',
+      insight: 'Ladakh receives over 400,000 tourists annually against a resident population of ~270,000. Unregulated tourism generates 50+ tonnes of daily waste during peak season, degrades fragile high-altitude pastures, and strains water resources. Without local legislative power, Ladakhis cannot set tourism caps, regulate campsite locations, or enforce waste management — a key argument for the 6th Schedule\'s environmental protections.',
+      icon: 'bi-tree',
+      color: '#059669'
+    },
+  ];
 }
 
 

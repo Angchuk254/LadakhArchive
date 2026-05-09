@@ -550,6 +550,89 @@
   </div>
 </section>
 
+<!-- ===== RESEARCH INSIGHTS ===== -->
+<section class="section-padding bg-snow" id="research">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-mortarboard-fill"></i> Scholarly Research</span>
+    <h2 class="section-title">Research Insights</h2>
+    <p class="section-subtitle">
+      Key findings from peer-reviewed studies, archaeological surveys, and landmark publications that have shaped our understanding of Ladakh.
+    </p>
+
+    <div class="row g-4 mt-2">
+      @for (insight of researchInsights; track insight.title) {
+        <div class="col-12 col-lg-6">
+          <div class="pd-info-card h-100" style="padding: 1.75rem; border-radius: 16px; border-left: 4px solid {{insight.color}};">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;" [style.background]="insight.color + '15'">
+                <i class="bi" [class]="insight.icon" [style.color]="insight.color" style="font-size: 1.2rem;"></i>
+              </div>
+              <div>
+                <h5 style="font-family: var(--la-font-heading); font-weight: 800; margin: 0; font-size: 1.05rem;">{{ insight.title }}</h5>
+                <span style="font-size: 0.78rem; color: var(--la-gray-400); font-weight: 600;">{{ insight.source }}</span>
+              </div>
+            </div>
+            <p style="font-size: 0.93rem; line-height: 1.75; color: var(--la-gray-600); margin: 0;">{{ insight.summary }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== ROCK ART SITES ===== -->
+<section class="section-padding" id="rock-art">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-brush-fill"></i> Archaeological Sites</span>
+    <h2 class="section-title">Prehistoric Rock Art of Ladakh</h2>
+    <p class="section-subtitle">
+      A.H. Francke documented over 1,500 petroglyphs across 68 sites between 1901 and 1914 — the richest open-air rock art galleries in the Trans-Himalayan belt.
+    </p>
+
+    <div class="row g-4 mt-2">
+      @for (site of rockArtSites; track site.name) {
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="pd-info-card h-100" style="padding: 1.5rem; border-radius: 16px;">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 style="font-family: var(--la-font-heading); font-weight: 800; margin: 0;">{{ site.name }}</h5>
+              <span style="font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;" [style.background]="site.color + '15'" [style.color]="site.color">{{ site.count }}</span>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--la-gray-400); margin-bottom: 0.5rem;">
+              <i class="bi bi-geo-alt"></i> {{ site.location }} · <i class="bi bi-calendar3"></i> {{ site.period }}
+            </div>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: var(--la-gray-600); margin: 0;">{{ site.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCHOLARLY REFERENCES ===== -->
+<section class="section-padding bg-snow" id="references">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-journal-bookmark-fill"></i> Bibliography</span>
+    <h2 class="section-title">Key References &amp; Sources</h2>
+    <p class="section-subtitle">
+      The foundational academic works that inform the content of this archive. We encourage further reading for deeper exploration.
+    </p>
+
+    <div class="row g-3 mt-2" style="max-width: 900px; margin: 0 auto;">
+      @for (ref of references; track ref.title) {
+        <div class="col-12">
+          <div style="background: var(--la-white); border: 1px solid var(--la-gray-100); border-radius: 12px; padding: 1.15rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start;">
+            <i class="bi bi-book" style="color: var(--la-accent); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0;"></i>
+            <div>
+              <span style="font-family: var(--la-font-heading); font-weight: 700; font-size: 0.95rem; color: var(--la-dark);">{{ ref.author }}</span>
+              <span style="font-size: 0.9rem; color: var(--la-gray-600);"> — <em>{{ ref.title }}</em>. {{ ref.publisher }}, {{ ref.year }}.</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
 <!-- ===== CTA SECTION ===== -->
 <section class="hi-cta">
   <div class="container">

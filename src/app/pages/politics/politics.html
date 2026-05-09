@@ -407,6 +407,35 @@
   </div>
 </section>
 
+<!-- ===== RESEARCH CONTEXT ===== -->
+<section class="section-padding bg-snow" id="research">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 2.5rem;">
+      <span class="la-label"><i class="bi bi-mortarboard-fill"></i> Research Context</span>
+      <h2 class="section-title">Evidence &amp; Analysis</h2>
+      <p class="section-subtitle">Data-driven insights from census records, government orders, and environmental research that underpin Ladakh's political demands</p>
+    </div>
+    <div class="row g-4">
+      @for (r of politicalResearch; track r.title) {
+        <div class="col-12 col-lg-6">
+          <div class="pd-info-card h-100" style="padding: 1.75rem; border-radius: 16px; border-left: 4px solid {{r.color}};">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;" [style.background]="r.color + '15'">
+                <i class="bi" [class]="r.icon" [style.color]="r.color" style="font-size: 1.2rem;"></i>
+              </div>
+              <div>
+                <h5 style="font-family: var(--la-font-heading); font-weight: 800; margin: 0; font-size: 1.05rem;">{{ r.title }}</h5>
+                <span style="font-size: 0.78rem; color: var(--la-gray-400); font-weight: 600;">{{ r.source }}</span>
+              </div>
+            </div>
+            <p style="font-size: 0.93rem; line-height: 1.75; color: var(--la-gray-600); margin: 0;">{{ r.insight }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
 <!-- ===== CTA ===== -->
 <section class="po-cta">
   <div class="container">
