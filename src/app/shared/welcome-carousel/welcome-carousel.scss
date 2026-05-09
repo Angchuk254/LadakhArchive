@@ -1,0 +1,313 @@
+/* ═══════════════════════════════════════════
+       WELCOME CAROUSEL — wc- prefix
+   ═══════════════════════════════════════════ */
+
+/* ---------- Overlay ---------- */
+.wc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: wcFadeIn 0.35s ease;
+}
+
+/* ---------- Panel ---------- */
+.wc-panel {
+  position: relative;
+  background: var(--la-white);
+  border-radius: var(--la-radius-xl);
+  max-width: 520px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  animation: wcSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Close ---------- */
+.wc-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  background: var(--la-gray-100);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--la-gray-500);
+  transition: all 0.2s;
+  font-size: 0.85rem;
+
+  &:hover {
+    background: var(--la-gray-200);
+    color: var(--la-dark);
+  }
+}
+
+/* ---------- Progress bar ---------- */
+.wc-progress {
+  height: 3px;
+  background: var(--la-gray-100);
+}
+
+.wc-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--la-accent), var(--la-accent-light));
+  border-radius: 0 3px 3px 0;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Slide content ---------- */
+.wc-slide {
+  padding: 2rem 2rem 1.25rem;
+  animation: wcContentFade 0.35s ease;
+}
+
+.wc-slide__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.wc-slide__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--la-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.wc-slide__tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--la-radius-full);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--la-white);
+}
+
+.wc-slide__title {
+  font-family: var(--la-font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--la-dark);
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.wc-slide__desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--la-gray-600);
+  margin: 0 0 1rem;
+}
+
+/* ---------- Bullets ---------- */
+.wc-bullets {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.wc-bullets__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--la-gray-700);
+  line-height: 1.5;
+
+  i {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+}
+
+/* ---------- CTA link ---------- */
+.wc-slide__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.25rem;
+  background: var(--la-accent);
+  color: var(--la-white);
+  border-radius: var(--la-radius-full);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin-bottom: 0.5rem;
+
+  &:hover {
+    background: var(--la-accent-dark);
+    gap: 0.6rem;
+  }
+}
+
+/* ---------- Navigation ---------- */
+.wc-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem 1.25rem;
+}
+
+.wc-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.wc-dots__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--la-gray-200);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s;
+
+  &--active {
+    background: var(--la-accent);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  &:hover:not(&--active) {
+    background: var(--la-gray-300);
+  }
+}
+
+.wc-nav__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.wc-nav__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: none;
+  border-radius: var(--la-radius-full);
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &--prev,
+  &--skip {
+    background: var(--la-gray-100);
+    color: var(--la-gray-600);
+
+    &:hover {
+      background: var(--la-gray-200);
+      color: var(--la-dark);
+    }
+  }
+
+  &--next {
+    background: var(--la-primary);
+    color: var(--la-white);
+
+    &:hover {
+      background: var(--la-primary-dark);
+      gap: 0.5rem;
+    }
+  }
+
+  &--done {
+    background: #16a34a;
+    color: var(--la-white);
+
+    &:hover {
+      background: #15803d;
+    }
+  }
+}
+
+/* ---------- Dismiss link ---------- */
+.wc-dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-top: 1px solid var(--la-gray-100);
+  background: var(--la-snow);
+  color: var(--la-gray-400);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: var(--la-gray-100);
+    color: var(--la-gray-600);
+  }
+}
+
+/* ---------- Animations ---------- */
+@keyframes wcFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes wcSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes wcContentFade {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  .wc-overlay { padding: 0.75rem; }
+
+  .wc-panel { border-radius: var(--la-radius-lg); }
+
+  .wc-slide {
+    padding: 1.5rem 1.25rem 1rem;
+  }
+
+  .wc-slide__icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.15rem;
+  }
+
+  .wc-slide__title { font-size: 1.15rem; }
+  .wc-slide__desc { font-size: 0.85rem; }
+  .wc-bullets__item { font-size: 0.82rem; }
+
+  .wc-nav { padding: 0 1.25rem 1rem; }
+}

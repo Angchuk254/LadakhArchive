@@ -1,0 +1,453 @@
+﻿
+> ladakh-archive@0.0.0 build
+> ng build
+
+[33mΓ¥»[39m Building...
+[32mΓ£ö[39m Building...
+[35mPrerendered 0 static routes.[39m
+Application bundle generation failed. [8.654 seconds] - 2026-03-28T18:29:48.948Z
+
+node.exe : [1m[33m[33mΓû▓ 
+[43;33m[[43;30mWARNING[43;33m][0m 
+[1mNG8103: NG8103: The `*ngIf` 
+directive was used in the template, 
+but neither the `NgIf` directive nor 
+the `CommonModule` was imported. Use 
+Angular's built-in control flow @if or 
+make sure that either the `NgIf` 
+directive or the `CommonModule` is 
+included in the `@Component.imports` 
+array of this component. Find more at h
+ttps://v21.angular.dev/extended-diagnos
+tics/NG8103[0m [1m[35m[plugin 
+angular-compiler][0m
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpeci 
+   fied: ([1m[33m[33mΓ...r-compile  
+  r][0m:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCo 
+   mmandError
+ 
+
+    src/app/pages/resources/resources.h
+tml:40:54:
+[37m      40 Γöé ...="bi bi-pen me-2 
+text-muted" *[32mngIf[37m="res.type 
+=== 'Book' || res....
+         Γò╡                           
+       [32m~~~~[0m
+
+  Warning occurs in the template of 
+component Resources.
+
+    src/app/pages/resources/resources.t
+s:19:15:
+[37m      19 Γöé   templateUrl: 
+[32m'./resources.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ 
+[43;33m[[43;30mWARNING[43;33m][0m 
+[1mNG8103: NG8103: The `*ngIf` 
+directive was used in the template, 
+but neither the `NgIf` directive nor 
+the `CommonModule` was imported. Use 
+Angular's built-in control flow @if or 
+make sure that either the `NgIf` 
+directive or the `CommonModule` is 
+included in the `@Component.imports` 
+array of this component. Find more at h
+ttps://v21.angular.dev/extended-diagnos
+tics/NG8103[0m [1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/resources/resources.h
+tml:41:59:
+[37m      41 Γöé ...s="bi bi-building 
+me-2 text-muted" 
+*[32mngIf[37m="res.type === 
+'NGO'"></i>
+         Γò╡                           
+             [32m~~~~[0m
+
+  Warning occurs in the template of 
+component Resources.
+
+    src/app/pages/resources/resources.t
+s:19:15:
+[37m      19 Γöé   templateUrl: 
+[32m'./resources.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ 
+[43;33m[[43;30mWARNING[43;33m][0m 
+[1mNG8103: NG8103: The `*ngIf` 
+directive was used in the template, 
+but neither the `NgIf` directive nor 
+the `CommonModule` was imported. Use 
+Angular's built-in control flow @if or 
+make sure that either the `NgIf` 
+directive or the `CommonModule` is 
+included in the `@Component.imports` 
+array of this component. Find more at h
+ttps://v21.angular.dev/extended-diagnos
+tics/NG8103[0m [1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/resources/resources.h
+tml:42:63:
+[37m      42 Γöé ...amera-video me-2 
+text-muted" *[32mngIf[37m="res.type 
+=== 'Documentary'"...
+         Γò╡                           
+       [32m~~~~[0m
+
+  Warning occurs in the template of 
+component Resources.
+
+    src/app/pages/resources/resources.t
+s:19:15:
+[37m      19 Γöé   templateUrl: 
+[32m'./resources.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ 
+[43;33m[[43;30mWARNING[43;33m][0m 
+[1mNG8113: All imports are unused[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/resources/resources.t
+s:18:2:
+[37m      18 Γöé   [32mimports[37m: 
+[RouterLink],
+         Γò╡   [32m~~~~~~~[0m
+
+
+[33mΓû▓ 
+[43;33m[[43;30mWARNING[43;33m][0m 
+[1mNG8113: LeafletMapComponent is not 
+used within the template of 
+TrekDetail[0m [1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/trek-detail/trek-deta
+il.ts:63:37:
+[37m      63 Γöé   imports: 
+[RouterLink, DecimalPipe, 
+[32mLeafletMapComponent[37m],
+         Γò╡                           
+           [32m~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS1005: ',' expected.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/era-detail/era-detail
+.ts:62:225:
+[37m      62 Γöé ...re the agonizing 
+screams of '[32mDjinns[37m' 
+(spirits) of dead caravane...
+         Γò╡                           
+      [32m~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS18004: No value exists in scope 
+for the shorthand property 'Djinns'. 
+Either declare one or provide an 
+initializer.[0m [1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/era-detail/era-detail
+.ts:62:225:
+[37m      62 Γöé ...re the agonizing 
+screams of '[32mDjinns[37m' 
+(spirits) of dead caravane...
+         Γò╡                           
+      [32m~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS2353: Object literal may only 
+specify known properties, and 'Djinns' 
+does not exist in type 'Myth'.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/era-detail/era-detail
+.ts:62:225:
+[37m      62 Γöé ...re the agonizing 
+screams of '[32mDjinns[37m' 
+(spirits) of dead caravane...
+         Γò╡                           
+      [32m~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS1005: ',' expected.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/era-detail/era-detail
+.ts:62:231:
+[37m      62 Γöé ...of 'Djinns[32m' 
+(spirits) of dead caravaneers, forever 
+trapped in t[37m...
+         Γò╡              [32m~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS1005: ':' expected.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/era-detail/era-detail
+.ts:62:348:
+[37m      62 Γöé ...he ice, trying to 
+lure the living off the cliffs to join 
+them.' [32m}[37m,
+         Γò╡                           
+                                       
+  [32m^[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS2339: Property 'image' does not 
+exist on type '{ title: string; 
+location: string; gradient: string; 
+icon: string; area: string; }'.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    
+src/app/pages/home/home.html:228:105:
+[37m      228 Γöé 
+...kground-image]="'url(' + 
+img.[32mimage[37m + ')'" 
+style="background-si...
+          Γò╡                          
+       [32m~~~~~[0m
+
+  Error occurs in the template of 
+component Home.
+
+    src/app/pages/home/home.ts:10:15:
+[37m      10 Γöé   templateUrl: 
+[32m'./home.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS2741: Property 'highlights' is 
+missing in type '{ slug: string; name: 
+string; elevation: string; length: 
+string; type: string; icon: string; 
+color: string; gradient: string; 
+description: string; lat: number; lng: 
+number; overview: string; 
+historicalAccounts: string; ... 9 more 
+...; relatedSlugs: string[]; }' but 
+required in type 'LakeData'.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/lake-detail/lake-deta
+il.ts:51:4:
+[37m      51 Γöé     [32m{[37m
+         Γò╡     [32m^[0m
+
+  'highlights' is declared here.
+
+    src/app/pages/lake-detail/lake-deta
+il.ts:14:2:
+[37m      14 Γöé   
+[32mhighlights[37m: string[];
+         Γò╡   [32m~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS2741: Property 'highlights' is 
+missing in type '{ slug: string; name: 
+string; elevation: string; length: 
+string; type: string; icon: string; 
+color: string; gradient: string; 
+description: string; lat: number; lng: 
+number; overview: string; 
+historicalAccounts: string; ... 9 more 
+...; relatedSlugs: string[]; }' but 
+required in type 'LakeData'.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/lake-detail/lake-deta
+il.ts:88:4:
+[37m      88 Γöé     [32m{[37m
+         Γò╡     [32m^[0m
+
+  'highlights' is declared here.
+
+    src/app/pages/lake-detail/lake-deta
+il.ts:14:2:
+[37m      14 Γöé   
+[32mhighlights[37m: string[];
+         Γò╡   [32m~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS2741: Property 'highlights' is 
+missing in type '{ slug: string; name: 
+string; elevation: string; length: 
+string; type: string; icon: string; 
+color: string; gradient: string; 
+description: string; lat: number; lng: 
+number; overview: string; 
+historicalAccounts: string; ... 9 more 
+...; relatedSlugs: string[]; }' but 
+required in type 'LakeData'.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/lake-detail/lake-deta
+il.ts:125:4:
+[37m      125 Γöé     [32m{[37m
+          Γò╡     [32m^[0m
+
+  'highlights' is declared here.
+
+    src/app/pages/lake-detail/lake-deta
+il.ts:14:2:
+[37m      14 Γöé   
+[32mhighlights[37m: string[];
+         Γò╡   [32m~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS2741: Property 'highlights' is 
+missing in type '{ slug: string; name: 
+string; elevation: string; length: 
+string; type: string; icon: string; 
+color: string; gradient: string; 
+description: string; lat: number; lng: 
+number; overview: string; 
+historicalAccounts: string; ... 9 more 
+...; relatedSlugs: string[]; }' but 
+required in type 'LakeData'.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/lake-detail/lake-deta
+il.ts:162:4:
+[37m      162 Γöé     [32m{[37m
+          Γò╡     [32m^[0m
+
+  'highlights' is declared here.
+
+    src/app/pages/lake-detail/lake-deta
+il.ts:14:2:
+[37m      14 Γöé   
+[32mhighlights[37m: string[];
+         Γò╡   [32m~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS2339: Property 'image' does not 
+exist on type '{ name: string; slug: 
+string; scientific: string; icon: 
+string; color: string; status: string; 
+habitat: string; desc: string; }'.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/nature/nature.html:22
+2:79:
+[37m      222 Γöé 
+...ground-image]="'url(' + 
+bird.[32mimage[37m + ')'" 
+style="background-si...
+          Γò╡                          
+       [32m~~~~~[0m
+
+  Error occurs in the template of 
+component Nature.
+
+    
+src/app/pages/nature/nature.ts:9:15:
+[37m      9 Γöé   templateUrl: 
+[32m'./nature.html'[37m,
+        Γò╡                
+[32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS2339: Property 'statusColor' 
+does not exist on type '{ name: 
+string; slug: string; scientific: 
+string; icon: string; color: string; 
+status: string; habitat: string; desc: 
+string; }'.[0m [1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/nature/nature.html:22
+5:75:
+[37m      225 Γöé ...yle.background-co
+lor]="bird.[32mstatusColor[37m">{{ 
+bird.status }}</span>
+          Γò╡                          
+      [32m~~~~~~~~~~~[0m
+
+  Error occurs in the template of 
+component Nature.
+
+    
+src/app/pages/nature/nature.ts:9:15:
+[37m      9 Γöé   templateUrl: 
+[32m'./nature.html'[37m,
+        Γò╡                
+[32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mUnexpected "}"[0m
+
+    src/app/pages/era-detail/era-detail
+.ts:367:362:
+[37m      367 Γöé ...ice, trying to 
+lure the living off the cliffs to join 
+them.':  [32m}[37m,
+          Γò╡                          
+                                       
+  [32m^[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mUnexpected "}"[0m
+
+    src/app/pages/era-detail/era-detail
+.ts:367:362:
+[37m      367 Γöé ...ice, trying to 
+lure the living off the cliffs to join 
+them.':  [32m}[37m,
+          Γò╡                          
+                                       
+  [32m^[0m
+
+[39m[22m

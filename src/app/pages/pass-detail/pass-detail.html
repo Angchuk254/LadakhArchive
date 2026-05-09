@@ -1,0 +1,189 @@
+﻿@if (pass(); as p) {
+<!-- Hero -->
+<section class="pd-hero" [style.background-image]="'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(' + p.heroImage + ')'">
+  <div class="pd-hero__inner">
+    <a routerLink="/routes" class="pd-hero__back"><i class="bi bi-arrow-left"></i> All Routes</a>
+    <span class="pd-hero__badge">{{ p.altitude }} · {{ p.altitudeMetres }}</span>
+    <h1 class="pd-hero__title">{{ p.name }}</h1>
+    <p class="pd-hero__meta">
+      <i class="bi bi-geo-alt"></i> {{ p.location }} &nbsp;|&nbsp;
+      <i class="bi bi-signpost-2"></i> {{ p.road }} &nbsp;|&nbsp;
+      <i class="bi bi-calendar3"></i> {{ p.openSeason }}
+    </p>
+    <p class="pd-hero__desc">{{ p.desc }}</p>
+  </div>
+</section>
+
+<!-- Jump Nav -->
+<nav class="ed-jumpnav">
+  <div class="container">
+    <div class="ed-jumpnav__wrap">
+      <a routerLink="/routes" class="ed-jumpnav__parent"><i class="bi bi-arrow-left"></i> Routes</a>
+      <div class="ed-jumpnav__inner">
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'overview'" (click)="setTab('overview')"><i class="bi bi-info-circle"></i> Overview</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'map'" (click)="setTab('map')"><i class="bi bi-map"></i> Location Map</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'history'" (click)="setTab('history')"><i class="bi bi-clock-history"></i> History</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'gallery'" (click)="setTab('gallery')"><i class="bi bi-images"></i> Gallery</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'video'" (click)="setTab('video')"><i class="bi bi-play-circle"></i> Video</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'tips'" (click)="setTab('tips')"><i class="bi bi-lightbulb"></i> Travel Tips</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Overview Tab -->
+@if (activeTab() === 'overview') {
+<section class="pd-section">
+  <div class="pd-section__inner">
+    <h2 class="pd-section__heading">Overview</h2>
+    <p class="pd-overview__text">{{ p.overview }}</p>
+
+    <div class="pd-info-grid">
+      <div class="pd-info-card">
+        <i class="bi bi-arrow-up-circle"></i>
+        <h4>Altitude</h4>
+        <p>{{ p.altitude }} ({{ p.altitudeMetres }})</p>
+      </div>
+      <div class="pd-info-card">
+        <i class="bi bi-signpost-2"></i>
+        <h4>Route</h4>
+        <p>{{ p.road }}</p>
+      </div>
+      <div class="pd-info-card">
+        <i class="bi bi-truck"></i>
+        <h4>Status</h4>
+        <p>{{ p.status }}</p>
+      </div>
+      <div class="pd-info-card">
+        <i class="bi bi-geo-alt"></i>
+        <h4>Coordinates</h4>
+        <p>{{ p.coordinates }}</p>
+      </div>
+      <div class="pd-info-card">
+        <i class="bi bi-sun"></i>
+        <h4>Open Season</h4>
+        <p>{{ p.openSeason }}</p>
+      </div>
+      <div class="pd-info-card">
+        <i class="bi bi-pin-map"></i>
+        <h4>Distance</h4>
+        <p>{{ p.distance }}</p>
+      </div>
+    </div>
+
+    <h3 class="pd-sub-heading">Highlights</h3>
+    <div class="pd-highlights">
+      @for (h of p.highlights; track h.label) {
+      <div class="pd-highlight-card">
+        <h4>{{ h.label }}</h4>
+        <p>{{ h.detail }}</p>
+      </div>
+      }
+    </div>
+
+    @if (p.nearbyAttractions.length) {
+    <h3 class="pd-sub-heading">Nearby Attractions</h3>
+    <div class="pd-nearby">
+      @for (a of p.nearbyAttractions; track a) {
+      <span class="pd-nearby__tag"><i class="bi bi-geo-alt"></i> {{ a }}</span>
+      }
+    </div>
+    }
+  </div>
+</section>
+}
+
+<!-- Map Tab -->
+@if (activeTab() === 'map') {
+<section class="pd-section animation-fade-in text-center pb-5 pt-4">
+  <div class="pd-section__inner max-w-4xl mx-auto">
+    <h2 class="pd-section__heading mb-2">Location Map</h2>
+    <p class="text-muted mb-4 d-block">Find {{ p.name }} on the map of Ladakh.</p>
+    <app-leaflet-map
+      [lat]="p.lat"
+      [lng]="p.lng"
+      [title]="p.name"
+      [zoom]="p.zoom || 14"
+      height="450px">
+    </app-leaflet-map>
+  </div>
+</section>
+}
+
+<!-- History Tab -->
+@if (activeTab() === 'history') {
+<section class="pd-section">
+  <div class="pd-section__inner">
+    <h2 class="pd-section__heading">History</h2>
+    <div class="pd-history">
+      <div class="pd-history__timeline-marker"></div>
+      <p class="pd-history__text">{{ p.history }}</p>
+    </div>
+  </div>
+</section>
+}
+
+<!-- Gallery Tab -->
+@if (activeTab() === 'gallery') {
+<section class="pd-section">
+  <div class="pd-section__inner">
+    <h2 class="pd-section__heading">Gallery</h2>
+    <div class="pd-gallery-grid">
+      @for (img of p.gallery; track img.title) {
+      <div class="pd-gallery-card">
+        <div class="pd-gallery-card__img" [style.background-image]="'url(' + img.image + ')'">
+        </div>
+        <h4>{{ img.title }}</h4>
+        <p>{{ img.desc }}</p>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+}
+
+<!-- Video Tab -->
+@if (activeTab() === 'video') {
+<section class="pd-section">
+  <div class="pd-section__inner">
+    <h2 class="pd-section__heading">Video</h2>
+    <div class="pd-video">
+      <div class="pd-video__placeholder">
+        <i class="bi bi-play-circle"></i>
+        <h3>{{ p.videoTitle }}</h3>
+        <p>{{ p.videoDesc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+}
+
+<!-- Travel Tips Tab -->
+@if (activeTab() === 'tips') {
+<section class="pd-section">
+  <div class="pd-section__inner">
+    <h2 class="pd-section__heading">Travel Tips</h2>
+    <div class="pd-tips">
+      @for (tip of p.tips; track tip) {
+      <div class="pd-tip-card">
+        <i class="bi bi-lightbulb"></i>
+        <p>{{ tip }}</p>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+}
+
+} @else {
+<!-- Not Found -->
+<section class="pd-not-found">
+  <div class="pd-not-found__inner">
+    <i class="bi bi-exclamation-triangle"></i>
+    <h2>Pass Not Found</h2>
+    <p>The mountain pass you're looking for doesn't exist.</p>
+    <a routerLink="/routes" class="pd-not-found__link">Browse All Routes</a>
+  </div>
+</section>
+}
+

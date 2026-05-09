@@ -1,0 +1,145 @@
+﻿@if (era(); as e) {
+
+<!-- Hero -->
+<section class="ed-hero" [style.background-image]="'linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9)), url(' + e.heroImage + ')'">
+  <div class="ed-hero__overlay"></div>
+  <div class="container position-relative z-1">
+    <a routerLink="/history" class="ed-hero__back"><i class="bi bi-arrow-left me-1"></i> History</a>
+    <div class="ed-hero__icon"><i class="bi" [class]="e.icon"></i></div>
+    <h1 class="ed-hero__title">{{ e.title }}</h1>
+    <div class="ed-hero__stats">
+      <div class="ed-hero__stat"><i class="bi bi-calendar3"></i><span>{{ e.period }}</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Jump Nav -->
+<nav class="ed-jumpnav">
+  <div class="container">
+    <div class="ed-jumpnav__wrap">
+      <a routerLink="/history" class="ed-jumpnav__parent"><i class="bi bi-arrow-left"></i> Era</a>
+      <div class="ed-jumpnav__inner">
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'overview'" (click)="setTab('overview')">
+          <i class="bi bi-info-circle"></i> Overview
+        </button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'timeline'" (click)="setTab('timeline')">
+          <i class="bi bi-clock-history"></i> Timeline
+        </button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'figures'" (click)="setTab('figures')">
+          <i class="bi bi-people"></i> Figures
+        </button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'accounts'" (click)="setTab('accounts')">
+          <i class="bi bi-journal-text"></i> 1800s-2026 Accounts
+        </button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'myths'" (click)="setTab('myths')">
+          <i class="bi bi-moon-stars"></i> Myths & Lore
+        </button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'legacy'" (click)="setTab('legacy')">
+          <i class="bi bi-award"></i> Impact
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Tab Content -->
+<section class="section-padding">
+  <div class="container">
+
+    @if (activeTab() === 'overview') {
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-7">
+          <p class="la-label text-accent"><i class="bi bi-info-circle"></i> Historical Context</p>
+          <h2 class="section-title">Overview</h2>
+          <p class="erd-overview" style="white-space: pre-line;">{{ e.desc }}</p>
+        </div>
+        <div class="col-lg-5">
+          <div class="erd-overview-img rounded-4 shadow-sm" [style.background-image]="'url(' + e.image + ')'" style="height: 400px; background-size: cover; background-position: center;"></div>
+        </div>
+      </div>
+    }
+
+    @if (activeTab() === 'timeline') {
+      <p class="la-label text-accent"><i class="bi bi-clock-history"></i> The Sequence</p>
+      <h2 class="section-title">Key Events in This Era</h2>
+      <div class="erd-timeline mt-4">
+        @for (ev of filteredTimeline(); track ev.year) {
+          <div class="erd-timeline__item">
+            <span class="erd-timeline__year" [style.color]="ev.color">{{ ev.year }}</span>
+            <div>
+              <strong>{{ ev.title }}</strong>
+              <p>{{ ev.desc }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (activeTab() === 'figures') {
+      <p class="la-label text-accent"><i class="bi bi-people"></i> Key Players</p>
+      <h2 class="section-title">Historical Figures</h2>
+      <div class="erd-figures mt-4">
+        @for (fig of e.keyFigures; track fig.name) {
+          <div class="erd-figures__item">
+            <div class="erd-figures__icon" [style.background]="e.color"><i class="bi bi-person-fill"></i></div>
+            <div>
+              <strong>{{ fig.name }}</strong>
+              <p>{{ fig.role }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (activeTab() === 'accounts') {
+      <p class="la-label text-accent"><i class="bi bi-journal-text"></i> Archive Documents</p>
+      <h2 class="section-title">Traveler & Foreigner Accounts</h2>
+      <p class="text-muted mb-4">Firsthand observations and contemporary reports chronicling the {{e.title}}.</p>
+      <div class="row g-4 mt-2">
+        @for (acc of e.travelerAccounts; track acc.author) {
+          <div class="col-md-6">
+            <div class="pd-info-card h-100 bg-snow" style="padding: 2rem; border-radius: 16px;">
+              <h5 class="mb-1" style="font-family: var(--la-font-heading); font-weight: 800;">{{acc.author}}</h5>
+              <span class="text-accent d-block mb-3" style="font-weight: 600;">Circa {{acc.year}}</span>
+              <p class="fs-5 fst-italic text-secondary">"{{ acc.quote }}"</p>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (activeTab() === 'myths') {
+      <p class="la-label text-accent"><i class="bi bi-moon-stars"></i> Local Folklore</p>
+      <h2 class="section-title">Myths & Legends</h2>
+      <p class="text-muted mb-4">The haunting tales, spiritual observations, and supernatural rumors born during the {{e.title}}.</p>
+      <div class="mt-4" style="max-width: 800px;">
+        @for (myth of e.myths; track myth.title) {
+          <div class="mb-5 border-start border-4 ps-4" style="border-color: var(--la-accent) !important;">
+            <h4 style="font-family: var(--la-font-heading); font-weight: 800;" class="mb-3">{{myth.title}}</h4>
+            <p class="text-secondary" style="font-size: 1.1rem; line-height: 1.8;">{{ myth.story }}</p>
+          </div>
+        }
+      </div>
+    }
+
+
+    @if (activeTab() === 'legacy') {
+      <p class="la-label text-accent"><i class="bi bi-award"></i> The Aftermath</p>
+      <h2 class="section-title">Legacy & Impact</h2>
+      <div class="p-4 bg-snow rounded-4 mt-4 shadow-sm h-100">
+        <p class="erd-overview m-0" style="font-size: 1.15rem; line-height: 1.8;">{{ e.legacy }}</p>
+      </div>
+    }
+
+  </div>
+</section>
+
+} @else {
+<section class="section-padding text-center">
+  <div class="container">
+    <h2>Era not found</h2>
+    <a routerLink="/history" class="btn-la-primary mt-3"><i class="bi bi-arrow-left"></i> Back to History</a>
+  </div>
+</section>
+}
+

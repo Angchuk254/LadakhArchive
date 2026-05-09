@@ -1,0 +1,183 @@
+﻿<!-- ╔══════════════════════════════════════════════════╗
+     ║     LIBRARY & RESOURCES — LadakhArchive          ║
+     ╚══════════════════════════════════════════════════╝ -->
+
+<!-- ── 1. Editorial Hero ── -->
+<section class="lib-hero">
+  <div class="lib-hero__bg"></div>
+  <div class="lib-hero__noise"></div>
+  <div class="container position-relative" style="z-index:3">
+    <div class="lib-hero__eyebrow">
+      <span class="lib-hero__dot"></span>
+      <span>The Ladakh Archive — Curated Library</span>
+    </div>
+    <h1 class="lib-hero__title">
+      <span class="lib-hero__title-line lib-hero__title-line--1">5,000 Years</span>
+      <span class="lib-hero__title-line lib-hero__title-line--2">of Written Memory</span>
+    </h1>
+    <p class="lib-hero__sub">
+      Primary sources, 1800s explorer accounts, scientific journals, and contemporary
+      books defining the trans-Himalaya — assembled in one open archive.
+    </p>
+    <div class="lib-hero__stats">
+      <div class="lib-hero__stat">
+        <span class="lib-hero__stat-num">15+</span>
+        <span class="lib-hero__stat-label">Curated Titles</span>
+      </div>
+      <div class="lib-hero__stat-divider"></div>
+      <div class="lib-hero__stat">
+        <span class="lib-hero__stat-num">4</span>
+        <span class="lib-hero__stat-label">Centuries Covered</span>
+      </div>
+      <div class="lib-hero__stat-divider"></div>
+      <div class="lib-hero__stat">
+        <span class="lib-hero__stat-num">6</span>
+        <span class="lib-hero__stat-label">Source Types</span>
+      </div>
+    </div>
+  </div>
+  <div class="lib-hero__scroll-cue">
+    <span>Scroll to browse</span>
+    <i class="bi bi-arrow-down"></i>
+  </div>
+</section>
+
+<!-- ── 2. Sticky Classifier Nav ── -->
+<nav class="lib-nav">
+  <div class="container">
+    <div class="lib-nav__inner">
+      <span class="lib-nav__label">Filter by Type</span>
+      <div class="lib-nav__pills">
+        @for (cat of categories; track cat) {
+          <button
+            class="lib-nav__pill"
+            [class.lib-nav__pill--active]="activeCategory() === cat"
+            (click)="setCategory(cat)"
+          >
+            {{ cat }}
+            @if (activeCategory() === cat) {
+              <span class="lib-nav__pill-count">{{ filteredResources().length }}</span>
+            }
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── 3. Main Archive Grid ── -->
+<section class="lib-main">
+  <div class="container">
+
+    @if (filteredResources().length > 0) {
+      <!-- Featured Card (First Item - always large) -->
+      <div class="lib-featured">
+        <div class="lib-featured__badge">
+          <i class="bi {{ filteredResources()[0].icon }} me-1"></i>
+          {{ filteredResources()[0].type }}
+        </div>
+        <div class="lib-featured__year-wm">{{ filteredResources()[0].year ?? '—' }}</div>
+        <div class="lib-featured__body">
+          <div class="lib-featured__meta">
+            <span class="lib-featured__author">{{ filteredResources()[0].authorOrOrg }}</span>
+            @if (filteredResources()[0].year) {
+              <span class="lib-featured__year-pill">{{ filteredResources()[0].year }}</span>
+            }
+          </div>
+          <h2 class="lib-featured__title">{{ filteredResources()[0].title }}</h2>
+          <p class="lib-featured__desc">{{ filteredResources()[0].desc }}</p>
+          <div class="lib-featured__footer">
+            <div class="lib-featured__tags">
+              @for (tag of filteredResources()[0].tags; track tag) {
+                <span class="lib-tag">#{{ tag }}</span>
+              }
+            </div>
+            @if (filteredResources()[0].link) {
+              <a [href]="filteredResources()[0].link" target="_blank" rel="noopener noreferrer" class="lib-cta-btn">
+                <span>View Source</span> <i class="bi bi-arrow-up-right"></i>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Remaining Cards Grid -->
+      @if (filteredResources().length > 1) {
+        <div class="lib-grid">
+          @for (res of filteredResources().slice(1); track res.title) {
+            <article class="lib-card">
+              <!-- Ruled Header Strip -->
+              <div class="lib-card__strip" [attr.data-era]="res.era">
+                <div class="lib-card__type-row">
+                  <span class="lib-card__type-icon"><i class="bi {{ res.icon }}"></i></span>
+                  <span class="lib-card__type-label">{{ res.type }}</span>
+                </div>
+                @if (res.year) {
+                  <span class="lib-card__year">{{ res.year }}</span>
+                }
+              </div>
+
+              <!-- Content body -->
+              <div class="lib-card__body">
+                <p class="lib-card__author">{{ res.authorOrOrg }}</p>
+                <h3 class="lib-card__title">{{ res.title }}</h3>
+                <p class="lib-card__desc">{{ res.desc }}</p>
+              </div>
+
+              <!-- Footer chips + link -->
+              <div class="lib-card__footer">
+                <div class="lib-card__tags">
+                  @for (tag of res.tags.slice(0, 2); track tag) {
+                    <span class="lib-tag lib-tag--sm">#{{ tag }}</span>
+                  }
+                </div>
+                @if (res.link) {
+                  <a [href]="res.link" target="_blank" rel="noopener noreferrer" class="lib-card__link">
+                    View <i class="bi bi-arrow-up-right"></i>
+                  </a>
+                }
+              </div>
+            </article>
+          }
+        </div>
+      }
+    }
+
+    <!-- Empty State -->
+    @if (filteredResources().length === 0) {
+      <div class="lib-empty">
+        <i class="bi bi-archive lib-empty__icon"></i>
+        <h3>No archives found</h3>
+        <p>Try selecting a different category from the Library index above.</p>
+      </div>
+    }
+
+  </div>
+</section>
+
+<!-- ── 4. Archive CTA Banner ── -->
+<section class="lib-banner">
+  <div class="lib-banner__glow lib-banner__glow--left"></div>
+  <div class="lib-banner__glow lib-banner__glow--right"></div>
+  <div class="container position-relative" style="z-index:2">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <p class="lib-banner__eyebrow">Open Knowledge</p>
+        <h2 class="lib-banner__title">Know a missing source?</h2>
+        <p class="lib-banner__desc">
+          This archive is community-maintained. If you know of primary sources, field reports,
+          or oral history recordings that should be included, contribute to the record.
+        </p>
+      </div>
+      <div class="col-lg-5 d-flex flex-column flex-sm-row gap-3 justify-content-lg-end">
+        <a routerLink="/contribute" class="btn btn-la-accent btn-lg">
+          <i class="bi bi-plus-circle me-2"></i>Suggest a Source
+        </a>
+        <a routerLink="/history" class="btn btn-la-outline btn-lg">
+          <i class="bi bi-journal-text me-2"></i>Full History
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

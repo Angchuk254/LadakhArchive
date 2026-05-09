@@ -1,0 +1,223 @@
+﻿<!-- ═══════════════════════════════════════════ -->
+<!--            BLOG DETAIL PAGE               -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- Reading Progress Bar -->
+<div class="ba-progress" [style.width.%]="readingProgress()"></div>
+
+<!-- 1 · Hero -->
+<section class="ba-hero" [style.background]="'linear-gradient(135deg, ' + post().color + ', ' + post().color + 'cc)'">
+  <div class="ba-hero__overlay"></div>
+  <div class="container position-relative">
+    <a routerLink="/blog" class="ba-hero__back"><i class="bi bi-arrow-left me-1"></i> All Articles</a>
+    <span class="ba-hero__badge">{{ post().category }}</span>
+    <h1 class="ba-hero__title">{{ post().title }}</h1>
+    <div class="ba-hero__meta">
+      <span><i class="bi bi-person-circle me-1"></i> {{ post().author }}</span>
+      <span><i class="bi bi-calendar3 me-1"></i> {{ post().date }}</span>
+      <span><i class="bi bi-clock me-1"></i> {{ post().readTime }}</span>
+      <span><i class="bi bi-body-text me-1"></i> {{ wordCount() }} words</span>
+    </div>
+    <div class="ba-hero__actions">
+      <app-bookmark-btn [path]="'/blog/' + post().slug" [title]="post().title" />
+      <app-share-btn [title]="post().title" />
+    </div>
+  </div>
+</section>
+
+<!-- 2 · Breadcrumb Jump-Nav -->
+<div class="ba-jumpnav">
+  <div class="container">
+    <div class="ba-jumpnav__wrap">
+      <a routerLink="/blog" class="ba-jumpnav__parent"><i class="bi bi-journal-richtext me-1"></i> Blog</a>
+      <span class="ba-jumpnav__sep">/</span>
+      <span class="ba-jumpnav__current">{{ post().title }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3 · Article Content + Sidebar -->
+<section class="section-padding">
+  <div class="container">
+    <div class="ba-layout">
+
+      <!-- ─── Main column ─── -->
+      <div class="ba-main">
+        <article class="ba-article">
+          @for (section of post().content; track section.heading; let idx = $index) {
+            <div class="ba-article__section">
+              <h2 class="ba-article__heading" [id]="'section-' + idx">{{ section.heading }}</h2>
+              <p class="ba-article__text">{{ section.text }}</p>
+
+              <!-- Inline visual placeholder for odd sections -->
+              @if (idx % 2 === 0) {
+                <div class="ba-article__media">
+                  <div class="ba-article__img-placeholder" [style.background]="'linear-gradient(135deg, ' + post().color + '22, ' + post().color + '08)'">
+                    <i class="bi" [class]="post().icon"></i>
+                    <span>Illustration — {{ section.heading }}</span>
+                  </div>
+                </div>
+              }
+
+              <!-- Video embed placeholder for the 2nd section -->
+              @if (idx === 1) {
+                <div class="ba-article__media">
+                  <div class="ba-article__video-placeholder" [style.border-color]="post().color + '33'">
+                    <div class="ba-article__video-icon" [style.background]="post().color">
+                      <i class="bi bi-play-fill"></i>
+                    </div>
+                    <span class="ba-article__video-label">Related Video — {{ post().category }}</span>
+                    <span class="ba-article__video-sub">Videos coming soon to LadakhArchive</span>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </article>
+
+        <!-- Share Bar -->
+        <div class="ba-share">
+          <span class="ba-share__label">Share this article</span>
+          <div class="ba-share__buttons">
+            <button class="ba-share__btn ba-share__btn--twitter" (click)="shareOnTwitter()" title="Share on Twitter">
+              <i class="bi bi-twitter-x"></i>
+            </button>
+            <button class="ba-share__btn ba-share__btn--facebook" (click)="shareOnFacebook()" title="Share on Facebook">
+              <i class="bi bi-facebook"></i>
+            </button>
+            <button class="ba-share__btn ba-share__btn--linkedin" (click)="shareOnLinkedIn()" title="Share on LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </button>
+            <button class="ba-share__btn ba-share__btn--copy" (click)="copyLink()" title="Copy link">
+              <i class="bi" [class]="linkCopied() ? 'bi-check-lg' : 'bi-link-45deg'"></i>
+              @if (linkCopied()) { <span class="ba-share__copied">Copied!</span> }
+            </button>
+          </div>
+        </div>
+
+        <!-- Author Card -->
+        <div class="ba-author">
+          <div class="ba-author__avatar" [style.background]="post().color">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <div class="ba-author__info">
+            <span class="ba-author__written">Written by</span>
+            <h4 class="ba-author__name">{{ post().author }}</h4>
+            <p class="ba-author__role">{{ post().authorRole }}, LadakhArchive</p>
+          </div>
+        </div>
+
+        <!-- Related Topic -->
+        <div class="ba-related-topic">
+          <span class="ba-related-topic__label">Explore more on this topic</span>
+          <a [routerLink]="post().relatedLink" class="btn btn-la-primary">
+            <i class="bi" [class]="post().icon" class="me-2"></i> {{ post().relatedLabel }}
+          </a>
+        </div>
+      </div>
+
+      <!-- ─── Sidebar ─── -->
+      <aside class="ba-sidebar">
+        <!-- Table of Contents -->
+        <div class="ba-toc">
+          <h3 class="ba-toc__title"><i class="bi bi-list-ul me-2"></i>In This Article</h3>
+          <nav class="ba-toc__nav">
+            @for (section of post().content; track section.heading; let idx = $index) {
+              <a class="ba-toc__link" href="javascript:void(0)" (click)="scrollToSection(idx, $event)">
+                <span class="ba-toc__num">{{ idx + 1 }}</span>
+                {{ section.heading }}
+              </a>
+            }
+          </nav>
+        </div>
+
+        <!-- Recommended Reading -->
+        @if (otherPosts().length > 0) {
+          <div class="ba-sidebar-rec">
+            <h3 class="ba-sidebar-rec__title"><i class="bi bi-bookmark-star me-2"></i>Recommended</h3>
+            @for (rp of otherPosts(); track rp.slug) {
+              <a [routerLink]="['/blog', rp.slug]" class="ba-sidebar-rec__card">
+                <div class="ba-sidebar-rec__icon" [style.background]="rp.color + '15'" [style.color]="rp.color">
+                  <i class="bi" [class]="rp.icon"></i>
+                </div>
+                <div class="ba-sidebar-rec__info">
+                  <span class="ba-sidebar-rec__cat" [style.color]="rp.color">{{ rp.category }}</span>
+                  <span class="ba-sidebar-rec__name">{{ rp.title }}</span>
+                </div>
+              </a>
+            }
+          </div>
+        }
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · Related Articles (Same Category) -->
+@if (relatedPosts().length > 0) {
+  <section class="section-padding bg-snow ba-more-category">
+    <div class="container">
+      <h2 class="section-title">More in {{ post().category }}</h2>
+      <p class="section-subtitle">Continue reading articles on the same topic.</p>
+      <div class="ba-related-grid">
+        @for (rp of relatedPosts(); track rp.slug) {
+          <a [routerLink]="['/blog', rp.slug]" class="ba-related-card">
+            <div class="ba-related-card__header" [style.background]="'linear-gradient(135deg, ' + rp.color + ', ' + rp.color + 'bb)'">
+              <i class="bi" [class]="rp.icon"></i>
+              <span class="ba-related-card__badge">{{ rp.category }}</span>
+            </div>
+            <div class="ba-related-card__body">
+              <h4 class="ba-related-card__title">{{ rp.title }}</h4>
+              <div class="ba-related-card__meta">
+                <span><i class="bi bi-calendar3"></i> {{ rp.date }}</span>
+                <span><i class="bi bi-clock"></i> {{ rp.readTime }}</span>
+              </div>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- 5 · Explore More Sections -->
+<section class="section-padding">
+  <div class="container">
+    <h2 class="section-title">Explore the Archive</h2>
+    <p class="section-subtitle">Discover more of Ladakh — beyond the articles.</p>
+    <div class="ba-explore-grid">
+      @for (sec of exploreSections; track sec.link) {
+        <a [routerLink]="sec.link" class="ba-explore-card">
+          <div class="ba-explore-card__icon" [style.background]="sec.color">
+            <i class="bi" [class]="sec.icon"></i>
+          </div>
+          <div class="ba-explore-card__body">
+            <h4 class="ba-explore-card__title">{{ sec.title }}</h4>
+            <p class="ba-explore-card__desc">{{ sec.desc }}</p>
+          </div>
+          <i class="bi bi-chevron-right ba-explore-card__arrow" [style.color]="sec.color"></i>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- 6 · CTA -->
+<section class="ba-cta">
+  <div class="ba-cta__overlay"></div>
+  <div class="container position-relative text-center">
+    <h2 class="ba-cta__title">Enjoyed This Article?</h2>
+    <p class="ba-cta__desc">
+      Explore more stories or share your own knowledge about Ladakh with the world.
+    </p>
+    <div class="ba-cta__actions">
+      <a routerLink="/blog" class="btn btn-la-accent btn-lg">
+        <i class="bi bi-journal-richtext me-2"></i>More Articles
+      </a>
+      <a routerLink="/contribute" class="btn btn-la-outline btn-lg" style="border-color:rgba(255,255,255,.3);color:var(--la-white);">
+        <i class="bi bi-pencil-square me-2"></i>Write for Us
+      </a>
+    </div>
+  </div>
+</section>
+

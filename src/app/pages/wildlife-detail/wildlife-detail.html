@@ -1,0 +1,369 @@
+@if (animal(); as a) {
+
+<!-- 1 · Hero -->
+<section class="wd-hero" [style.background-image]="'url(' + a.heroImage + ')'" style="background-size: cover; background-position: center;">
+  <div class="wd-hero__overlay" [style.background]="'linear-gradient(to bottom, rgba(0,0,0,0.3), ' + a.color + 'ee)'"></div>
+  <div class="container wd-hero__inner">
+    <div class="wd-breadcrumb">
+      <a routerLink="/"><i class="bi bi-house"></i> Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <a routerLink="/nature">Nature</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>{{ a.name }}</span>
+    </div>
+    <div class="wd-hero__content">
+      <span class="wd-hero__status" [style.background-color]="a.statusColor">{{ a.status }}</span>
+      <h1 class="wd-hero__title">{{ a.name }} <small>{{ a.scientific }}</small></h1>
+      <div class="wd-hero__meta">
+        <span><i class="bi bi-geo-alt"></i> {{ a.habitat }}</span>
+        <span><i class="bi bi-people"></i> {{ a.population }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Jump Nav -->
+<nav class="wd-jumpnav">
+  <div class="container">
+    <div class="wd-jumpnav__wrap">
+      <a routerLink="/nature" class="wd-jumpnav__parent"><i class="bi bi-arrow-left"></i> Nature & Wildlife</a>
+      <div class="wd-jumpnav__inner">
+        <button class="wd-jumpnav__link" [class.active]="activeTab() === 'overview'" (click)="setTab('overview')">
+          <i class="bi bi-info-circle"></i> Overview
+        </button>
+        <button class="wd-jumpnav__link" [class.active]="activeTab() === 'facts'" (click)="setTab('facts')">
+          <i class="bi bi-clipboard-data"></i> Facts
+        </button>
+        <button class="wd-jumpnav__link" [class.active]="activeTab() === 'gallery'" (click)="setTab('gallery')">
+          <i class="bi bi-images"></i> Gallery
+        </button>
+        <button class="wd-jumpnav__link" [class.active]="activeTab() === 'ecology'" (click)="setTab('ecology')">
+          <i class="bi bi-binoculars"></i> Ecology
+        </button>
+        <button class="wd-jumpnav__link" [class.active]="activeTab() === 'fieldguide'" (click)="setTab('fieldguide')">
+          <i class="bi bi-compass"></i> Field Guide
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+@if (activeTab() === 'overview') {
+<!-- 2 · Overview -->
+<section class="section-padding">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <p class="la-label text-accent"><i class="bi bi-info-circle"></i> About</p>
+        <h2 class="section-title">Overview</h2>
+        <p class="wd-overview__text">{{ a.overview }}</p>
+        <div class="wd-highlights mt-4">
+          <h5 class="wd-highlights__title"><i class="bi bi-star me-2"></i>Key Highlights</h5>
+          <div class="wd-highlights__list">
+            @for (h of a.highlights; track h; let i = $index) {
+              <div class="wd-highlights__item">
+                <span class="wd-highlights__num" [style.background]="a.color">{{ i + 1 }}</span>
+                <span>{{ h }}</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Taxonomy Card -->
+        <div class="wd-taxonomy mt-4">
+          <h5 class="wd-taxonomy__title"><i class="bi bi-diagram-3 me-2"></i>Scientific Classification</h5>
+          <div class="wd-taxonomy__table">
+            <div class="wd-taxonomy__row"><span class="wd-taxonomy__rank">Kingdom</span><span class="wd-taxonomy__value">{{ a.taxonomy.kingdom }}</span></div>
+            <div class="wd-taxonomy__row"><span class="wd-taxonomy__rank">Phylum</span><span class="wd-taxonomy__value">{{ a.taxonomy.phylum }}</span></div>
+            <div class="wd-taxonomy__row"><span class="wd-taxonomy__rank">Class</span><span class="wd-taxonomy__value">{{ a.taxonomy.class }}</span></div>
+            <div class="wd-taxonomy__row"><span class="wd-taxonomy__rank">Order</span><span class="wd-taxonomy__value">{{ a.taxonomy.order }}</span></div>
+            <div class="wd-taxonomy__row"><span class="wd-taxonomy__rank">Family</span><span class="wd-taxonomy__value">{{ a.taxonomy.family }}</span></div>
+            <div class="wd-taxonomy__row"><span class="wd-taxonomy__rank">Genus</span><span class="wd-taxonomy__value">{{ a.taxonomy.genus }}</span></div>
+            <div class="wd-taxonomy__row"><span class="wd-taxonomy__rank">Species</span><span class="wd-taxonomy__value" style="font-style:italic">{{ a.taxonomy.species }}</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+}
+
+@if (activeTab() === 'facts') {
+<!-- 3 · Quick Facts -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <p class="la-label text-accent"><i class="bi bi-clipboard-data"></i> Data</p>
+    <h2 class="section-title">Quick Facts</h2>
+    <p class="section-subtitle">Key measurements, statistics, and biological data for the {{ a.name }}.</p>
+
+    <!-- Fact stat cards -->
+    <div class="wd-facts">
+      @for (f of a.facts; track f.label) {
+        <div class="wd-facts__card">
+          <i class="bi wd-facts__icon" [class]="f.icon" [style.color]="a.color"></i>
+          <span class="wd-facts__label">{{ f.label }}</span>
+          <span class="wd-facts__value">{{ f.value }}</span>
+        </div>
+      }
+    </div>
+
+    <!-- Population & Status highlight -->
+    <div class="wd-status-row mt-5">
+      <div class="wd-status-card">
+        <div class="wd-status-card__icon" [style.color]="a.color"><i class="bi bi-people-fill"></i></div>
+        <div class="wd-status-card__body">
+          <span class="wd-status-card__label">Known Population</span>
+          <span class="wd-status-card__value">{{ a.population }}</span>
+        </div>
+      </div>
+      <div class="wd-status-card">
+        <div class="wd-status-card__icon" [style.color]="a.statusColor"><i class="bi bi-shield-exclamation"></i></div>
+        <div class="wd-status-card__body">
+          <span class="wd-status-card__label">IUCN Status</span>
+          <span class="wd-status-card__value" [style.color]="a.statusColor">{{ a.status }}</span>
+        </div>
+      </div>
+      <div class="wd-status-card">
+        <div class="wd-status-card__icon" [style.color]="a.color"><i class="bi bi-geo-alt-fill"></i></div>
+        <div class="wd-status-card__body">
+          <span class="wd-status-card__label">Primary Habitat</span>
+          <span class="wd-status-card__value">{{ a.habitat }}</span>
+        </div>
+      </div>
+      <div class="wd-status-card">
+        <div class="wd-status-card__icon" [style.color]="a.color"><i class="bi bi-egg-fried"></i></div>
+        <div class="wd-status-card__body">
+          <span class="wd-status-card__label">Diet</span>
+          <span class="wd-status-card__value">{{ a.diet }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+}
+
+@if (activeTab() === 'gallery') {
+<!-- 3.5 · Video -->
+@if (videoUrl(); as vUrl) {
+  <section class="section-padding">
+    <div class="container">
+      <p class="la-label text-accent"><i class="bi bi-play-circle"></i> Watch</p>
+      <h2 class="section-title">Video</h2>
+      <p class="section-subtitle">See the {{ a.name }} in its natural habitat.</p>
+      <div class="wd-video">
+        <iframe
+          [src]="vUrl"
+          [title]="a.name + ' — Wildlife Video'"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+}
+
+<!-- 4 · Photo Gallery -->
+<section class="section-padding">
+  <div class="container">
+    <p class="la-label text-accent"><i class="bi bi-images"></i> Gallery</p>
+    <h2 class="section-title">Photo Gallery</h2>
+    <p class="section-subtitle">Visual encounters with the {{ a.name }}.</p>
+    <div class="row g-4 mt-2">
+      @for (photo of a.photos; track photo.title) {
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="wd-photo" (click)="openLightbox(photo)">
+            <div class="wd-photo__img" [style.background-image]="'url(' + photo.image + ')'" style="background-size: cover; background-position: center;">
+              <div class="wd-photo__overlay"><i class="bi bi-arrows-fullscreen wd-photo__expand"></i></div>
+            </div>
+            <div class="wd-photo__body">
+              <h5 class="wd-photo__title">{{ photo.title }}</h5>
+              <span class="wd-photo__loc"><i class="bi bi-geo-alt me-1"></i>{{ photo.location }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+}
+
+@if (activeTab() === 'ecology') {
+<!-- 5 · Behavior & Conservation -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="wd-info-card">
+          <h5><i class="bi bi-binoculars me-2" style="color: var(--la-accent);"></i>Behavior & Ecology</h5>
+          <p class="wd-info-card__text">{{ a.behavior }}</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="wd-info-card">
+          <h5><i class="bi bi-shield-check me-2" style="color: var(--la-primary);"></i>Conservation Efforts</h5>
+          <p class="wd-info-card__text">{{ a.conservation }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5.5 · Did You Know -->
+@if (a.didYouKnow.length) {
+  <section class="section-padding">
+    <div class="container">
+      <p class="la-label text-accent"><i class="bi bi-lightbulb"></i> Trivia</p>
+      <h2 class="section-title">Did You Know?</h2>
+      <div class="wd-trivia">
+        @for (fact of a.didYouKnow; track fact; let i = $index) {
+          <div class="wd-trivia__card">
+            <div class="wd-trivia__icon" [style.background]="a.color"><i class="bi bi-lightbulb-fill"></i></div>
+            <p class="wd-trivia__text">{{ fact }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+}
+
+@if (activeTab() === 'fieldguide') {
+<!-- 5.7 · Sighting Guide & Map -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <p class="la-label text-accent"><i class="bi bi-compass"></i> Field Guide</p>
+        <h2 class="section-title text-start">Where &amp; When to Spot</h2>
+        <div class="wd-sighting mt-4">
+          <div class="wd-sighting__grid">
+            <div class="wd-sighting__card">
+              <div class="wd-sighting__card-icon" [style.color]="a.color"><i class="bi bi-calendar-event"></i></div>
+              <span class="wd-sighting__card-label">Best Season</span>
+              <span class="wd-sighting__card-value">{{ a.sightingGuide.bestSeason }}</span>
+              <span class="wd-sighting__card-sub">{{ a.sightingGuide.bestMonths }}</span>
+            </div>
+            <div class="wd-sighting__card">
+              <div class="wd-sighting__card-icon" [style.color]="a.color"><i class="bi bi-signpost-split"></i></div>
+              <span class="wd-sighting__card-label">Difficulty</span>
+              <span class="wd-sighting__card-value">{{ a.sightingGuide.difficulty }}</span>
+            </div>
+            <div class="wd-sighting__card wd-sighting__card--locations">
+              <div class="wd-sighting__card-icon" [style.color]="a.color"><i class="bi bi-geo-alt"></i></div>
+              <span class="wd-sighting__card-label">Best Locations</span>
+              <div class="wd-sighting__locations">
+                @for (loc of a.sightingGuide.locations; track loc) {
+                  <span class="wd-sighting__loc-tag" [style.border-color]="a.color + '44'" [style.color]="a.color"><i class="bi bi-pin-map me-1"></i>{{ loc }}</span>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="wd-sighting__tip mt-4">
+            <i class="bi bi-info-circle-fill" [style.color]="a.color"></i>
+            <p><strong>Pro Tip:</strong> {{ a.sightingGuide.tip }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <p class="la-label text-accent"><i class="bi bi-geo-alt"></i> Habitat Map</p>
+        <h2 class="section-title text-start">Range &amp; Sighting Areas</h2>
+        <app-leaflet-map
+          class="mt-4"
+          [lat]="a.lat"
+          [lng]="a.lng"
+          [title]="a.name"
+          [zoom]="a.zoom || 8"
+          height="100%"
+          style="display: block; min-height: 400px; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(0,0,0,0.05);">
+        </app-leaflet-map>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Threats -->
+<section class="section-padding">
+  <div class="container">
+    <p class="la-label text-accent"><i class="bi bi-exclamation-triangle"></i> Threats</p>
+    <h2 class="section-title">Conservation Challenges</h2>
+    <div class="wd-threats">
+      @for (t of a.threats; track t; let i = $index) {
+        <div class="wd-threats__item">
+          <span class="wd-threats__num" [style.background]="a.statusColor">{{ i + 1 }}</span>
+          <span>{{ t }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+}
+
+<!-- 7 · Related Animals -->
+@if (relatedAnimals().length) {
+  <section class="section-padding bg-snow">
+    <div class="container">
+      <h2 class="section-title">Related Wildlife</h2>
+      <p class="section-subtitle">More iconic creatures of Ladakh.</p>
+      <div class="row g-4 mt-2 justify-content-center">
+        @for (r of relatedAnimals(); track r.slug) {
+          <div class="col-md-6 col-lg-4">
+            <a [routerLink]="'/nature/wildlife/' + r.slug" class="wd-related">
+              <div class="wd-related__icon" [style.background-image]="'url(' + r.image + ')'" style="background-size: cover; background-position: center;"></div>
+              <h5 class="wd-related__name">{{ r.name }}</h5>
+              <span class="wd-related__status" [style.color]="r.statusColor">{{ r.status }}</span>
+              <span class="wd-related__link" [style.color]="r.color">Learn More <i class="bi bi-arrow-right"></i></span>
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- 8 · CTA -->
+<section class="wd-cta">
+  <div class="wd-cta__overlay"></div>
+  <div class="container position-relative text-center">
+    <h2 class="wd-cta__title">Explore More Wildlife</h2>
+    <p class="wd-cta__desc">Discover Ladakh's extraordinary biodiversity — from rare birds to ancient plants and pristine lakes.</p>
+    <div class="wd-cta__actions">
+      <a routerLink="/nature" class="btn btn-la-accent btn-lg"><i class="bi bi-binoculars me-2"></i>Nature & Wildlife</a>
+      <a routerLink="/contribute" class="btn btn-la-outline btn-lg" style="border-color:rgba(255,255,255,.3);color:var(--la-white);">
+        <i class="bi bi-pencil-square me-2"></i>Report a Sighting
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+@if (lightboxItem(); as lb) {
+  <div class="wd-lightbox" (click)="closeLightbox()">
+    <div class="wd-lightbox__content" (click)="$event.stopPropagation()">
+      <button class="wd-lightbox__close" (click)="closeLightbox()"><i class="bi bi-x-lg"></i></button>
+      <div class="wd-lightbox__visual">
+        <img [src]="lb.image" [alt]="lb.title" style="width:100%;height:100%;object-fit:contain;display:block;" loading="lazy">
+      </div>
+      <div class="wd-lightbox__info">
+        <h3 class="wd-lightbox__title">{{ lb.title }}</h3>
+        <p class="wd-lightbox__desc">{{ lb.desc }}</p>
+        <span class="wd-lightbox__loc"><i class="bi bi-geo-alt me-1"></i>{{ lb.location }}</span>
+      </div>
+    </div>
+  </div>
+}
+
+} @else {
+<section class="section-padding text-center" style="min-height:60vh;display:flex;align-items:center;">
+  <div class="container">
+    <i class="bi bi-exclamation-triangle" style="font-size:3rem;color:var(--la-accent);"></i>
+    <h2 class="section-title mt-3">Species Not Found</h2>
+    <p class="section-subtitle">The wildlife page you're looking for doesn't exist.</p>
+    <a routerLink="/nature" class="btn btn-la-primary btn-lg mt-3"><i class="bi bi-arrow-left me-2"></i>Back to Nature</a>
+  </div>
+</section>
+}
+

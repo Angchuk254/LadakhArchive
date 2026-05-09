@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core Pages -->
+  <url><loc>https://theladakh.org/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://theladakh.org/history</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theladakh.org/culture</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theladakh.org/nature</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theladakh.org/routes</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theladakh.org/monasteries</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theladakh.org/politics</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/education</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/maps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/blog</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theladakh.org/resources</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/gallery</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/about</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://theladakh.org/contribute</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://theladakh.org/search</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Road Trips -->
+  <url><loc>https://theladakh.org/routes/trip/leh-nubra-valley</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/routes/trip/leh-pangong-tso</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/routes/trip/leh-tso-moriri</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/routes/trip/leh-hanle</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/routes/trip/leh-zanskar-valley</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/routes/trip/changthang-circuit</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Treks -->
+  <url><loc>https://theladakh.org/routes/trek/markha-valley</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/routes/trek/chadar-frozen-river</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/routes/trek/stok-kangri</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/routes/trek/rumtse-tso-moriri</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/routes/trek/lamayuru-alchi</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/routes/trek/sham-valley</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Mountain Passes -->
+  <url><loc>https://theladakh.org/routes/pass/khardung-la</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/routes/pass/chang-la</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/routes/pass/tanglang-la</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/routes/pass/lachalung-la</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/routes/pass/baralacha-la</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/routes/pass/wari-la</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/routes/pass/fotu-la</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/routes/pass/zoji-la</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Monasteries -->
+  <url><loc>https://theladakh.org/monasteries/hemis</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/monasteries/thiksay</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/monasteries/diskit</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/monasteries/alchi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/monasteries/lamayuru</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/monasteries/spituk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/monasteries/phyang</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/monasteries/stakna</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/monasteries/matho</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/monasteries/chemrey</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/monasteries/likir</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/monasteries/stok</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Wildlife -->
+  <url><loc>https://theladakh.org/nature/wildlife/snow-leopard</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/nature/wildlife/black-necked-crane</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/nature/wildlife/tibetan-wild-ass</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/wildlife/himalayan-brown-bear</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/wildlife/himalayan-ibex</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/wildlife/tibetan-wolf</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Birds -->
+  <url><loc>https://theladakh.org/nature/bird/black-necked-crane</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/bird/golden-eagle</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/bird/lammergeier</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/bird/himalayan-snowcock</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/bird/tibetan-sandgrouse</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/bird/bar-headed-goose</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/bird/brown-headed-gull</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/bird/robin-accentor</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Flora -->
+  <url><loc>https://theladakh.org/nature/flora/blue-poppy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/flora/edelweiss</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/flora/sea-buckthorn</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/flora/wild-rose</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://theladakh.org/nature/flora/juniper</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://theladakh.org/nature/flora/ephedra</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://theladakh.org/nature/flora/willow</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://theladakh.org/nature/flora/caragana</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Lakes -->
+  <url><loc>https://theladakh.org/nature/lake/pangong-tso</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://theladakh.org/nature/lake/tso-moriri</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/nature/lake/tso-kar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/lake/zanskar-river</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Protected Areas -->
+  <url><loc>https://theladakh.org/nature/protected/hemis-national-park</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/nature/protected/changthang-sanctuary</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/protected/karakoram-sanctuary</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/nature/protected/tso-moriri-wetland</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- History Monuments -->
+  <url><loc>https://theladakh.org/history/monument/leh-palace</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/history/monument/hemis-monastery</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/history/monument/alchi-monastery</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/history/monument/basgo-fortress</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/history/monument/shey-palace</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/history/monument/diskit-monastery</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Political Eras -->
+  <url><loc>https://theladakh.org/politics/era/pre-1947</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/politics/era/accession</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/politics/era/autonomy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/politics/era/lahdc</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/politics/era/ut</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Education Institutions -->
+  <url><loc>https://theladakh.org/education/institution/university-of-ladakh</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/education/institution/secmol</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/education/institution/lamdon-model-school</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/education/institution/mahabodhi-residential-school</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://theladakh.org/education/institution/ejm-college</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://theladakh.org/education/institution/imamia-model-school</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Culture Festivals -->
+  <url><loc>https://theladakh.org/culture/festival/losar</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/culture/festival/hemis-tsechu</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/culture/festival/saga-dawa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/culture/festival/ladakh-festival</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/culture/festival/muharram</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/culture/festival/dosmoche</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/culture/festival/matho-nagrang</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/culture/festival/stok-guru-tsechu</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Villages -->
+  <url><loc>https://theladakh.org/village-search/leh</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/village-search/diskit</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/hunder</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/hemis</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/turtuk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/pangong</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/kargil</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://theladakh.org/village-search/dras</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/padum</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/thiksey</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/lamayuru</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/hanle</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/village-search/chumathang</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://theladakh.org/village-search/chilling</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://theladakh.org/village-search/tso-kar</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Blog Posts -->
+  <url><loc>https://theladakh.org/blog/forgotten-kingdom-before-dogra-rule</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/living-with-snow-leopards</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/demand-for-statehood</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/hemis-tsechu-sacred-dance</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/khardung-la-gateway-to-nubra</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/secmol-alternative-education</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/changpa-nomads-of-changthang</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/pangong-tso-beyond-bollywood</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/silk-route-ladakh-trade-history</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/chadar-trek-frozen-river</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/balti-culture-kargil</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://theladakh.org/blog/ladakh-ut-what-changed</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+</urlset>

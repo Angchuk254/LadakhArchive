@@ -1,0 +1,33 @@
+<div class="la-lang" [class.la-lang--dark]="theme === 'dark'">
+  <button
+    class="la-lang__btn"
+    (click)="$event.stopPropagation(); toggle()"
+    type="button"
+    aria-haspopup="listbox"
+    [attr.aria-expanded]="isOpen()">
+    <i class="bi bi-translate"></i>
+    <span class="la-lang__current">{{ service.currentLanguage().nativeName }}</span>
+    <i class="bi bi-chevron-down la-lang__chevron" [class.la-lang__chevron--open]="isOpen()"></i>
+  </button>
+
+  @if (isOpen()) {
+    <ul class="la-lang__menu" role="listbox">
+      @for (lang of service.languages; track lang.code) {
+        <li>
+          <button
+            class="la-lang__option"
+            [class.la-lang__option--active]="lang.code === service.currentLang()"
+            (click)="select(lang.code)"
+            role="option"
+            [attr.aria-selected]="lang.code === service.currentLang()">
+            <span class="la-lang__native">{{ lang.nativeName }}</span>
+            <span class="la-lang__name">{{ lang.name }}</span>
+            @if (lang.code === service.currentLang()) {
+              <i class="bi bi-check-lg la-lang__check"></i>
+            }
+          </button>
+        </li>
+      }
+    </ul>
+  }
+</div>

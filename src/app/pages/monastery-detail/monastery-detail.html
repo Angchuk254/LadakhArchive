@@ -1,0 +1,201 @@
+﻿@if (monastery(); as m) {
+<!-- Hero -->
+<section class="md-hero" [style.background-image]="'url(' + m.heroImage + ')'" style="background-size: cover; background-position: center; position: relative;">
+  <div class="md-hero__overlay" style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));"></div>
+  <div class="md-hero__inner" style="position: relative; z-index: 2;">
+    <a routerLink="/monasteries" class="md-hero__back"><i class="bi bi-arrow-left"></i> All Monasteries</a>
+    <span class="md-hero__sect">{{ m.sect }}</span>
+    <h1 class="md-hero__title">{{ m.name }}</h1>
+    <p class="md-hero__meta">
+      <i class="bi bi-geo-alt"></i> {{ m.location }} &nbsp;|&nbsp;
+      <i class="bi bi-calendar3"></i> Founded {{ m.founded }} &nbsp;|&nbsp;
+      <i class="bi bi-arrow-up-circle"></i> {{ m.altitude }}
+    </p>
+    <p class="md-hero__desc">{{ m.desc }}</p>
+  </div>
+</section>
+
+<!-- Jump Nav -->
+<nav class="ed-jumpnav">
+  <div class="container">
+    <div class="ed-jumpnav__wrap">
+      <a routerLink="/monasteries" class="ed-jumpnav__parent"><i class="bi bi-arrow-left"></i> All Monasteries</a>
+      <div class="ed-jumpnav__inner">
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'overview'" (click)="setTab('overview')"><i class="bi bi-info-circle"></i> Overview</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'map'" (click)="setTab('map')"><i class="bi bi-map"></i> Location Map</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'history'" (click)="setTab('history')"><i class="bi bi-clock-history"></i> History</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'gallery'" (click)="setTab('gallery')"><i class="bi bi-images"></i> Gallery</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'video'" (click)="setTab('video')"><i class="bi bi-play-circle"></i> Video</button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'lamas'" (click)="setTab('lamas')"><i class="bi bi-people"></i> Lamas</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Overview Tab -->
+@if (activeTab() === 'overview') {
+<section class="md-section">
+  <div class="md-section__inner">
+    <h2 class="md-section__heading">Overview</h2>
+    <p class="md-overview__text">{{ m.overview }}</p>
+
+    <div class="md-info-grid">
+      <div class="md-info-card">
+        <i class="bi bi-person-circle"></i>
+        <h4>Founder</h4>
+        <p>{{ m.founder }}</p>
+      </div>
+      <div class="md-info-card">
+        <i class="bi bi-people-fill"></i>
+        <h4>Resident Monks</h4>
+        <p>{{ m.monks }}</p>
+      </div>
+      <div class="md-info-card">
+        <i class="bi bi-clock"></i>
+        <h4>Visiting Hours</h4>
+        <p>{{ m.visitingHours }}</p>
+      </div>
+      <div class="md-info-card">
+        <i class="bi bi-ticket-perforated"></i>
+        <h4>Entry Fee</h4>
+        <p>{{ m.entryFee }}</p>
+      </div>
+      <div class="md-info-card">
+        <i class="bi bi-sun"></i>
+        <h4>Best Time to Visit</h4>
+        <p>{{ m.bestTime }}</p>
+      </div>
+      <div class="md-info-card">
+        <i class="bi bi-signpost-2"></i>
+        <h4>Sect / Order</h4>
+        <p>{{ m.sect }}</p>
+      </div>
+    </div>
+
+    <h3 class="md-sub-heading">Highlights</h3>
+    <div class="md-highlights">
+      @for (h of m.highlights; track h.label) {
+      <div class="md-highlight-card">
+        <h4>{{ h.label }}</h4>
+        <p>{{ h.detail }}</p>
+      </div>
+      }
+    </div>
+
+    @if (m.nearbyAttractions.length) {
+    <h3 class="md-sub-heading">Nearby Attractions</h3>
+    <div class="md-nearby">
+      @for (a of m.nearbyAttractions; track a) {
+      <span class="md-nearby__tag"><i class="bi bi-geo-alt"></i> {{ a }}</span>
+      }
+    </div>
+    }
+  </div>
+</section>
+}
+
+<!-- History Tab -->
+@if (activeTab() === 'history') {
+<section class="md-section">
+  <div class="md-section__inner">
+    <h2 class="md-section__heading">History</h2>
+    <div class="md-history">
+      <div class="md-history__timeline-marker"></div>
+      <p class="md-history__text">{{ m.history }}</p>
+    </div>
+  </div>
+</section>
+}
+
+<!-- Map Tab -->
+@if (activeTab() === 'map') {
+<section class="md-section animation-fade-in text-center pb-5 pt-4">
+  <div class="md-section__inner max-w-4xl mx-auto">
+    <h2 class="md-section__heading mb-2">Location Map</h2>
+    <p class="text-muted mb-4 d-block">Find {{ m.name }} on the map of Ladakh.</p>
+    <app-leaflet-map
+      [lat]="m.lat"
+      [lng]="m.lng"
+      [title]="m.name"
+      [zoom]="m.zoom || 15"
+      height="450px">
+    </app-leaflet-map>
+  </div>
+</section>
+}
+
+<!-- Gallery Tab -->
+@if (activeTab() === 'gallery') {
+<section class="md-section">
+  <div class="md-section__inner">
+    <h2 class="md-section__heading">Gallery</h2>
+    <div class="md-gallery-grid">
+      @for (img of m.gallery; track img.title) {
+      <div class="md-gallery-card">
+        <div class="md-gallery-card__visual" [style.background-image]="'url(' + img.image + ')'" style="background-size: cover; background-position: center; height: 180px; border-radius: 0.75rem; margin-bottom: 1rem;"></div>
+        <h4>{{ img.title }}</h4>
+        <p>{{ img.desc }}</p>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+}
+
+<!-- Video Tab -->
+@if (activeTab() === 'video') {
+<section class="md-section">
+  <div class="md-section__inner">
+    <h2 class="md-section__heading">Video</h2>
+    <div class="md-video">
+      <div class="md-video__placeholder">
+        <i class="bi bi-play-circle"></i>
+        <h3>{{ m.videoTitle }}</h3>
+        <p>{{ m.videoDesc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+}
+
+<!-- Lamas & Rinpoches Tab -->
+@if (activeTab() === 'lamas') {
+<section class="md-section">
+  <div class="md-section__inner">
+    <h2 class="md-section__heading">Lamas &amp; Rinpoches</h2>
+    <p class="md-lamas__intro">Spiritual leaders associated with {{ m.name }} — their lineage, roles, and contributions to Buddhist heritage in Ladakh.</p>
+
+    <div class="md-lamas-grid">
+      @for (l of m.lamas; track l.name) {
+      <div class="md-lama-card">
+        <div class="md-lama-card__avatar" [style.background-image]="'url(' + (l.image || 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&q=80&w=400') + ')'" style="background-size: cover; background-position: center;">
+          @if (!l.image) { <i class="bi bi-person-circle"></i> }
+        </div>
+        <div class="md-lama-card__content">
+          <h3>{{ l.name }}</h3>
+          <span class="md-lama-card__title">{{ l.title }}</span>
+          <div class="md-lama-card__meta">
+            <span><i class="bi bi-calendar3"></i> Born: {{ l.born }}</span>
+            <span><i class="bi bi-briefcase"></i> {{ l.role }}</span>
+          </div>
+          <p class="md-lama-card__bio">{{ l.bio }}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+}
+
+} @else {
+<!-- Not Found -->
+<section class="md-not-found">
+  <div class="md-not-found__inner">
+    <i class="bi bi-exclamation-triangle"></i>
+    <h2>Monastery Not Found</h2>
+    <p>The monastery you're looking for doesn't exist.</p>
+    <a routerLink="/monasteries" class="md-not-found__link">Browse All Monasteries</a>
+  </div>
+</section>
+}
+

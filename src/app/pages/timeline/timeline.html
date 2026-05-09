@@ -1,0 +1,168 @@
+﻿<section class="tl-hero">
+  <div class="tl-hero__img-wrap">
+    <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&q=90&w=1800"
+      alt="Leh Palace, Ladakh" class="tl-hero__img" loading="eager" />
+    <div class="tl-hero__fade"></div>
+    <div class="tl-hero__tint"></div>
+  </div>
+
+  <div class="container tl-hero__content">
+    <div class="tl-hero__badge">
+      <i class="bi bi-clock-history"></i>
+      <span>Chronological Record</span>
+    </div>
+
+    <h1 class="tl-hero__title">
+      Ladakh<br />
+      <em>Through Time</em>
+    </h1>
+
+    <p class="tl-hero__sub">
+      From prehistoric rock carvings to the digital archive movement — a journey
+      through 5,000 years of Ladakhi history.
+    </p>
+
+    <div class="tl-hero__stats">
+      <div class="tl-hero__stat">
+        <strong>c. 3000 BCE</strong>
+        <span>Earliest</span>
+      </div>
+      <div class="tl-hero__stat-div"></div>
+      <div class="tl-hero__stat">
+        <strong>2026 CE</strong>
+        <span>Present</span>
+      </div>
+      <div class="tl-hero__stat-div"></div>
+      <div class="tl-hero__stat">
+        <strong>{{ events.length }}</strong>
+        <span>Events</span>
+      </div>
+      <div class="tl-hero__stat-div"></div>
+      <div class="tl-hero__stat">
+        <strong>{{ eras.length - 1 }}</strong>
+        <span>Eras</span>
+      </div>
+    </div>
+
+    <div class="tl-hero__actions">
+      <a routerLink="/history" class="btn btn-la-primary btn-lg">
+        <i class="bi bi-journal-text me-2"></i>Full History
+      </a>
+      <a routerLink="/contribute" class="btn btn-la-outline btn-lg">
+        <i class="bi bi-pencil me-2"></i>Contribute
+      </a>
+    </div>
+  </div>
+
+  <div class="tl-hero__scroll-cue" aria-hidden="true">
+    <span>Scroll to explore</span>
+    <i class="bi bi-chevron-down"></i>
+  </div>
+</section>
+
+<!-- ── 2. ERA FILTER ── -->
+<nav class="tl-eranav" id="timeline">
+  <div class="container">
+    <div class="tl-eranav__inner">
+      <span class="tl-eranav__label">
+        <i class="bi bi-funnel-fill"></i> Era
+      </span>
+      <div class="tl-eranav__pills">
+        @for (era of eras; track era.value) {
+        <button class="tl-eranav__pill" [class.active]="activeEra() === era.value" (click)="setEra(era.value)">
+          {{ era.label }}
+          <span class="tl-eranav__count">{{ getEraCount(era.value) }}</span>
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── 3. BENTO GRID ── -->
+<section class="tl-bento">
+  <div class="container">
+
+    @if (filteredEvents().length === 0) {
+    <div class="tl-empty">
+      <i class="bi bi-hourglass-split tl-empty__icon"></i>
+      <p>No records found for this era.</p>
+    </div>
+    }
+
+    @for (group of groupedEvents(); track group.era) {
+    <div class="tl-era-header">
+      <div class="tl-era-header__accent" [style.background]="group.color"></div>
+      <div class="tl-era-header__body">
+        <span class="tl-era-header__tag" [style.color]="group.color">
+          <i class="bi {{ group.icon }}"></i> Chapter
+        </span>
+        <h2 class="tl-era-header__title">{{ group.era | titlecase }}</h2>
+        <p class="tl-era-header__sub">{{ getEraCount(group.era) }} events in this era</p>
+      </div>
+    </div>
+
+    <div class="tl-bento__grid">
+      @for (event of group.events; track event.title) {
+      <!-- TILE: featured (has image) — spans 2 columns -->
+      @if (event.image) {
+      <article class="tl-tile tl-tile--featured" [style.--tile-color]="event.color">
+        <img [src]="event.image" [alt]="event.title" loading="lazy" class="tl-tile__bg" />
+        <div class="tl-tile__overlay"></div>
+        <div class="tl-tile__inner">
+          <span class="tl-tile__year">{{ event.year }}</span>
+          <div class="tl-tile__chip">
+            <i class="bi {{ event.icon }}"></i>
+          </div>
+          <h3 class="tl-tile__title">{{ event.title }}</h3>
+          <p class="tl-tile__desc">{{ event.desc }}</p>
+        </div>
+      </article>
+      } @else {
+      <!-- TILE: compact (no image) — 1 column -->
+      <article class="tl-tile tl-tile--compact" [style.--tile-color]="event.color">
+        <div class="tl-tile__accent-strip" [style.background]="event.color"></div>
+        <div class="tl-tile__inner">
+          <div class="tl-tile__top-row">
+            <div class="tl-tile__chip" [style.background]="event.color + '15'" [style.color]="event.color">
+              <i class="bi {{ event.icon }}"></i>
+            </div>
+            <span class="tl-tile__era-label">{{ event.era | titlecase }}</span>
+          </div>
+          <span class="tl-tile__year-compact" [style.color]="event.color">{{ event.year }}</span>
+          <h3 class="tl-tile__title">{{ event.title }}</h3>
+          <p class="tl-tile__desc">{{ event.desc }}</p>
+        </div>
+      </article>
+      }
+      }
+    </div>
+    }
+
+  </div>
+</section>
+
+<!-- ── 4. CTA ── -->
+<section class="tl-cta section-padding">
+  <div class="container">
+    <div class="tl-cta__card">
+      <span class="tl-cta__deco" aria-hidden="true">"</span>
+      <p class="section-tag">
+        <i class="bi bi-journal-bookmark-fill"></i> End of Chronological Record
+      </p>
+      <h2 class="section-title">Continue the Narrative</h2>
+      <p class="section-subtitle">
+        Dates are only the skeleton. The full story — with geopolitical context,
+        myth, and oral history — lives in the History archive.
+      </p>
+      <div class="tl-cta__actions">
+        <a routerLink="/history" class="btn btn-la-primary btn-lg">
+          <i class="bi bi-journal-text me-2"></i>Full History
+        </a>
+        <a routerLink="/contribute" class="btn btn-la-outline btn-lg">
+          <i class="bi bi-pencil me-2"></i>Contribute
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

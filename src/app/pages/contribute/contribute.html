@@ -1,0 +1,341 @@
+﻿<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="ct-hero">
+  <div class="ct-hero__overlay"></div>
+  <svg class="ct-hero__wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,64 C360,120 1080,0 1440,64 L1440,120 L0,120Z" fill="var(--la-white)" />
+  </svg>
+  <div class="container position-relative" style="z-index:2">
+    <nav class="ct-hero__breadcrumb">
+      <a routerLink="/">Home</a> <i class="bi bi-chevron-right"></i> <span>Contribute</span>
+    </nav>
+    <p class="ct-hero__tagline"><i class="bi bi-plus-circle"></i> Help Build the Archive</p>
+    <h1 class="ct-hero__title">Contribute to LadakhArchive</h1>
+    <p class="ct-hero__sub">
+      Every story matters. Share your knowledge, photographs, oral histories, or corrections
+      to help preserve Ladakh's heritage for future generations.
+    </p>
+    <div class="ct-hero__actions">
+      <a [routerLink]="[]" fragment="form" class="ct-btn-accent">
+        <i class="bi bi-pencil-square"></i> Submit Contribution
+      </a>
+      <a [routerLink]="[]" fragment="how-it-works" class="ct-btn-outline">
+        <i class="bi bi-info-circle"></i> How It Works
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ STATS ═══════════════════ -->
+<section class="ct-stats">
+  <div class="container">
+    <div class="ct-stats__grid">
+      @for (s of stats; track s.label) {
+        <div class="ct-stats__card">
+          <i class="bi {{ s.icon }}"></i>
+          <span class="ct-stats__value">{{ s.value }}</span>
+          <span class="ct-stats__label">{{ s.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ HOW IT WORKS ═══════════════════ -->
+<section class="ct-how section-padding" id="how-it-works">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-arrow-repeat"></i> Simple Process</span>
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Three easy steps to contribute your knowledge to the archive.</p>
+
+    <div class="ct-how__steps">
+      @for (step of steps; track step.title; let i = $index) {
+        <div class="ct-how__step">
+          <div class="ct-how__num">{{ i + 1 }}</div>
+          <div class="ct-how__icon"><i class="bi {{ step.icon }}"></i></div>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.desc }}</p>
+        </div>
+        @if (i < steps.length - 1) {
+          <div class="ct-how__arrow"><i class="bi bi-chevron-right"></i></div>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ WHAT YOU CAN CONTRIBUTE ═══════════════════ -->
+<section class="ct-types section-padding">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-collection"></i> What We Accept</span>
+    <h2 class="section-title">What You Can Contribute</h2>
+    <p class="section-subtitle">From written articles and photographs to oral histories and maps — every form of knowledge is welcome.</p>
+
+    <div class="ct-types__grid">
+      @for (t of contributionTypes; track t.title) {
+        <div class="ct-types__card">
+          <div class="ct-types__icon" [style.background]="t.color + '12'" [style.color]="t.color">
+            <i class="bi {{ t.icon }}"></i>
+          </div>
+          <h3>{{ t.title }}</h3>
+          <p>{{ t.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TOP CONTRIBUTORS ═══════════════════ -->
+<section class="ct-top section-padding">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-trophy"></i> Community Heroes</span>
+    <h2 class="section-title">Top Contributors</h2>
+    <p class="section-subtitle">Celebrating the people who are helping build Ladakh's most comprehensive digital archive.</p>
+
+    <div class="ct-top__grid">
+      @for (c of topContributors; track c.name; let i = $index) {
+        <div class="ct-top__card">
+          <div class="ct-top__rank">#{{ i + 1 }}</div>
+          <div class="ct-top__avatar" [style.background]="c.color">{{ c.avatar }}</div>
+          <h3>{{ c.name }}</h3>
+          <span class="ct-top__location"><i class="bi bi-geo-alt"></i> {{ c.location }}</span>
+          <span class="ct-top__category" [style.color]="c.color">{{ c.category }}</span>
+          <div class="ct-top__count">
+            <strong>{{ c.contributions }}</strong>
+            <span>contributions</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTRIBUTION FORM ═══════════════════ -->
+<section class="ct-form section-padding" id="form">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-pencil-square"></i> Share Your Knowledge</span>
+    <h2 class="section-title">Contribution Form</h2>
+    <p class="section-subtitle">Fill in the details below. All fields marked with * are required. Validation and backend submission will be added soon.</p>
+
+    @if (submitted()) {
+      <!-- Success State -->
+      <div class="ct-form__success">
+        <div class="ct-form__success-icon">
+          <i class="bi bi-check-circle-fill"></i>
+        </div>
+        <h3>Thank You for Contributing!</h3>
+        <p>Your submission has been received. Our team will review it and get back to you within 3–7 days.</p>
+        <button class="ct-btn-accent" (click)="resetForm()">
+          <i class="bi bi-plus-circle"></i> Submit Another
+        </button>
+      </div>
+    } @else {
+      <!-- Form -->
+      <div class="ct-form__wrap">
+        <form class="ct-form__form" (ngSubmit)="onSubmit()" #contributeForm="ngForm">
+
+          <!-- Row 1: Name & Email -->
+          <div class="ct-form__row">
+            <div class="ct-form__field">
+              <label for="name">Full Name <span class="ct-form__req">*</span></label>
+              <div class="ct-form__input-wrap">
+                <i class="bi bi-person"></i>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="e.g. Tsewang Rigzin"
+                  [ngModel]="formData().name"
+                  (ngModelChange)="updateField('name', $event)"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="ct-form__field">
+              <label for="email">Email Address <span class="ct-form__req">*</span></label>
+              <div class="ct-form__input-wrap">
+                <i class="bi bi-envelope"></i>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  [ngModel]="formData().email"
+                  (ngModelChange)="updateField('email', $event)"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Category & Location -->
+          <div class="ct-form__row">
+            <div class="ct-form__field">
+              <label for="category">Category <span class="ct-form__req">*</span></label>
+              <div class="ct-form__input-wrap">
+                <i class="bi bi-tag"></i>
+                <select
+                  id="category"
+                  name="category"
+                  [ngModel]="formData().category"
+                  (ngModelChange)="updateField('category', $event)"
+                  required
+                >
+                  <option value="" disabled>Select a category</option>
+                  @for (cat of categories; track cat.value) {
+                    <option [value]="cat.value">{{ cat.label }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+
+            <div class="ct-form__field">
+              <label for="location">Location / Region</label>
+              <div class="ct-form__input-wrap">
+                <i class="bi bi-geo-alt"></i>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  placeholder="e.g. Hemis, Leh District"
+                  [ngModel]="formData().location"
+                  (ngModelChange)="updateField('location', $event)"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <div class="ct-form__field">
+            <label for="title">Title / Subject <span class="ct-form__req">*</span></label>
+            <div class="ct-form__input-wrap">
+              <i class="bi bi-type-h1"></i>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Brief title for your contribution"
+                [ngModel]="formData().title"
+                (ngModelChange)="updateField('title', $event)"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="ct-form__field">
+            <label for="description">Description / Content <span class="ct-form__req">*</span></label>
+            <div class="ct-form__input-wrap ct-form__input-wrap--textarea">
+              <i class="bi bi-text-paragraph"></i>
+              <textarea
+                id="description"
+                name="description"
+                rows="6"
+                placeholder="Share your knowledge, story, or description in detail..."
+                [ngModel]="formData().description"
+                (ngModelChange)="updateField('description', $event)"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Row 3: Source & Media URL -->
+          <div class="ct-form__row">
+            <div class="ct-form__field">
+              <label for="source">Source / Reference</label>
+              <div class="ct-form__input-wrap">
+                <i class="bi bi-journal-bookmark"></i>
+                <input
+                  type="text"
+                  id="source"
+                  name="source"
+                  placeholder="Book, website, oral source, etc."
+                  [ngModel]="formData().source"
+                  (ngModelChange)="updateField('source', $event)"
+                />
+              </div>
+            </div>
+
+            <div class="ct-form__field">
+              <label for="mediaUrl">Media URL (optional)</label>
+              <div class="ct-form__input-wrap">
+                <i class="bi bi-link-45deg"></i>
+                <input
+                  type="url"
+                  id="mediaUrl"
+                  name="mediaUrl"
+                  placeholder="Link to photo, video, or document"
+                  [ngModel]="formData().mediaUrl"
+                  (ngModelChange)="updateField('mediaUrl', $event)"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Consent -->
+          <div class="ct-form__checkbox">
+            <input
+              type="checkbox"
+              id="consent"
+              name="consent"
+              [ngModel]="formData().consent"
+              (ngModelChange)="updateField('consent', $event)"
+              required
+            />
+            <label for="consent">
+              I confirm that this content is original or properly attributed, and I grant LadakhArchive permission to publish it with credit. <span class="ct-form__req">*</span>
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <div class="ct-form__actions">
+            <button type="submit" class="ct-btn-accent ct-btn-lg" [disabled]="!isFormValid || submitting()">
+              @if (submitting()) {
+                <i class="bi bi-arrow-repeat ct-spin"></i> Submitting...
+              } @else {
+                <i class="bi bi-send"></i> Submit Contribution
+              }
+            </button>
+          </div>
+        </form>
+
+        <!-- Guidelines Sidebar -->
+        <aside class="ct-form__sidebar">
+          <div class="ct-form__guide">
+            <h4><i class="bi bi-info-circle"></i> Submission Guidelines</h4>
+            <ul>
+              @for (g of guidelines; track g.text) {
+                <li>
+                  <i class="bi {{ g.icon }}"></i>
+                  <span>{{ g.text }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="ct-form__help">
+            <h4><i class="bi bi-question-circle"></i> Need Help?</h4>
+            <p>If you have large files or complex submissions, email us directly at:</p>
+            <a href="mailto:contribute&#64;ladakharchive.org" class="ct-form__email">
+              <i class="bi bi-envelope"></i> contribute&#64;ladakharchive.org
+            </a>
+          </div>
+        </aside>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<section class="ct-cta">
+  <div class="container text-center">
+    <h2>Every Voice Builds the Archive</h2>
+    <p>Whether you're from Leh, Kargil, Zanskar, or anywhere in the world — if you know Ladakh, we want to hear from you.</p>
+    <div class="ct-cta__actions">
+      <a href="#form" class="ct-cta-btn ct-cta-btn--accent"><i class="bi bi-pencil-square"></i> Contribute Now</a>
+      <a routerLink="/education" class="ct-cta-btn ct-cta-btn--outline"><i class="bi bi-mortarboard"></i> Education</a>
+      <a routerLink="/culture" class="ct-cta-btn ct-cta-btn--outline"><i class="bi bi-palette"></i> Culture</a>
+    </div>
+  </div>
+</section>
+

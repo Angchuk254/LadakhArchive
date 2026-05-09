@@ -1,0 +1,160 @@
+﻿<!-- ╔══════════════════════════════════════════════════╗
+     ║           ABOUT — LadakhArchive                  ║
+     ╚══════════════════════════════════════════════════╝ -->
+
+<!-- ── 1. Hero ── -->
+<section class="ab-hero">
+  <div class="ab-hero__overlay"></div>
+  <div class="container position-relative" style="z-index:2">
+    <span class="la-label"><i class="bi bi-info-circle me-1"></i> About</span>
+    <h1 class="ab-hero__title">About LadakhArchive</h1>
+    <p class="ab-hero__sub">
+      A community-driven digital archive dedicated to preserving and sharing the
+      history, culture, nature, and heritage of Ladakh — the Land of High Passes.
+    </p>
+  </div>
+</section>
+
+<!-- ── 2. Mission ── -->
+<section class="ab-mission section-padding">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="ab-mission__visual">
+          <i class="bi bi-mountains ab-mission__icon"></i>
+          <div class="ab-mission__tagline">Preserving Heritage,<br>Empowering Communities</div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <span class="la-label"><i class="bi bi-bullseye me-1"></i> Our Mission</span>
+        <h2 class="section-title" style="text-align:left">Why LadakhArchive Exists</h2>
+        <p>
+          Ladakh's rich cultural tapestry — woven over millennia by Buddhist monks, Muslim scholars,
+          Changpa nomads, Balti artisans, and countless others — is at risk of being lost in the
+          rapid tide of modernisation and climate change.
+        </p>
+        <p>
+          <strong>LadakhArchive</strong> was created to build the most comprehensive, accurate, and accessible
+          digital record of Ladakh's heritage. From ancient rock carvings at Dras to the living
+          traditions of Changthang nomads, we document it all — so future generations can learn,
+          connect, and be inspired.
+        </p>
+        <p>
+          We believe that knowledge about Ladakh should be free, community-owned, and available
+          to everyone — whether you're a student in Leh, a researcher in London, or a traveller
+          planning your first visit to this extraordinary land.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. Values ── -->
+<section class="ab-values section-padding bg-snow">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-heart me-1"></i> Values</span>
+    <h2 class="section-title">What We Stand For</h2>
+    <p class="section-subtitle">The principles that guide every piece of content we create and every community we serve.</p>
+
+    <div class="row g-4 mt-2">
+      @for (v of values; track v.title) {
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="ab-value-card">
+            <div class="ab-value-card__icon">
+              <i class="bi {{ v.icon }}"></i>
+            </div>
+            <h5 class="ab-value-card__title">{{ v.title }}</h5>
+            <p class="ab-value-card__desc">{{ v.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. Our Journey ── -->
+<section class="ab-journey section-padding">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-clock-history me-1"></i> Journey</span>
+    <h2 class="section-title">Our Journey So Far</h2>
+    <p class="section-subtitle">From a small idea in Leh to a growing digital archive reaching the world.</p>
+
+    <div class="ab-journey__timeline">
+      @for (m of milestones; track m.year) {
+        <div class="ab-journey__item">
+          <div class="ab-journey__year">{{ m.year }}</div>
+          <div class="ab-journey__content">
+            <h5>{{ m.title }}</h5>
+            <p>{{ m.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. Team ── -->
+<section class="ab-team section-padding bg-snow">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-people me-1"></i> Team</span>
+    <h2 class="section-title">The People Behind the Archive</h2>
+    <p class="section-subtitle">A dedicated team of historians, photographers, developers, and community organisers from across Ladakh.</p>
+
+    <div class="row g-4 mt-2">
+      @for (member of team; track member.name) {
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="ab-team-card">
+            <div class="ab-team-card__avatar" [style.background]="member.color + '15'" [style.color]="member.color">
+              <i class="bi {{ member.icon }}"></i>
+            </div>
+            <h5 class="ab-team-card__name">{{ member.name }}</h5>
+            <span class="ab-team-card__role">{{ member.role }}</span>
+            <p class="ab-team-card__desc">{{ member.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. Partners ── -->
+<section class="ab-partners section-padding">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-handshake me-1"></i> Partners</span>
+    <h2 class="section-title">Our Partners & Collaborators</h2>
+    <p class="section-subtitle">We work with organisations across Ladakh to ensure authentic and comprehensive documentation.</p>
+
+    <div class="ab-partners__grid">
+      @for (p of partners; track p.abbr) {
+        <div class="ab-partners__card">
+          <div class="ab-partners__abbr">{{ p.abbr }}</div>
+          <div class="ab-partners__name">{{ p.name }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. CTA ── -->
+<section class="ab-cta">
+  <div class="ab-cta__overlay"></div>
+  <div class="container position-relative" style="z-index:2">
+    <div class="text-center">
+      <span class="la-label" style="color:var(--la-accent-light)"><i class="bi bi-heart me-1"></i> Join Us</span>
+      <h2 class="ab-cta__title">Be Part of the Story</h2>
+      <p class="ab-cta__desc">
+        Whether you're a historian, photographer, writer, developer, or someone who simply
+        loves Ladakh — there's a place for you in this archive.
+      </p>
+      <div class="ab-cta__actions">
+        <a routerLink="/contribute" class="btn btn-la-accent btn-lg">
+          <i class="bi bi-pencil-square me-2"></i>Start Contributing
+        </a>
+        <a routerLink="/gallery" class="btn btn-la-outline" style="border-color:rgba(255,255,255,.3);color:var(--la-white)">
+          <i class="bi bi-images me-2"></i>Browse Gallery
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

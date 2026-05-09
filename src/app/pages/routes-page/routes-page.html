@@ -1,0 +1,416 @@
+﻿<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="rt-hero">
+  <div class="rt-hero__overlay"></div>
+  <svg class="rt-hero__wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,64 C360,120 1080,0 1440,64 L1440,120 L0,120Z" fill="var(--la-white)" />
+  </svg>
+  <div class="container position-relative" style="z-index:2">
+    <p class="rt-hero__tagline"><i class="bi bi-compass"></i> Navigate Ladakh</p>
+    <h1 class="rt-hero__title">Routes &amp; Journeys</h1>
+    <p class="rt-hero__sub">
+      From legendary highway crossings and sky-high mountain passes to frozen river treks
+      and remote cycling trails — every route in Ladakh is an adventure of a lifetime.
+    </p>
+    <div class="rt-hero__actions">
+      <a [routerLink]="[]" fragment="highways" class="rt-btn-accent">
+        <i class="bi bi-signpost-split"></i> Highway Approaches
+      </a>
+      <a [routerLink]="[]" fragment="treks" class="rt-btn-outline">
+        <i class="bi bi-backpack2"></i> Trekking Routes
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════════ STATS ═══════════════════ -->
+<section class="rt-stats">
+  <div class="container">
+    <div class="rt-stats__grid">
+      @for (s of stats; track s.label) {
+        <div class="rt-stats__card">
+          <i class="bi {{ s.icon }}"></i>
+          <span class="rt-stats__value">{{ s.value }}</span>
+          <span class="rt-stats__label">{{ s.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ HIGHWAY APPROACHES ═══════════════════ -->
+<section class="rt-highways" id="highways">
+  <div class="container">
+    <p class="section-tag"><i class="bi bi-signpost-split"></i> Gateway to Ladakh</p>
+    <h2 class="section-title">Highway Approaches</h2>
+    <p class="section-sub">Two legendary highways connect Ladakh to the rest of India — each offering a distinct and unforgettable experience.</p>
+
+    <div class="rt-highways__grid">
+      @for (hw of highways; track hw.name) {
+        <div class="rt-highways__card">
+          <div class="rt-highways__header" [style.borderColor]="hw.color">
+            <i class="bi {{ hw.icon }}" [style.color]="hw.color"></i>
+            <div>
+              <h3>{{ hw.name }}</h3>
+              <div class="rt-highways__meta">
+                <span><i class="bi bi-rulers"></i> {{ hw.distance }}</span>
+                <span><i class="bi bi-clock"></i> {{ hw.duration }}</span>
+                <span><i class="bi bi-calendar3"></i> {{ hw.season }}</span>
+              </div>
+            </div>
+          </div>
+          <p class="rt-highways__desc">{{ hw.description }}</p>
+          <div class="rt-highways__altitude">
+            <i class="bi bi-triangle"></i> Max Altitude: <strong>{{ hw.maxAltitude }}</strong>
+          </div>
+          <div class="rt-highways__stops">
+            <h4>Key Stops & Landmarks</h4>
+            <ol>
+              @for (stop of hw.highlights; track stop) {
+                <li>{{ stop }}</li>
+              }
+            </ol>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/maps" class="btn-la-primary">
+        View Routes on Map <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MOUNTAIN PASSES ═══════════════════ -->
+<section class="rt-passes" id="passes">
+  <div class="container">
+    <p class="section-tag"><i class="bi bi-flag"></i> Sky-High Crossings</p>
+    <h2 class="section-title">Mountain Passes</h2>
+    <p class="section-sub">Ladakh's mountain passes are among the highest motorable roads on Earth — each a gateway to a different world.</p>
+
+    <div class="rt-passes__grid">
+      @for (p of passes; track p.name) {
+        <a class="rt-passes__card" [routerLink]="'/routes/pass/' + p.slug">
+          <div class="rt-passes__altitude-badge">{{ p.altitude }}</div>
+          <h3>{{ p.name }}</h3>
+          <p class="rt-passes__road"><i class="bi bi-signpost"></i> {{ p.road }}</p>
+          <p class="rt-passes__desc">{{ p.description }}</p>
+          <div class="rt-passes__footer">
+            <span class="rt-passes__status">
+              <i class="bi bi-check-circle-fill"></i> {{ p.status }}
+            </span>
+            <span class="rt-passes__cta"><i class="bi bi-arrow-right-circle"></i> View Details</span>
+          </div>
+        </a>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/maps" class="btn-la-primary">
+        Explore Passes on Map <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ROAD TRIPS ═══════════════════ -->
+<section class="rt-roadtrips" id="roadtrips">
+  <div class="container">
+    <p class="section-tag"><i class="bi bi-car-front"></i> Epic Journeys</p>
+    <h2 class="section-title">Iconic Road Trips</h2>
+    <p class="section-sub">These are the routes that make Ladakh a bucket-list destination for every road-trip enthusiast.</p>
+
+    <div class="rt-roadtrips__grid">
+      @for (trip of roadTrips; track trip.name) {
+        <a class="rt-roadtrips__card" [routerLink]="'/routes/trip/' + trip.slug">
+          <div class="rt-roadtrips__tag" [style.background]="trip.color">{{ trip.tag }}</div>
+          <h3>{{ trip.name }}</h3>
+          <div class="rt-roadtrips__info">
+            <span><i class="bi bi-rulers"></i> {{ trip.distance }}</span>
+            <span><i class="bi bi-clock"></i> {{ trip.duration }}</span>
+            <span [style.color]="trip.color"><i class="bi bi-speedometer2"></i> {{ trip.difficulty }}</span>
+          </div>
+          <p>{{ trip.description }}</p>
+          <div class="rt-roadtrips__footer">
+            <span class="rt-roadtrips__permit"><i class="bi bi-file-earmark-lock2"></i> {{ trip.permits }}</span>
+            <span class="rt-roadtrips__cta"><i class="bi bi-arrow-right-circle"></i> View Details</span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TREKKING ROUTES ═══════════════════ -->
+<section class="rt-treks" id="treks">
+  <div class="container">
+    <p class="section-tag"><i class="bi bi-backpack2"></i> On Foot</p>
+    <h2 class="section-title">Trekking Routes</h2>
+    <p class="section-sub">From gentle village walks to extreme glacier crossings — Ladakh's treks rank among the finest in the Himalayas.</p>
+
+    <div class="rt-treks__grid">
+      @for (trek of treks; track trek.name) {
+        <a class="rt-treks__card" [routerLink]="'/routes/trek/' + trek.slug">
+          <div class="rt-treks__difficulty" [style.background]="trek.color">{{ trek.difficulty }}</div>
+          <h3>{{ trek.name }}</h3>
+          <div class="rt-treks__meta">
+            <span><i class="bi bi-calendar3"></i> {{ trek.duration }}</span>
+            <span><i class="bi bi-rulers"></i> {{ trek.distance }}</span>
+            <span><i class="bi bi-triangle"></i> {{ trek.maxAltitude }}</span>
+          </div>
+          <p class="rt-treks__route"><i class="bi bi-geo-alt"></i> {{ trek.startEnd }}</p>
+          <p>{{ trek.description }}</p>
+          <div class="rt-treks__highlights">
+            @for (h of trek.highlights; track h) {
+              <span class="rt-treks__chip">{{ h }}</span>
+            }
+          </div>
+          <span class="rt-treks__cta"><i class="bi bi-arrow-right-circle"></i> View Details</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CYCLING ROUTES ═══════════════════ -->
+<section class="rt-cycling" id="cycling">
+  <div class="container">
+    <p class="section-tag"><i class="bi bi-bicycle"></i> Pedal Power</p>
+    <h2 class="section-title">Cycling Routes</h2>
+    <p class="section-sub">Ladakh is a cycling mecca — riders from around the world come to conquer its passes and vast open plains.</p>
+
+    <div class="rt-cycling__grid">
+      @for (c of cyclingRoutes; track c.name) {
+        <div class="rt-cycling__card">
+          <div class="rt-cycling__icon"><i class="bi bi-bicycle"></i></div>
+          <h3>{{ c.name }}</h3>
+          <div class="rt-cycling__meta">
+            <span><i class="bi bi-rulers"></i> {{ c.distance }}</span>
+            <span><i class="bi bi-clock"></i> {{ c.duration }}</span>
+            <span><i class="bi bi-triangle"></i> {{ c.maxAltitude }}</span>
+          </div>
+          <p class="rt-cycling__diff" [style.color]="getDifficultyColor(c.difficulty)">
+            <i class="bi bi-speedometer2"></i> {{ c.difficulty }}
+          </p>
+          <p>{{ c.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SEASONAL CALENDAR ═══════════════════ -->
+<section class="rt-seasons" id="seasons">
+  <div class="container">
+    <p class="section-tag"><i class="bi bi-calendar3"></i> When to Travel</p>
+    <h2 class="section-title">Seasonal Calendar</h2>
+    <p class="section-sub">Ladakh's accessibility changes dramatically with the seasons. Plan your journey with this guide.</p>
+
+    <div class="rt-seasons__grid">
+      @for (s of seasons; track s.months) {
+        <div class="rt-seasons__card">
+          <div class="rt-seasons__badge" [style.background]="s.color">{{ s.status }}</div>
+          <h3>{{ s.months }}</h3>
+          <div class="rt-seasons__temp"><i class="bi bi-thermometer-half"></i> {{ s.temp }}</div>
+          <div class="rt-seasons__info">
+            <div class="rt-seasons__row">
+              <strong><i class="bi bi-signpost-split"></i> Roads</strong>
+              <p>{{ s.roads }}</p>
+            </div>
+            <div class="rt-seasons__row">
+              <strong><i class="bi bi-activity"></i> Activities</strong>
+              <p>{{ s.activity }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PERMITS ═══════════════════ -->
+<section class="rt-permits" id="permits">
+  <div class="container">
+    <p class="section-tag"><i class="bi bi-file-earmark-lock2"></i> Travel Essentials</p>
+    <h2 class="section-title">Permits &amp; Regulations</h2>
+    <p class="section-sub">Most areas beyond Leh require an Inner Line Permit (ILP). Here's a complete guide.</p>
+
+    <div class="rt-permits__table-wrap">
+      <table class="rt-permits__table">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Permit Type</th>
+            <th>Cost</th>
+            <th>Validity</th>
+            <th>How to Apply</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (p of permits; track p.area) {
+            <tr>
+              <td class="rt-permits__area">{{ p.area }}</td>
+              <td>{{ p.type }}</td>
+              <td>{{ p.cost }}</td>
+              <td>{{ p.duration }}</td>
+              <td>{{ p.apply }}</td>
+              <td class="rt-permits__note">{{ p.note }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="rt-permits__disclaimer">* For the latest and most accurate permit information, please visit the official <a href="https://ladakhpermit.in" target="_blank" rel="noopener noreferrer">Ladakh UT Administration website</a>.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ FUEL STATIONS ═══════════════════ -->
+<section class="rt-fuel" id="fuel">
+  <div class="container">
+    <p class="section-tag"><i class="bi bi-fuel-pump"></i> Refuel Points</p>
+    <h2 class="section-title">Fuel &amp; Service Stations</h2>
+    <p class="section-sub">Fuel stations are extremely scarce in Ladakh. Always top up in Leh before heading out.</p>
+
+    <div class="rt-fuel__grid">
+      @for (f of fuelStations; track f.location) {
+        <div class="rt-fuel__card">
+          <div class="rt-fuel__icon"><i class="bi bi-fuel-pump"></i></div>
+          <h3>{{ f.location }}</h3>
+          <span class="rt-fuel__type">{{ f.type }}</span>
+          <p>{{ f.note }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SAFETY TIPS ═══════════════════ -->
+<section class="rt-safety" id="safety">
+  <div class="container">
+    <p class="section-tag"><i class="bi bi-shield-check"></i> Stay Safe</p>
+    <h2 class="section-title">Essential Safety Tips</h2>
+    <p class="section-sub">Ladakh's extreme altitude and remoteness demand preparation. Follow these guidelines for a safe journey.</p>
+
+    <div class="rt-safety__grid">
+      @for (tip of safetyTips; track tip.title) {
+        <div class="rt-safety__card">
+          <div class="rt-safety__icon"><i class="bi {{ tip.icon }}"></i></div>
+          <h3>{{ tip.title }}</h3>
+          <p>{{ tip.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<section class="rt-cta">
+  <div class="container text-center">
+    <h2>Ready to Hit the Road?</h2>
+    <p>Explore more of Ladakh's incredible offerings — its rich history, vibrant culture, and stunning wildlife.</p>
+    <div class="rt-cta__actions">
+      <a routerLink="/nature" class="rt-cta-btn rt-cta-btn--accent"><i class="bi bi-tree"></i> Nature &amp; Wildlife</a>
+      <a routerLink="/culture" class="rt-cta-btn rt-cta-btn--outline"><i class="bi bi-people"></i> Culture &amp; People</a>
+      <a routerLink="/history" class="rt-cta-btn rt-cta-btn--outline"><i class="bi bi-hourglass-split"></i> History</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ROUTE DETAIL MODAL ═══════════════════ -->
+@if (selectedRoute()) {
+  <div class="rt-modal-backdrop" (click)="closeRouteModal()">
+    <div class="rt-modal" (click)="$event.stopPropagation()">
+      <button class="rt-modal__close" (click)="closeRouteModal()" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="rt-modal__header">
+        @if (selectedRoute().tag) {
+          <span class="rt-modal__tag" [style.background]="selectedRoute().color">{{ selectedRoute().tag }}</span>
+        }
+        @if (selectedRoute().difficulty) {
+          <span class="rt-modal__tag" [style.background]="selectedRoute().color ?? getDifficultyColor(selectedRoute().difficulty)">{{ selectedRoute().difficulty }}</span>
+        }
+        <h2>{{ selectedRoute().name }}</h2>
+        <div class="rt-modal__meta">
+          @if (selectedRoute().distance) {
+            <span><i class="bi bi-rulers"></i> {{ selectedRoute().distance }}</span>
+          }
+          @if (selectedRoute().duration) {
+            <span><i class="bi bi-clock"></i> {{ selectedRoute().duration }}</span>
+          }
+          @if (selectedRoute().maxAltitude) {
+            <span><i class="bi bi-triangle"></i> {{ selectedRoute().maxAltitude }}</span>
+          }
+          @if (selectedRoute().bestTime || selectedRoute().season) {
+            <span><i class="bi bi-calendar3"></i> {{ selectedRoute().bestTime ?? selectedRoute().season }}</span>
+          }
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="rt-modal__tabs">
+        <button [class.active]="activeTab() === 'overview'" (click)="setTab('overview')">Overview</button>
+        <button [class.active]="activeTab() === 'stops'" (click)="setTab('stops')">
+          {{ selectedRoute().keyStops ? 'Key Stops' : 'Highlights' }}
+        </button>
+        @if (selectedRoute().permits) {
+          <button [class.active]="activeTab() === 'permits'" (click)="setTab('permits')">Permits</button>
+        }
+      </div>
+
+      <!-- Tab Content -->
+      <div class="rt-modal__body">
+        @if (activeTab() === 'overview') {
+          <p class="rt-modal__desc">{{ selectedRoute().description }}</p>
+          <div class="rt-modal__details">
+            @if (selectedRoute().startEnd) {
+              <div class="rt-modal__detail">
+                <strong><i class="bi bi-geo-alt"></i> Route</strong>
+                <span>{{ selectedRoute().startEnd }}</span>
+              </div>
+            }
+            @if (selectedRoute().difficulty) {
+              <div class="rt-modal__detail">
+                <strong><i class="bi bi-speedometer2"></i> Difficulty</strong>
+                <span [style.color]="getDifficultyColor(selectedRoute().difficulty)">{{ selectedRoute().difficulty }}</span>
+              </div>
+            }
+          </div>
+        }
+
+        @if (activeTab() === 'stops') {
+          <div class="rt-modal__stops">
+            @if (selectedRoute().keyStops) {
+              @for (stop of selectedRoute().keyStops; track stop; let i = $index) {
+                <div class="rt-modal__stop">
+                  <span class="rt-modal__stop-num" [style.background]="selectedRoute().color">{{ i + 1 }}</span>
+                  <span>{{ stop }}</span>
+                </div>
+              }
+            }
+            @if (selectedRoute().highlights) {
+              @for (h of selectedRoute().highlights; track h; let i = $index) {
+                <div class="rt-modal__stop">
+                  <span class="rt-modal__stop-num" [style.background]="selectedRoute().color">{{ i + 1 }}</span>
+                  <span>{{ h }}</span>
+                </div>
+              }
+            }
+          </div>
+        }
+
+        @if (activeTab() === 'permits') {
+          <div class="rt-modal__permit-info">
+            <i class="bi bi-file-earmark-lock2"></i>
+            <p>{{ selectedRoute().permits }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}
+

@@ -1,0 +1,426 @@
+﻿<!-- ===== HERO BANNER ===== -->
+<section class="po-hero">
+  <div class="po-hero__overlay"></div>
+  <div class="container po-hero__container">
+    <nav class="po-breadcrumb">
+      <a routerLink="/"><i class="bi bi-house-fill"></i> Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>Politics</span>
+    </nav>
+    <div class="po-hero__content">
+      <span class="po-hero__badge">
+        <i class="bi bi-bank-fill"></i> Deep Analysis
+      </span>
+      <h1 class="po-hero__title">
+        Politics of<br />
+        <span class="text-accent">Ladakh</span>
+      </h1>
+      <p class="po-hero__subtitle">
+        From the Dogra conquest to the 6th Schedule movement — a deep analysis of Ladakh's political journey,
+        its fight for identity, autonomy, and self-governance at the roof of the world.
+      </p>
+    </div>
+  </div>
+  <div class="po-hero__wave">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,60 C360,100 720,0 1080,60 C1260,90 1380,80 1440,70 L1440,100 L0,100 Z" fill="var(--la-white)"/>
+    </svg>
+  </div>
+</section>
+
+
+
+<!-- ===== OVERVIEW / STATS ===== -->
+<section class="section-padding" id="overview">
+  <div class="container">
+    <div class="po-intro">
+      <div class="po-intro__text">
+        <span class="la-label"><i class="bi bi-bar-chart-fill"></i> Overview</span>
+        <h2>A Land Governed from Afar — Fighting for Self-Rule</h2>
+        <p>
+          Ladakh's political story is one of persistent marginalization and resolute resistance. For over 190 years —
+          from the Dogra conquest of 1834 to the present day — Ladakhis have been governed by powers seated far away:
+          first Jammu, then Srinagar, and now Delhi. The demand for self-governance is not new; it is the defining
+          thread of Ladakh's modern political identity.
+        </p>
+        <p>
+          Today, Ladakh stands at a historic crossroads. The 2019 reorganization granted UT status but stripped away
+          existing protections without replacing them. The 6th Schedule movement represents the latest chapter in a
+          200-year quest: the right of a tribal people to govern their own land, protect their identity, and shape their
+          own future.
+        </p>
+      </div>
+      <div class="po-intro__stats">
+        @for (s of stats; track s.label) {
+          <div class="po-intro__stat">
+            <i class="po-intro__stat-icon bi" [class]="s.icon"></i>
+            <span class="po-intro__stat-number">{{ s.value }}</span>
+            <span class="po-intro__stat-label">{{ s.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/history" class="btn-la-primary">
+        Explore Complete History <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POLITICAL ERAS ===== -->
+<section class="section-padding po-eras-section" id="eras">
+  <div class="container">
+    <div class="po-eras-header">
+      <span class="la-label"><i class="bi bi-clock-history"></i> Political Eras</span>
+      <h2 class="section-title">Five Eras of Ladakh Politics</h2>
+      <p class="section-subtitle">From subjugation to self-determination — the evolution of political consciousness</p>
+    </div>
+    <div class="po-eras-grid">
+      @for (era of eras; track era.id) {
+        <a class="po-era-card" [routerLink]="['/politics/era', era.id]">
+          <div class="po-era-card__visual" [style.background]="'linear-gradient(135deg, ' + era.color + ', ' + era.color + 'cc)'">
+            <div class="po-era-card__bg-icon"><i class="bi" [class]="era.icon"></i></div>
+            <div class="po-era-card__icon"><i class="bi" [class]="era.icon"></i></div>
+            <span class="po-era-card__period">{{ era.period }}</span>
+          </div>
+          <div class="po-era-card__body">
+            <h4 class="po-era-card__name">{{ era.title }}</h4>
+            <p class="po-era-card__desc">{{ era.desc }}</p>
+            <span class="po-era-card__cta">Explore events <i class="bi bi-arrow-right"></i></span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== POLITICAL TIMELINE ===== -->
+<section class="section-padding po-timeline-section" id="timeline">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 2.5rem;">
+      <span class="la-label"><i class="bi bi-diagram-3-fill"></i> Timeline</span>
+      <h2 class="section-title">Political Timeline: 1834 – Present</h2>
+      <p class="section-subtitle">Key events that shaped Ladakh's political landscape</p>
+    </div>
+    <div class="po-timeline">
+      <div class="po-timeline__line"></div>
+      @for (ev of timeline; track ev.year; let i = $index) {
+        <div class="po-timeline__item" [class.po-timeline__item--right]="i % 2 !== 0">
+          <div class="po-timeline__dot" [style.background]="ev.color"></div>
+          <div class="po-timeline__card">
+            <span class="po-timeline__year" [style.color]="ev.color">{{ ev.year }}</span>
+            <h5 class="po-timeline__title">{{ ev.title }}</h5>
+            <p class="po-timeline__desc">{{ ev.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/timeline" class="btn-la-primary">
+        View Full Timeline <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6TH SCHEDULE - THE CORE DEMAND ===== -->
+<section class="section-padding po-sixth-section" id="sixth-schedule">
+  <div class="container">
+    <div class="po-sixth-header">
+      <span class="la-label"><i class="bi bi-shield-fill-check"></i> Constitutional Demand</span>
+      <h2 class="section-title">{{ sixthSchedule.title }}</h2>
+      <p class="section-subtitle">{{ sixthSchedule.subtitle }}</p>
+    </div>
+
+    <div class="po-sixth-overview">
+      <div class="po-sixth-overview__icon">
+        <i class="bi bi-book-fill"></i>
+      </div>
+      <div class="po-sixth-overview__text">
+        <h4>What is the 6th Schedule?</h4>
+        <p>{{ sixthSchedule.overview }}</p>
+      </div>
+    </div>
+
+    <!-- Six Pillars -->
+    <h3 class="po-sixth-pillars-title"><i class="bi bi-columns-gap"></i> Six Pillars of the 6th Schedule Demand</h3>
+    <div class="po-sixth-pillars">
+      @for (p of sixthSchedule.pillars; track p.title) {
+        <div class="po-pillar-card">
+          <div class="po-pillar-card__icon" [style.background]="'linear-gradient(135deg, ' + p.color + ', ' + p.color + 'cc)'">
+            <i class="bi" [class]="p.icon"></i>
+          </div>
+          <h5 class="po-pillar-card__title">{{ p.title }}</h5>
+          <p class="po-pillar-card__desc">{{ p.desc }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Comparison Table -->
+    <h3 class="po-sixth-compare-title"><i class="bi bi-arrow-left-right"></i> With vs Without 6th Schedule</h3>
+    <div class="po-sixth-table-wrap">
+      <table class="po-sixth-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th><i class="bi bi-shield-check"></i> With 6th Schedule</th>
+            <th><i class="bi bi-x-circle"></i> Without (Current)</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of sixthSchedule.comparison; track row.aspect) {
+            <tr>
+              <td class="po-sixth-table__aspect">{{ row.aspect }}</td>
+              <td class="po-sixth-table__with">{{ row.withSchedule }}</td>
+              <td class="po-sixth-table__without">{{ row.without }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARTICLE 370 ANALYSIS ===== -->
+<section class="section-padding po-370-section" id="article370">
+  <div class="container">
+    <div class="po-370-header">
+      <span class="la-label"><i class="bi bi-file-earmark-break-fill"></i> Deep Analysis</span>
+      <h2 class="section-title">Article 370: Before vs After</h2>
+      <p class="section-subtitle">What changed for Ladakh when Article 370 was abrogated on August 5, 2019</p>
+    </div>
+
+    <div class="po-370-grid">
+      <div class="po-370-card po-370-card--before">
+        <div class="po-370-card__header">
+          <i class="bi bi-arrow-counterclockwise"></i>
+          <h4>Before Abrogation</h4>
+          <span>Under Article 370 + 35A</span>
+        </div>
+        <ul class="po-370-card__list">
+          @for (item of article370Analysis.before; track item) {
+            <li><i class="bi bi-dot"></i> {{ item }}</li>
+          }
+        </ul>
+      </div>
+      <div class="po-370-divider">
+        <div class="po-370-divider__line"></div>
+        <div class="po-370-divider__badge">Aug 5, 2019</div>
+        <div class="po-370-divider__line"></div>
+      </div>
+      <div class="po-370-card po-370-card--after">
+        <div class="po-370-card__header">
+          <i class="bi bi-arrow-clockwise"></i>
+          <h4>After Abrogation</h4>
+          <span>Union Territory without Legislature</span>
+        </div>
+        <ul class="po-370-card__list">
+          @for (item of article370Analysis.after; track item) {
+            <li><i class="bi bi-dot"></i> {{ item }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POWER STRUCTURE ===== -->
+<section class="section-padding" id="power">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 2.5rem;">
+      <span class="la-label"><i class="bi bi-diagram-2-fill"></i> Governance</span>
+      <h2 class="section-title">Current Power Structure</h2>
+      <p class="section-subtitle">How Ladakh is governed today — and where the power truly lies</p>
+    </div>
+    <div class="po-power-grid">
+      @for (p of powerStructure; track p.title) {
+        <div class="po-power-card">
+          <div class="po-power-card__icon" [style.background]="'linear-gradient(135deg, ' + p.color + ', ' + p.color + 'cc)'">
+            <i class="bi" [class]="p.icon"></i>
+          </div>
+          <div class="po-power-card__body">
+            <div class="po-power-card__top">
+              <h5 class="po-power-card__title">{{ p.title }}</h5>
+              <span class="po-power-card__level" [style.background]="p.color + '18'" [style.color]="p.color">{{ p.level }}</span>
+            </div>
+            <p class="po-power-card__desc">{{ p.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== LAHDC SEAT CHART ===== -->
+<section class="section-padding po-seats-section">
+  <div class="container">
+    <div class="po-seats-header">
+      <span class="la-label"><i class="bi bi-pie-chart-fill"></i> Representation</span>
+      <h2 class="section-title">LAHDC Leh — Seat Distribution (2020)</h2>
+      <p class="section-subtitle">The elected Hill Council is the closest thing Ladakh has to a legislature</p>
+    </div>
+    <div class="po-seats-row">
+      <div class="po-chart-block">
+        <div class="po-chart-block__donut-wrap">
+          <svg class="po-donut" viewBox="0 0 100 100">
+            @for (d of seatData; track d.label; let i = $index) {
+              <circle
+                cx="50" cy="50" r="45"
+                fill="none"
+                [attr.stroke]="d.color"
+                stroke-width="10"
+                [attr.stroke-dasharray]="(d.value / 28) * 283 + ' ' + 283"
+                [attr.stroke-dashoffset]="-getDonutOffset(i)"
+              />
+            }
+            <text x="50" y="46" text-anchor="middle" fill="#fff" font-size="12" font-weight="800" font-family="var(--la-font-heading)">28</text>
+            <text x="50" y="58" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="5">Total Seats</text>
+          </svg>
+        </div>
+        <div class="po-chart-block__legend">
+          @for (d of seatData; track d.label) {
+            <div class="po-chart-block__legend-item">
+              <span class="po-chart-block__legend-dot" [style.background]="d.color"></span>
+              <span class="po-chart-block__legend-name">{{ d.label }}</span>
+              <span class="po-chart-block__legend-val">{{ d.value }}</span>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="po-seats-info">
+        <h4>How the Hill Council Works</h4>
+        <p>
+          The LAHDC has 26 elected councillors and 4 nominated members (including women and minority representatives).
+          It has powers over local development, taxation, public health, education, agriculture, and minor forests.
+          However, key areas — policing, major infrastructure, environmental regulation, and inter-state matters —
+          remain with the Lt. Governor and central government.
+        </p>
+        <p>
+          <strong>Key limitation:</strong> The LAHDC cannot legislate on land, employment protection, or environmental
+          regulation — the exact areas where Ladakhis feel most vulnerable after Article 370's abrogation. This is why
+          the 6th Schedule demand is not just about autonomy — it's about survival.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEY POLITICAL FIGURES ===== -->
+<section class="section-padding po-figures-section" id="figures">
+  <div class="container">
+    <div class="po-figures-header">
+      <span class="la-label"><i class="bi bi-person-fill"></i> Leaders</span>
+      <h2 class="section-title">Key Political Figures</h2>
+      <p class="section-subtitle">The voices that have shaped Ladakh's political destiny</p>
+    </div>
+    <div class="po-figures-grid">
+      @for (f of keyFigures; track f.name) {
+        <div class="po-figure-card">
+          <div class="po-figure-card__avatar" [style.background]="'linear-gradient(135deg, ' + f.color + ', ' + f.color + 'cc)'">
+            <i class="bi" [class]="f.icon"></i>
+          </div>
+          <div class="po-figure-card__body">
+            <h5 class="po-figure-card__name">{{ f.name }}</h5>
+            <span class="po-figure-card__role">{{ f.role }}</span>
+            <span class="po-figure-card__period"><i class="bi bi-clock"></i> {{ f.period }}</span>
+            <p class="po-figure-card__desc">{{ f.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== ELECTION HISTORY ===== -->
+<section class="section-padding">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 2.5rem;">
+      <span class="la-label"><i class="bi bi-clipboard-data-fill"></i> Elections</span>
+      <h2 class="section-title">Recent Election Results</h2>
+      <p class="section-subtitle">How Ladakh has voted — and what it signals</p>
+    </div>
+    <div class="po-election-grid">
+      @for (e of electionHistory; track e.year + e.body) {
+        <div class="po-election-card">
+          <div class="po-election-card__year" [style.background]="'linear-gradient(135deg, ' + e.color + ', ' + e.color + 'cc)'">
+            <span>{{ e.year }}</span>
+          </div>
+          <div class="po-election-card__body">
+            <h5 class="po-election-card__title">{{ e.body }}</h5>
+            <div class="po-election-card__meta">
+              <span><i class="bi bi-trophy-fill"></i> {{ e.winner }}</span>
+              <span><i class="bi bi-pie-chart-fill"></i> {{ e.seats }}</span>
+              <span><i class="bi bi-people-fill"></i> Turnout: {{ e.turnout }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CURRENT ISSUES ===== -->
+<section class="section-padding po-issues-section" id="issues">
+  <div class="container">
+    <div class="po-issues-header">
+      <span class="la-label"><i class="bi bi-exclamation-triangle-fill"></i> Issues</span>
+      <h2 class="section-title">Critical Political Issues</h2>
+      <p class="section-subtitle">The challenges that define Ladakh's political present and future</p>
+    </div>
+    <div class="po-issues-grid">
+      @for (issue of issues; track issue.title) {
+        <div class="po-issue-card">
+          <div class="po-issue-card__top">
+            <div class="po-issue-card__icon" [style.background]="'linear-gradient(135deg, ' + issue.color + ', ' + issue.color + 'cc)'">
+              <i class="bi" [class]="issue.icon"></i>
+            </div>
+            <span class="po-issue-card__severity" [style.background]="issue.color + '15'" [style.color]="issue.color" [style.borderColor]="issue.color + '30'">{{ issue.severity }}</span>
+          </div>
+          <h5 class="po-issue-card__title">{{ issue.title }}</h5>
+          <p class="po-issue-card__desc">{{ issue.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEMANDS ===== -->
+<section class="section-padding">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 2.5rem;">
+      <span class="la-label"><i class="bi bi-megaphone-fill"></i> People's Voice</span>
+      <h2 class="section-title">The Six Core Demands</h2>
+      <p class="section-subtitle">What the people of Ladakh are asking for — and why each demand matters</p>
+    </div>
+    <div class="po-demands-grid">
+      @for (d of demands; track d.title; let i = $index) {
+        <div class="po-demand-card">
+          <div class="po-demand-card__number">{{ i + 1 }}</div>
+          <div class="po-demand-card__icon"><i class="bi" [class]="d.icon"></i></div>
+          <h5 class="po-demand-card__title">{{ d.title }}</h5>
+          <p class="po-demand-card__desc">{{ d.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="po-cta">
+  <div class="container">
+    <div class="po-cta__inner">
+      <i class="po-cta__icon bi bi-bank-fill"></i>
+      <h2>Understand Ladakh's Political Journey</h2>
+      <p>
+        From ancient kingdoms to the 6th Schedule movement — explore the full story of
+        how politics has shaped this remarkable region.
+      </p>
+      <div class="po-cta__actions">
+        <a routerLink="/history" class="la-btn la-btn--primary">Explore History</a>
+        <a routerLink="/culture" class="la-btn la-btn--outline po-cta__outline-btn">Culture & People</a>
+      </div>
+    </div>
+  </div>
+</section>
+

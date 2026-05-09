@@ -1,0 +1,384 @@
+﻿<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="ed-hero">
+  <div class="ed-hero__overlay"></div>
+  <svg class="ed-hero__wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,64 C360,120 1080,0 1440,64 L1440,120 L0,120Z" fill="var(--la-white)" />
+  </svg>
+  <div class="container position-relative" style="z-index:2">
+    <nav class="ed-hero__breadcrumb">
+      <a routerLink="/">Home</a> <i class="bi bi-chevron-right"></i> <span>Education</span>
+    </nav>
+    <p class="ed-hero__tagline"><i class="bi bi-mortarboard"></i> Knowledge Across Centuries</p>
+    <h1 class="ed-hero__title">Education in Ladakh</h1>
+    <p class="ed-hero__sub">
+      From ancient monastic halls and Islamic maktabs to solar-powered campuses and a new university —
+      tracing the remarkable journey of learning in the Land of High Passes.
+    </p>
+    <div class="ed-hero__actions">
+      <a [routerLink]="[]" fragment="timeline" class="ed-btn-accent">
+        <i class="bi bi-clock-history"></i> Historical Timeline
+      </a>
+      <a [routerLink]="[]" fragment="contributors" class="ed-btn-outline">
+        <i class="bi bi-people"></i> Key Contributors
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════════ STATS ═══════════════════ -->
+<section class="ed-stats">
+  <div class="container">
+    <div class="ed-stats__grid">
+      @for (s of stats; track s.label) {
+        <div class="ed-stats__card">
+          <i class="bi {{ s.icon }}"></i>
+          <span class="ed-stats__value">{{ s.value }}</span>
+          <span class="ed-stats__label">{{ s.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TRADITIONAL EDUCATION ═══════════════════ -->
+<section class="ed-traditional section-padding" id="traditional">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-building"></i> Ancient Roots</span>
+    <h2 class="section-title">Traditional Education Systems</h2>
+    <p class="section-subtitle">
+      For centuries, knowledge in Ladakh was passed through monasteries, maktabs, and master-apprentice traditions — each preserving a unique intellectual heritage.
+    </p>
+
+    <div class="ed-traditional__grid">
+      @for (sys of traditionalSystems; track sys.name) {
+        <div class="ed-traditional__card">
+          <div class="ed-traditional__icon" [style.background]="sys.color + '12'" [style.color]="sys.color">
+            <i class="bi {{ sys.icon }}"></i>
+          </div>
+          <h3>{{ sys.name }}</h3>
+          <p>{{ sys.desc }}</p>
+          <div class="ed-traditional__subjects">
+            @for (sub of sys.subjects; track sub) {
+              <span class="ed-traditional__chip" [style.borderColor]="sys.color + '30'" [style.color]="sys.color">{{ sub }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ HISTORICAL TIMELINE ═══════════════════ -->
+<section class="ed-timeline section-padding" id="timeline">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-clock-history"></i> Through the Ages</span>
+    <h2 class="section-title">Education Timeline</h2>
+    <p class="section-subtitle">
+      From monastery halls to modern universities — the evolution of education in Ladakh across centuries.
+    </p>
+
+    <div class="ed-timeline__stepper">
+      @for (t of timeline; track t.year; let i = $index) {
+        <div class="ed-timeline__step">
+          <!-- Marker & Line -->
+          <div class="ed-timeline__marker">
+            <div class="ed-timeline__dot" [style.background]="t.color">
+              <i class="bi {{ t.icon }}"></i>
+            </div>
+            @if (i !== timeline.length - 1) {
+              <div class="ed-timeline__line" [style.background]="t.color + '60'"></div>
+            }
+          </div>
+          
+          <!-- Content Card -->
+          <div class="ed-timeline__content">
+            <div class="ed-timeline__card" [style.--accent-color]="t.color">
+              <div class="ed-timeline__card-body">
+                <span class="ed-timeline__year" [style.color]="t.color">{{ t.year }}</span>
+                <h3>{{ t.title }}</h3>
+                <p>{{ t.desc }}</p>
+              </div>
+              @if (t.image) {
+                <div class="ed-timeline__card-image">
+                  <img [src]="t.image" [alt]="t.title" loading="lazy" />
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ LITERACY GROWTH GRAPH ═══════════════════ -->
+<section class="ed-literacy section-padding" id="literacy">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-graph-up-arrow"></i> Literacy Growth</span>
+    <h2 class="section-title">Literacy Rate Over Decades</h2>
+    <p class="section-subtitle">
+      Ladakh's literacy has grown from a mere 4.2% in 1961 to an impressive 82.3% in 2021 — one of India's most remarkable education transformations.
+    </p>
+
+    <div class="ed-literacy__chart">
+      <div class="ed-literacy__y-axis">
+        <span>100%</span><span>80%</span><span>60%</span><span>40%</span><span>20%</span><span>0%</span>
+      </div>
+      <div class="ed-literacy__bars">
+        @for (d of literacyData; track d.year) {
+          <div class="ed-literacy__group">
+            <div class="ed-literacy__bar-set">
+              <div class="ed-literacy__bar ed-literacy__bar--male" [style.height.%]="d.male" title="Male: {{ d.male }}%">
+                <span class="ed-literacy__bar-val">{{ d.male }}%</span>
+              </div>
+              <div class="ed-literacy__bar ed-literacy__bar--female" [style.height.%]="d.female" title="Female: {{ d.female }}%">
+                <span class="ed-literacy__bar-val">{{ d.female }}%</span>
+              </div>
+              <div class="ed-literacy__bar ed-literacy__bar--overall" [style.height.%]="d.overall" title="Overall: {{ d.overall }}%">
+                <span class="ed-literacy__bar-val">{{ d.overall }}%</span>
+              </div>
+            </div>
+            <span class="ed-literacy__year">{{ d.year }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="ed-literacy__legend">
+      <span><i class="ed-literacy__dot ed-literacy__dot--male"></i> Male</span>
+      <span><i class="ed-literacy__dot ed-literacy__dot--female"></i> Female</span>
+      <span><i class="ed-literacy__dot ed-literacy__dot--overall"></i> Overall</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SCHOOL DISTRIBUTION DONUT ═══════════════════ -->
+<section class="ed-distribution section-padding">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-pie-chart"></i> School Landscape</span>
+    <h2 class="section-title">School Distribution</h2>
+    <p class="section-subtitle">
+      Government schools form the backbone, while monasteries, private institutions, and NGOs fill crucial gaps across the region.
+    </p>
+
+    <div class="ed-distribution__content">
+      <div class="ed-distribution__donut-wrap">
+        <svg viewBox="0 0 42 42" class="ed-distribution__donut">
+          <circle cx="21" cy="21" r="15.91549" fill="transparent" stroke="var(--la-gray-200)" stroke-width="4" />
+          @for (seg of schoolDistribution; track seg.label; let i = $index) {
+            <circle cx="21" cy="21" r="15.91549" fill="transparent"
+              [attr.stroke]="seg.color"
+              stroke-width="4"
+              [attr.stroke-dasharray]="seg.value + ' ' + (100 - seg.value)"
+              [attr.stroke-dashoffset]="getDonutOffset(i)"
+              stroke-linecap="round" />
+          }
+        </svg>
+        <div class="ed-distribution__center">
+          <strong>1,200+</strong>
+          <span>Total Schools</span>
+        </div>
+      </div>
+
+      <div class="ed-distribution__legend">
+        @for (seg of schoolDistribution; track seg.label) {
+          <div class="ed-distribution__legend-item">
+            <span class="ed-distribution__color" [style.background]="seg.color"></span>
+            <span class="ed-distribution__name">{{ seg.label }}</span>
+            <strong class="ed-distribution__pct">{{ seg.value }}%</strong>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ENROLLMENT BAR CHART ═══════════════════ -->
+<section class="ed-enrollment section-padding">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-bar-chart-line"></i> Student Numbers</span>
+    <h2 class="section-title">Enrollment by Education Level</h2>
+    <p class="section-subtitle">
+      A comparative view of boys and girls enrollment across education levels — showing improving gender parity at every stage.
+    </p>
+
+    <div class="ed-enrollment__chart">
+      @for (d of enrollmentData; track d.level) {
+        <div class="ed-enrollment__row">
+          <span class="ed-enrollment__label">{{ d.level }}</span>
+          <div class="ed-enrollment__bars">
+            <div class="ed-enrollment__bar ed-enrollment__bar--boys" [style.width.%]="getBarHeight(d.boys)" [style.background]="d.color">
+              <span>{{ (d.boys / 1000).toFixed(1) }}k</span>
+            </div>
+            <div class="ed-enrollment__bar ed-enrollment__bar--girls" [style.width.%]="getBarHeight(d.girls)" [style.background]="d.color + 'aa'">
+              <span>{{ (d.girls / 1000).toFixed(1) }}k</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="ed-enrollment__legend">
+      <span><i class="ed-enrollment__dot ed-enrollment__dot--boys"></i> Boys</span>
+      <span><i class="ed-enrollment__dot ed-enrollment__dot--girls"></i> Girls</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ KEY INSTITUTIONS ═══════════════════ -->
+<section class="ed-institutions section-padding" id="institutions">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-bank2"></i> Centres of Learning</span>
+    <h2 class="section-title">Key Institutions</h2>
+    <p class="section-subtitle">
+      The schools and colleges shaping Ladakh's future — from the region's first university to innovative alternative learning centres.
+    </p>
+
+    <div class="ed-institutions__grid">
+      @for (inst of institutions; track inst.name) {
+        <a class="ed-institutions__card" [routerLink]="['/education/institution', inst.slug]">
+          <div class="ed-institutions__icon" [style.background]="inst.color + '12'" [style.color]="inst.color">
+            <i class="bi {{ inst.icon }}"></i>
+          </div>
+          <span class="ed-institutions__type" [style.color]="inst.color">{{ inst.type }} · Est. {{ inst.est }}</span>
+          <h3>{{ inst.name }}</h3>
+          <p>{{ inst.desc }}</p>
+          <div class="ed-institutions__meta">
+            <span><i class="bi bi-geo-alt"></i> {{ inst.location }}</span>
+            <span><i class="bi bi-people"></i> {{ inst.students }}</span>
+          </div>
+          <span class="ed-institutions__cta"><i class="bi bi-arrow-right-circle"></i> View Details</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CHALLENGES ═══════════════════ -->
+<section class="ed-challenges section-padding" id="challenges">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-exclamation-triangle"></i> Ongoing Struggles</span>
+    <h2 class="section-title">Challenges in Ladakhi Education</h2>
+    <p class="section-subtitle">
+      Despite remarkable progress, Ladakh's education system faces unique geographical, infrastructural, and policy challenges.
+    </p>
+
+    <div class="ed-challenges__grid">
+      @for (c of challenges; track c.title) {
+        <div class="ed-challenges__card">
+          <div class="ed-challenges__icon">
+            <i class="bi {{ c.icon }}"></i>
+          </div>
+          <h3>{{ c.title }}</h3>
+          <p>{{ c.desc }}</p>
+        </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/contribute" class="btn-la-primary">
+        Help Address These Challenges <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ GOVERNMENT INITIATIVES ═══════════════════ -->
+<section class="ed-initiatives section-padding" id="initiatives">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-megaphone"></i> Policy & Action</span>
+    <h2 class="section-title">Government Initiatives</h2>
+    <p class="section-subtitle">
+      Post-UT status, central and local governments have launched targeted programs to modernise Ladakh's education infrastructure.
+    </p>
+
+    <div class="ed-initiatives__grid">
+      @for (ini of initiatives; track ini.title) {
+        <div class="ed-initiatives__card">
+          <div class="ed-initiatives__badge" [style.background]="ini.color">{{ ini.year }}</div>
+          <div class="ed-initiatives__icon" [style.background]="ini.color + '12'" [style.color]="ini.color">
+            <i class="bi {{ ini.icon }}"></i>
+          </div>
+          <h3>{{ ini.title }}</h3>
+          <p>{{ ini.desc }}</p>
+        </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/contribute" class="btn-la-primary">
+        Contribute to Education <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTRIBUTORS ═══════════════════ -->
+<section class="ed-contributors section-padding" id="contributors">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-star"></i> Pioneers & Champions</span>
+    <h2 class="section-title">Notable Contributors</h2>
+    <p class="section-subtitle">
+      The visionaries, reformers, and tireless workers who shaped education in Ladakh from the 19th century to today.
+    </p>
+
+    <div class="ed-contributors__grid">
+      @for (c of contributors; track c.name) {
+        <div class="ed-contributors__card">
+          <div class="ed-contributors__avatar" [style.background]="c.color">
+            <i class="bi {{ c.icon }}"></i>
+          </div>
+          <h3>{{ c.name }}</h3>
+          <span class="ed-contributors__title" [style.color]="c.color">{{ c.title }}</span>
+          <p>{{ c.desc }}</p>
+          <div class="ed-contributors__achievements">
+            @for (a of c.achievements; track a) {
+              <span class="ed-contributors__chip" [style.borderColor]="c.color + '40'" [style.color]="c.color">
+                <i class="bi bi-check-circle"></i> {{ a }}
+              </span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FUTURE VISION ═══════════════════ -->
+<section class="ed-future section-padding" id="future">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-stars"></i> Looking Ahead</span>
+    <h2 class="section-title">Future Vision</h2>
+    <p class="section-subtitle">
+      Ambitious plans and emerging possibilities that could transform Ladakh into a model of high-altitude education excellence.
+    </p>
+
+    <div class="ed-future__grid">
+      @for (v of futureVision; track v.title) {
+        <div class="ed-future__card">
+          <div class="ed-future__icon">
+            <i class="bi {{ v.icon }}"></i>
+          </div>
+          <h3>{{ v.title }}</h3>
+          <p>{{ v.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<section class="ed-cta">
+  <div class="container text-center">
+    <h2>Explore More of Ladakh</h2>
+    <p>Discover the culture, history, and nature that shape Ladakh's educational journey.</p>
+    <div class="ed-cta__actions">
+      <a routerLink="/culture" class="ed-cta-btn ed-cta-btn--accent"><i class="bi bi-people"></i> Culture &amp; People</a>
+      <a routerLink="/history" class="ed-cta-btn ed-cta-btn--outline"><i class="bi bi-hourglass-split"></i> History</a>
+      <a routerLink="/politics" class="ed-cta-btn ed-cta-btn--outline"><i class="bi bi-bank"></i> Politics</a>
+    </div>
+  </div>
+</section>
+
+
+

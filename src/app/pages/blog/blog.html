@@ -1,0 +1,133 @@
+﻿<!-- ═══════════════════════════════════════════ -->
+<!--              BLOG / ARTICLES PAGE         -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- 1 · Hero -->
+<section class="bl-hero">
+  <div class="bl-hero__overlay"></div>
+  <div class="container position-relative text-center">
+    <p class="la-label text-accent mb-2">Stories & Insights</p>
+    <h1 class="bl-hero__title">The Ladakh Journal</h1>
+    <p class="bl-hero__sub">
+      In-depth articles, stories, and research covering history, culture, nature,
+      politics, travel, and the people of Ladakh.
+    </p>
+    <div class="bl-hero__actions">
+      <a [routerLink]="[]" fragment="articles" class="btn btn-la-accent">
+        <i class="bi bi-journal-richtext me-2"></i>Browse Articles
+      </a>
+      <a routerLink="/contribute" class="btn btn-la-outline" style="border-color:rgba(255,255,255,.3);color:var(--la-white);">
+        <i class="bi bi-pencil-square me-2"></i>Write for Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · Featured Posts -->
+<section class="section-padding">
+  <div class="container">
+    <h2 class="section-title">Featured Stories</h2>
+    <p class="section-subtitle">Editor's picks — our most compelling long-form stories.</p>
+
+    <div class="bl-featured-grid">
+      @for (post of featuredPosts(); track post.slug) {
+        <a [routerLink]="['/blog', post.slug]" class="bl-featured-card">
+          <div class="bl-featured-card__visual" [style.background]="'linear-gradient(135deg, ' + post.color + ', ' + post.color + 'cc)'">
+            <i class="bi" [class]="post.icon"></i>
+            <span class="bl-featured-card__badge">{{ post.category }}</span>
+          </div>
+          <div class="bl-featured-card__body">
+            <div class="bl-featured-card__meta">
+              <span><i class="bi bi-calendar3"></i> {{ post.date }}</span>
+              <span><i class="bi bi-clock"></i> {{ post.readTime }}</span>
+            </div>
+            <h3 class="bl-featured-card__title">{{ post.title }}</h3>
+            <p class="bl-featured-card__excerpt">{{ post.excerpt }}</p>
+            <span class="bl-featured-card__cta">Read Article <i class="bi bi-arrow-right"></i></span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- 3 · All Articles (filterable) -->
+<section class="section-padding bg-snow" id="articles">
+  <div class="container">
+    <h2 class="section-title">All Articles</h2>
+    <p class="section-subtitle">Filter by topic to find what interests you.</p>
+
+    <!-- Filter Chips -->
+    <div class="bl-filters">
+      @for (cat of categories; track cat) {
+        <button
+          class="bl-filters__chip"
+          [class.bl-filters__chip--active]="activeFilter() === cat"
+          (click)="setFilter(cat)">
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <!-- Article Grid -->
+    <div class="bl-grid">
+      @for (post of filteredPosts(); track post.slug; let i = $index) {
+        <a [routerLink]="['/blog', post.slug]" class="bl-card" [class.bl-card--wide]="i === 0">
+          <!-- Visual header -->
+          <div class="bl-card__header" [style.background]="'linear-gradient(135deg, ' + post.color + ' 0%, ' + post.color + 'bb 100%)'">
+            <div class="bl-card__header-pattern"></div>
+            <i class="bi bl-card__header-icon" [class]="post.icon"></i>
+            <span class="bl-card__badge">{{ post.category }}</span>
+            <span class="bl-card__read-time"><i class="bi bi-clock"></i> {{ post.readTime }}</span>
+          </div>
+          <!-- Content body -->
+          <div class="bl-card__body">
+            <div class="bl-card__date">
+              <i class="bi bi-calendar3"></i> {{ post.date }}
+            </div>
+            <h4 class="bl-card__title">{{ post.title }}</h4>
+            <p class="bl-card__excerpt">{{ post.excerpt }}</p>
+            <div class="bl-card__footer">
+              <span class="bl-card__cta">Read Article <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </div>
+          <!-- Bottom accent bar -->
+          <div class="bl-card__accent" [style.background]="'linear-gradient(90deg, ' + post.color + ', ' + post.color + '55)'"></div>
+        </a>
+      }
+    </div>
+
+    @if (filteredPosts().length === 0) {
+      <div class="bl-empty">
+        <i class="bi bi-journal-x"></i>
+        <h3>No articles found</h3>
+        <p>No articles match this filter. Try another topic.</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- 4 · CTA -->
+<section class="bl-cta">
+  <div class="bl-cta__overlay"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <h2 class="bl-cta__title">Have a Story to Share?</h2>
+        <p class="bl-cta__desc">
+          Whether you're a historian, traveller, or someone who calls Ladakh home —
+          we'd love to publish your story on the Ladakh Journal.
+        </p>
+      </div>
+      <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
+        <a routerLink="/contribute" class="btn btn-la-accent btn-lg me-2">
+          <i class="bi bi-pencil-square me-2"></i>Submit Article
+        </a>
+        <a routerLink="/about" class="btn btn-la-outline btn-lg" style="border-color:rgba(255,255,255,.3);color:var(--la-white);">
+          <i class="bi bi-info-circle me-2"></i>About Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

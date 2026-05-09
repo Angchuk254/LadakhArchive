@@ -1,0 +1,330 @@
+/* ╔══════════════════════════════════════════════════╗
+   ║          ABOUT PAGE — ab- prefix                 ║
+   ╚══════════════════════════════════════════════════╝ */
+
+/* ── 1. Hero ── */
+.ab-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--la-primary-dark), var(--la-primary), #0d9488);
+  color: var(--la-white);
+  text-align: center;
+  padding: 7rem 0 5rem;
+  overflow: hidden;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 70%, rgba(200, 112, 42, .12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  &__title {
+    font-family: var(--la-font-heading);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  &__sub {
+    font-size: 1.15rem;
+    opacity: .88;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+}
+
+/* ── 2. Mission ── */
+.ab-mission {
+  &__visual {
+    background: linear-gradient(135deg, var(--la-primary-dark), var(--la-primary));
+    border-radius: var(--la-radius-xl);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--la-white);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    font-size: 4rem;
+    opacity: .3;
+    margin-bottom: 1.5rem;
+  }
+
+  &__tagline {
+    font-family: var(--la-font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.35;
+    opacity: .9;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--la-gray-600);
+    margin-bottom: 1rem;
+  }
+}
+
+/* ── 3. Values ── */
+.ab-value-card {
+  padding: 2rem 1.5rem;
+  border-radius: var(--la-radius-lg);
+  background: var(--la-white);
+  box-shadow: var(--la-shadow);
+  text-align: center;
+  height: 100%;
+  transition: var(--la-transition);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--la-shadow-lg);
+  }
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1rem;
+    border-radius: var(--la-radius);
+    background: rgba(200, 112, 42, .1);
+    color: var(--la-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
+
+  &__title {
+    font-family: var(--la-font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--la-primary);
+    margin-bottom: .5rem;
+  }
+
+  &__desc {
+    font-size: .85rem;
+    color: var(--la-gray-500);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+}
+
+/* ── 4. Journey Timeline ── */
+.ab-journey__timeline {
+  max-width: 700px;
+  margin: 2.5rem auto 0;
+  position: relative;
+  padding-left: 2.5rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--la-accent), var(--la-primary));
+    border-radius: 3px;
+  }
+}
+
+.ab-journey__item {
+  position: relative;
+  padding-bottom: 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: .35rem;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--la-accent);
+    border: 3px solid var(--la-white);
+    box-shadow: 0 0 0 2px var(--la-accent);
+    transform: translateX(-5px);
+  }
+
+  &:last-child { padding-bottom: 0; }
+}
+
+.ab-journey__year {
+  font-family: var(--la-font-heading);
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--la-accent);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .25rem;
+}
+
+.ab-journey__content {
+  h5 {
+    font-family: var(--la-font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--la-primary);
+    margin-bottom: .3rem;
+  }
+
+  p {
+    font-size: .9rem;
+    color: var(--la-gray-500);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+}
+
+/* ── 5. Team ── */
+.ab-team-card {
+  padding: 2rem 1.5rem;
+  border-radius: var(--la-radius-lg);
+  background: var(--la-white);
+  box-shadow: var(--la-shadow);
+  text-align: center;
+  height: 100%;
+  transition: var(--la-transition);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--la-shadow-lg);
+  }
+
+  &__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+  }
+
+  &__name {
+    font-family: var(--la-font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--la-primary);
+    margin-bottom: .2rem;
+  }
+
+  &__role {
+    display: block;
+    font-size: .8rem;
+    color: var(--la-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    margin-bottom: .7rem;
+  }
+
+  &__desc {
+    font-size: .85rem;
+    color: var(--la-gray-500);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+}
+
+/* ── 6. Partners ── */
+.ab-partners__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.ab-partners__card {
+  padding: 1.8rem 1.5rem;
+  border-radius: var(--la-radius-lg);
+  background: var(--la-snow);
+  border: 1px solid var(--la-gray-200);
+  text-align: center;
+  transition: var(--la-transition);
+
+  &:hover {
+    border-color: var(--la-accent);
+    box-shadow: var(--la-shadow);
+  }
+}
+
+.ab-partners__abbr {
+  font-family: var(--la-font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--la-primary);
+  margin-bottom: .3rem;
+}
+
+.ab-partners__name {
+  font-size: .8rem;
+  color: var(--la-gray-500);
+  line-height: 1.5;
+}
+
+/* ── 7. CTA ── */
+.ab-cta {
+  position: relative;
+  padding: 5rem 0;
+  background: var(--la-dark);
+  color: var(--la-white);
+  overflow: hidden;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(200, 112, 42, .12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  &__title {
+    font-family: var(--la-font-heading);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  &__desc {
+    font-size: 1.05rem;
+    opacity: .82;
+    line-height: 1.75;
+    max-width: 560px;
+    margin: 0 auto 2rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+  .ab-mission__visual { min-height: 260px; padding: 3rem 1.5rem; }
+  .ab-partners__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .ab-hero { min-height: 340px; padding: 5rem 0 3rem; }
+  .ab-mission__visual { min-height: 220px; }
+  .ab-partners__grid { grid-template-columns: repeat(2, 1fr); }
+  .ab-cta { padding: 3.5rem 0; }
+}
+
+@media (max-width: 480px) {
+  .ab-hero { min-height: 280px; padding: 4.5rem 0 2.5rem; }
+  .ab-partners__grid { grid-template-columns: 1fr; }
+}

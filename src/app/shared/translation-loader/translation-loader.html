@@ -1,0 +1,9 @@
+@if (service.loading()) {
+  <div class="la-tloader">
+    <div class="la-tloader__card">
+      <div class="la-tloader__spinner"></div>
+      <p class="la-tloader__title">{{ service.loadingMessage() }}</p>
+      <p class="la-tloader__sub">Please wait while we translate the page</p>
+    </div>
+  </div>
+}

@@ -1,0 +1,134 @@
+﻿<!-- ===== HERO BANNER ===== -->
+<section class="vs-hero">
+  <div class="vs-hero__overlay"></div>
+  <div class="container position-relative" style="z-index: 2">
+    <nav class="vs-breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/" class="vs-breadcrumb__link"><i class="bi bi-house"></i> Home</a>
+      <i class="bi bi-chevron-right vs-breadcrumb__sep"></i>
+      <span class="vs-breadcrumb__current">Village Search</span>
+    </nav>
+    <h1 class="vs-hero__title">Search Villages in Ladakh</h1>
+    <p class="vs-hero__subtitle">
+      Discover the villages of Ladakh — their history, elevation, population,
+      nearby landmarks, and local facilities.
+    </p>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section class="vs-stats bg-snow">
+  <div class="container">
+    <div class="vs-stats__grid">
+      @for (s of stats; track s.label) {
+        <div class="vs-stats__item">
+          <i class="bi vs-stats__icon" [class]="s.icon"></i>
+          <span class="vs-stats__value">{{ s.value }}</span>
+          <span class="vs-stats__label">{{ s.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEARCH BAR ===== -->
+<section class="vs-search section-padding" id="search">
+  <div class="container">
+    <div class="vs-search__box">
+      <i class="bi bi-search vs-search__icon"></i>
+      <input
+        type="text"
+        class="vs-search__input"
+        placeholder="Search by village name, pincode, or district..."
+        [ngModel]="query()"
+        (ngModelChange)="query.set($event)"
+        aria-label="Search villages by name or pincode"
+      />
+      @if (query()) {
+        <button class="vs-search__clear" (click)="query.set('')" aria-label="Clear search">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      }
+    </div>
+    <p class="vs-search__count">
+      Showing {{ filteredVillages().length }} of {{ villages.length }} villages
+    </p>
+  </div>
+</section>
+
+<!-- ===== VILLAGE GRID ===== -->
+<section class="vs-grid section-padding-sm" id="results">
+  <div class="container">
+    @if (filteredVillages().length === 0) {
+      <div class="vs-empty">
+        <i class="bi bi-search"></i>
+        <h3>No villages found</h3>
+        <p>Try searching with a different name or pincode.</p>
+      </div>
+    } @else {
+      <div class="vs-grid__cards">
+        @for (v of filteredVillages(); track v.slug) {
+          <a class="vs-card" [routerLink]="['/village-search', v.slug]">
+            <!-- Colored header band -->
+            <div class="vs-card__header" [style.background]="v.color">
+              <div class="vs-card__header-pattern"></div>
+              <div class="vs-card__header-icon">
+                <i class="bi" [class]="v.icon"></i>
+              </div>
+              <span class="vs-card__elev-pill">
+                <i class="bi bi-triangle"></i> {{ v.elevation }}
+              </span>
+            </div>
+
+            <!-- Card body -->
+            <div class="vs-card__body">
+              <div class="vs-card__district-tag" [style.color]="v.color">
+                <i class="bi bi-geo-alt-fill"></i> {{ v.district }} District
+              </div>
+              <h4 class="vs-card__name">{{ v.name }}</h4>
+              <p class="vs-card__known">{{ v.knownFor }}</p>
+
+              <div class="vs-card__meta-row">
+                <span class="vs-card__meta-item">
+                  <i class="bi bi-pin-map-fill"></i> {{ v.pincode }}
+                </span>
+                <span class="vs-card__meta-item">
+                  <i class="bi bi-people-fill"></i> {{ v.population | number }}
+                </span>
+                <span class="vs-card__meta-item">
+                  <i class="bi bi-map"></i> {{ v.block }}
+                </span>
+              </div>
+
+              <div class="vs-card__action">
+                <span class="vs-card__cta" [style.color]="v.color">
+                  Explore Village <i class="bi bi-arrow-right"></i>
+                </span>
+                <span class="vs-card__arrow" [style.background]="v.color">
+                  <i class="bi bi-arrow-up-right"></i>
+                </span>
+              </div>
+            </div>
+          </a>
+        }
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="vs-cta">
+  <div class="vs-cta__overlay"></div>
+  <div class="container position-relative" style="z-index: 2">
+    <h2>Know a Village We're Missing?</h2>
+    <p>Help us build the most comprehensive village directory of Ladakh.</p>
+    <div class="vs-cta__actions">
+      <a routerLink="/contribute" class="btn-la-primary">
+        <i class="bi bi-plus-circle"></i> Contribute Village Data
+      </a>
+      <a routerLink="/maps" class="btn-la-ghost">
+        <i class="bi bi-map"></i> Explore Maps
+      </a>
+    </div>
+  </div>
+</section>
+

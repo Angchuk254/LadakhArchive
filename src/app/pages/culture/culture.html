@@ -1,0 +1,519 @@
+﻿<!-- ===== HERO BANNER ===== -->
+<section class="cu-hero">
+  <div class="cu-hero__overlay"></div>
+  <div class="container cu-hero__container">
+    <nav class="cu-breadcrumb">
+      <a routerLink="/"><i class="bi bi-house-fill"></i> Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>Culture &amp; People</span>
+    </nav>
+    <div class="cu-hero__content">
+      <span class="cu-hero__badge">
+        <i class="bi bi-people-fill"></i> Living Heritage of the Himalayas
+      </span>
+      <h1 class="cu-hero__title">
+        Culture &amp; People of<br />
+        <span class="text-accent">Ladakh</span>
+      </h1>
+      <p class="cu-hero__subtitle">
+        A tapestry of Buddhist monks, Muslim traders, nomadic herders, and ancient Aryan tribes —
+        discover the traditions, festivals, languages, and daily rhythms that make Ladakh one of
+        the world's most extraordinary cultural landscapes.
+      </p>
+    </div>
+  </div>
+  <div class="cu-hero__wave">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,60 C360,100 720,0 1080,60 C1260,90 1380,80 1440,70 L1440,100 L0,100 Z" fill="var(--la-white)"/>
+    </svg>
+  </div>
+</section>
+
+
+
+<!-- ===== OVERVIEW / INTRO ===== -->
+<section class="section-padding" id="overview">
+  <div class="container">
+    <div class="cu-intro">
+      <div class="cu-intro__text">
+        <span class="la-label"><i class="bi bi-book"></i> Overview</span>
+        <h2>Where Cultures Converge at 3,500 Metres</h2>
+        <p>
+          Ladakh sits at the crossroads of the Tibetan Plateau, Central Asia, Kashmir, and the Indian subcontinent —
+          and its culture reflects this unique position. Buddhist monasteries perch on hilltops while Islamic mosques
+          anchor valley towns. Nomadic herders wander vast plateaus as flower-crowned Aryan tribes maintain customs
+          unchanged for millennia.
+        </p>
+        <p>
+          Despite harsh geography and extreme isolation, Ladakhi communities have built a sophisticated culture
+          of cooperation, spiritual depth, and artistic excellence. The ancient irrigation systems, polyandrous
+          family structures, and intricate monastic traditions all reveal a people who have learned to thrive
+          where survival itself is an achievement.
+        </p>
+      </div>
+      <div class="cu-intro__stats">
+        <div class="cu-intro__stat">
+          <span class="cu-intro__stat-number">6+</span>
+          <span class="cu-intro__stat-label">Ethnic Groups</span>
+        </div>
+        <div class="cu-intro__stat">
+          <span class="cu-intro__stat-number">6</span>
+          <span class="cu-intro__stat-label">Languages Spoken</span>
+        </div>
+        <div class="cu-intro__stat">
+          <span class="cu-intro__stat-number">30+</span>
+          <span class="cu-intro__stat-label">Active Monasteries</span>
+        </div>
+        <div class="cu-intro__stat">
+          <span class="cu-intro__stat-number">8+</span>
+          <span class="cu-intro__stat-label">Major Festivals</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ETHNIC GROUPS ===== -->
+<section class="section-padding bg-snow" id="ethnic">
+  <div class="container">
+    <h2 class="section-title">The People of Ladakh</h2>
+    <p class="section-subtitle">
+      Ladakh is home to a remarkable mosaic of ethnic communities — each with distinct origins, traditions, and identities.
+    </p>
+
+    <div class="cu-ethnic-grid">
+      @for (group of ethnicGroups; track group.name) {
+        <div class="cu-ethnic-card">
+          <div class="cu-ethnic-card__header" [style.background]="'linear-gradient(135deg, ' + group.color + ', ' + group.color + 'cc)'">
+            <div class="cu-ethnic-card__bg-icon">
+              <i class="bi" [class]="group.icon"></i>
+            </div>
+            <div class="cu-ethnic-card__icon">
+              <i class="bi" [class]="group.icon"></i>
+            </div>
+            <div>
+              <h4 class="cu-ethnic-card__name">{{ group.name }}</h4>
+              <span class="cu-ethnic-card__population">{{ group.population }} · {{ group.region }}</span>
+            </div>
+          </div>
+          <div class="cu-ethnic-card__body">
+            <div class="cu-ethnic-card__meta">
+              <span><i class="bi bi-yin-yang"></i> {{ group.religion }}</span>
+              <span><i class="bi bi-translate"></i> {{ group.language }}</span>
+            </div>
+            <p class="cu-ethnic-card__desc">{{ group.desc }}</p>
+            <div class="cu-ethnic-card__traits">
+              @for (trait of group.traits; track trait) {
+                <span class="cu-ethnic-card__trait">{{ trait }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/history" class="btn-la-primary">
+        Explore Ladakh's History <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LANGUAGES & SCRIPTS ===== -->
+<section class="section-padding" id="languages">
+  <div class="container">
+    <h2 class="section-title">Languages &amp; Scripts</h2>
+    <p class="section-subtitle">
+      A linguistic tapestry spanning Tibeto-Burman, Dardic, and Indo-Aryan language families — each carrying centuries of oral and written tradition.
+    </p>
+
+    <div class="cu-lang-grid">
+      @for (lang of languages; track lang.name) {
+        <div class="cu-lang-card">
+          <div class="cu-lang-card__icon-wrap" [style.background]="lang.color + '15'" [style.color]="lang.color">
+            <i class="bi" [class]="lang.icon"></i>
+          </div>
+          <div class="cu-lang-card__body">
+            <h5 class="cu-lang-card__name">{{ lang.name }}</h5>
+            <div class="cu-lang-card__meta">
+              <span><i class="bi bi-people"></i> {{ lang.speakers }}</span>
+              <span><i class="bi bi-pen"></i> {{ lang.script }}</span>
+              <span><i class="bi bi-diagram-3"></i> {{ lang.family }}</span>
+            </div>
+            <p class="cu-lang-card__desc">{{ lang.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELIGION & SPIRITUALITY ===== -->
+<section class="cu-religion-section" id="religion">
+  <div class="container">
+    <div class="cu-religion-header">
+      <span class="la-label"><i class="bi bi-peace-fill"></i> Faith & Spirituality</span>
+      <h2 class="section-title">Religious Landscape</h2>
+      <p class="section-subtitle">
+        Buddhism and Islam coexist in rare harmony, alongside traces of the ancient Bon religion — creating a spiritual diversity unmatched in the Himalayas.
+      </p>
+    </div>
+
+    <div class="cu-religion-content">
+      <!-- SVG Donut Chart -->
+      <div class="cu-religion-chart">
+        <svg viewBox="0 0 200 200" class="cu-donut">
+          @for (r of religions; track r.name) {
+            <circle cx="100" cy="100" r="80"
+              fill="none"
+              [attr.stroke]="r.color"
+              stroke-width="28"
+              [attr.stroke-dasharray]="(r.pct * 5.027) + ' ' + (502.7 - r.pct * 5.027)"
+              [attr.stroke-dashoffset]="-(r.offset * 5.027)"
+              stroke-linecap="round" />
+          }
+          <text x="100" y="92" text-anchor="middle" fill="var(--la-white)" font-size="22" font-weight="800" font-family="var(--la-font-heading)">3</text>
+          <text x="100" y="115" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10" font-weight="500">Major Faiths</text>
+        </svg>
+      </div>
+
+      <!-- Religion Cards -->
+      <div class="cu-religion-cards">
+        @for (r of religions; track r.name) {
+          <div class="cu-religion-card">
+            <div class="cu-religion-card__dot" [style.background]="r.color"></div>
+            <div>
+              <div class="cu-religion-card__header">
+                <h5>
+                  <i class="bi" [class]="r.icon" [style.color]="r.color"></i>
+                  {{ r.name }}
+                </h5>
+                <span class="cu-religion-card__pct" [style.color]="r.color">{{ r.pct }}%</span>
+              </div>
+              <p class="cu-religion-card__desc">{{ r.desc }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FESTIVALS & CELEBRATIONS ===== -->
+<section class="section-padding bg-snow" id="festivals">
+  <div class="container">
+    <h2 class="section-title">Festivals &amp; Celebrations</h2>
+    <p class="section-subtitle">
+      From mystical oracle trances to grand masked dances and solemn processions — Ladakh's festivals are windows into its soul.
+    </p>
+
+    <div class="cu-festivals-grid">
+      @for (f of festivals; track f.name) {
+        <a class="cu-festival-card" [routerLink]="['/culture/festival', f.slug]">
+          <div class="cu-festival-card__visual" [style.background]="'linear-gradient(135deg, ' + f.color + ', ' + f.color + 'aa)'">
+            <i class="bi" [class]="f.icon"></i>
+            <span class="cu-festival-card__type-badge">{{ f.type }}</span>
+          </div>
+          <div class="cu-festival-card__body">
+            <h5 class="cu-festival-card__name">{{ f.name }}</h5>
+            <div class="cu-festival-card__meta">
+              <span><i class="bi bi-calendar3"></i> {{ f.month }}</span>
+              <span><i class="bi bi-clock"></i> {{ f.duration }}</span>
+            </div>
+            <p class="cu-festival-card__desc">{{ f.desc }}</p>
+            <span class="cu-festival-card__cta">
+              <i class="bi bi-eye"></i> Learn More
+            </span>
+          </div>
+        </a>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/gallery" class="btn-la-primary">
+        View Festival Gallery <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRADITIONAL DRESS ===== -->
+<section class="section-padding" id="dress">
+  <div class="container">
+    <h2 class="section-title">Traditional Dress &amp; Attire</h2>
+    <p class="section-subtitle">
+      Practical, beautiful, and deeply symbolic — Ladakhi traditional clothing reflects the demands of high-altitude life and the pride of centuries of identity.
+    </p>
+
+    <div class="cu-dress-grid">
+      @for (d of dress; track d.name) {
+        <div class="cu-dress-card">
+          <div class="cu-dress-card__visual">
+            <i class="bi" [class]="d.icon"></i>
+          </div>
+          <div class="cu-dress-card__body">
+            <div class="cu-dress-card__top">
+              <h5 class="cu-dress-card__name">{{ d.name }}</h5>
+              <span class="cu-dress-card__gender">{{ d.gender }}</span>
+            </div>
+            <p class="cu-dress-card__desc">{{ d.desc }}</p>
+            <span class="cu-dress-card__material">
+              <i class="bi bi-scissors"></i> {{ d.material }}
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CUISINE & FOOD ===== -->
+<section class="section-padding bg-snow" id="cuisine">
+  <div class="container">
+    <h2 class="section-title">Cuisine &amp; Traditional Food</h2>
+    <p class="section-subtitle">
+      Hearty, warming, and designed for survival at altitude — Ladakhi cuisine is a delicious reflection of the land itself.
+    </p>
+
+    <div class="cu-cuisine-grid">
+      @for (dish of cuisine; track dish.name) {
+        <div class="cu-cuisine-card">
+          <div class="cu-cuisine-card__icon-wrap">
+            <i class="bi" [class]="dish.icon"></i>
+          </div>
+          <div class="cu-cuisine-card__body">
+            <div class="cu-cuisine-card__top">
+              <h5 class="cu-cuisine-card__name">{{ dish.name }}</h5>
+              <span class="cu-cuisine-card__category">{{ dish.category }}</span>
+            </div>
+            <p class="cu-cuisine-card__desc">{{ dish.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/gallery" class="btn-la-primary">
+        Explore Ladakhi Food Gallery <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MUSIC, DANCE & PERFORMING ARTS ===== -->
+<section class="cu-arts-section" id="arts">
+  <div class="container">
+    <div class="cu-arts-header">
+      <span class="la-label"><i class="bi bi-music-note-list"></i> Performing Arts</span>
+      <h2 class="section-title">Music, Dance &amp; Drama</h2>
+      <p class="section-subtitle">
+        From the haunting sound of the surna echoing across valleys to the electrifying whirl of masked Cham dancers — Ladakh's performing traditions are alive and extraordinary.
+      </p>
+    </div>
+
+    <div class="cu-arts-grid">
+      @for (art of performingArts; track art.name) {
+        <div class="cu-art-card">
+          <div class="cu-art-card__icon">
+            <i class="bi" [class]="art.icon"></i>
+          </div>
+          <div class="cu-art-card__body">
+            <h5 class="cu-art-card__name">{{ art.name }}</h5>
+            <span class="cu-art-card__type">{{ art.type }}</span>
+            <p class="cu-art-card__desc">{{ art.desc }}</p>
+            <span class="cu-art-card__where">
+              <i class="bi bi-geo-alt"></i> {{ art.where }}
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CULTURAL PHOTO GALLERY ===== -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-camera-fill"></i> Visual Stories</span>
+    <h2 class="section-title">Cultural Photography</h2>
+    <p class="section-subtitle">
+      Glimpses into the vibrant traditions, rituals, and daily rhythms that define life across Ladakh's valleys and plateaus.
+    </p>
+
+    <div class="cu-gallery">
+      @for (img of gallery; track img.area) {
+        <div class="cu-gallery__tile" [style.gridArea]="img.area" [style.background]="img.gradient">
+          <div class="cu-gallery__tile-overlay"></div>
+          <i class="bi cu-gallery__tile-icon" [class]="img.icon"></i>
+          <div class="cu-gallery__tile-label">
+            <h5>{{ img.title }}</h5>
+            <p>{{ img.caption }}</p>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/gallery" class="btn-la-primary">
+        View Arts & Culture Gallery <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEO DOCUMENTARY SHOWCASE ===== -->
+<section class="cu-videos-section">
+  <div class="container">
+    <div class="cu-videos-header">
+      <span class="la-label"><i class="bi bi-camera-reels-fill"></i> Watch &amp; Explore</span>
+      <h2 class="section-title">Cultural Documentaries</h2>
+      <p class="section-subtitle">
+        Immerse yourself in the stories of Ladakh — from the frozen Changthang to the thundering drums of Hemis.
+      </p>
+    </div>
+
+    <!-- Featured Video -->
+    <div class="cu-video-featured" (click)="playVideo(videos[0])">
+      <div class="cu-video-featured__visual" [style.background]="videos[0].gradient">
+        <img class="cu-video-featured__thumb" [src]="'https://img.youtube.com/vi/' + videos[0].youtubeId + '/hqdefault.jpg'" [alt]="videos[0].title">
+        <div class="cu-video-featured__overlay"></div>
+        <div class="cu-video-featured__play">
+          <i class="bi bi-play-fill"></i>
+        </div>
+        <div class="cu-video-featured__badge">
+          <i class="bi bi-star-fill"></i> Featured
+        </div>
+        <div class="cu-video-featured__duration">
+          <i class="bi bi-clock"></i> {{ videos[0].duration }}
+        </div>
+      </div>
+      <div class="cu-video-featured__info">
+        <span class="cu-video-featured__type">{{ videos[0].type }}</span>
+        <h3 class="cu-video-featured__title">{{ videos[0].title }}</h3>
+        <p class="cu-video-featured__desc">{{ videos[0].desc }}</p>
+        <div class="cu-video-featured__meta">
+          <span><i class="bi bi-camera-reels"></i> HD Quality</span>
+          <span><i class="bi bi-translate"></i> Ladakhi / English</span>
+          <span><i class="bi bi-clock"></i> {{ videos[0].duration }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Grid -->
+    <div class="cu-videos-grid">
+      @for (vid of videos; track vid.title; let i = $index) {
+        @if (i > 0) {
+          <div class="cu-video-card" (click)="playVideo(vid)">
+            <div class="cu-video-card__visual" [style.background]="vid.gradient">
+              <img class="cu-video-card__thumb" [src]="'https://img.youtube.com/vi/' + vid.youtubeId + '/hqdefault.jpg'" [alt]="vid.title">
+              <div class="cu-video-card__overlay"></div>
+              <div class="cu-video-card__play">
+                <i class="bi bi-play-fill"></i>
+              </div>
+              <span class="cu-video-card__duration">
+                <i class="bi bi-clock"></i> {{ vid.duration }}
+              </span>
+            </div>
+            <div class="cu-video-card__body">
+              <span class="cu-video-card__type">{{ vid.type }}</span>
+              <h5 class="cu-video-card__title">{{ vid.title }}</h5>
+              <p class="cu-video-card__desc">{{ vid.desc }}</p>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEO PLAYER MODAL ===== -->
+@if (activeVideo(); as videoUrl) {
+  <div class="cu-player-overlay" (click)="closeVideo()">
+    <div class="cu-player" (click)="$event.stopPropagation()">
+      <div class="cu-player__header">
+        <h4 class="cu-player__title">
+          <i class="bi bi-play-circle-fill"></i> {{ activeVideoTitle() }}
+        </h4>
+        <button class="cu-player__close" (click)="closeVideo()" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="cu-player__frame-wrap">
+        <iframe
+          class="cu-player__frame"
+          [src]="videoUrl"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          frameborder="0">
+        </iframe>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- ===== CRAFTS & ARTISANSHIP ===== -->
+<section class="section-padding" id="crafts">
+  <div class="container">
+    <h2 class="section-title">Crafts &amp; Artisanship</h2>
+    <p class="section-subtitle">
+      Master artisans who transform wool into clouds, metal into prayer, and pigment into divinity.
+    </p>
+
+    <div class="cu-crafts-grid">
+      @for (craft of crafts; track craft.name) {
+        <div class="cu-craft-card">
+          <div class="cu-craft-card__visual" [style.background]="'linear-gradient(135deg, ' + craft.color + ', ' + craft.color + 'aa)'">
+            <i class="bi cu-craft-card__bg-ico" [class]="craft.icon"></i>
+            <i class="bi" [class]="craft.icon"></i>
+          </div>
+          <div class="cu-craft-card__body">
+            <h5 class="cu-craft-card__name">{{ craft.name }}</h5>
+            <p class="cu-craft-card__desc">{{ craft.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAILY LIFE & SOCIAL STRUCTURE ===== -->
+<section class="section-padding bg-snow" id="daily-life">
+  <div class="container">
+    <h2 class="section-title">Daily Life &amp; Social Structure</h2>
+    <p class="section-subtitle">
+      Behind the breathtaking landscapes lies a way of life shaped by altitude, scarcity, and an extraordinary sense of community.
+    </p>
+
+    <div class="cu-daily-grid">
+      @for (item of dailyLife; track item.title) {
+        <div class="cu-daily-card">
+          <div class="cu-daily-card__icon">
+            <i class="bi" [class]="item.icon"></i>
+          </div>
+          <h5 class="cu-daily-card__title">{{ item.title }}</h5>
+          <p class="cu-daily-card__desc">{{ item.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cu-cta">
+  <div class="container">
+    <div class="cu-cta__inner">
+      <i class="bi bi-heart-fill cu-cta__icon"></i>
+      <h2>Help Preserve Ladakh's Living Culture</h2>
+      <p>
+        Do you have stories, photographs, or knowledge about Ladakhi traditions, festivals, or crafts?
+        Share them with us and help document this extraordinary cultural heritage for future generations.
+      </p>
+      <div class="cu-cta__actions">
+        <a routerLink="/contribute" class="btn-la-accent">
+          <i class="bi bi-pencil-square"></i> Contribute Now
+        </a>
+        <a routerLink="/history" class="btn-la-outline cu-cta__outline-btn">
+          <i class="bi bi-clock-history"></i> Explore History
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

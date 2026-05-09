@@ -1,0 +1,372 @@
+﻿<!-- ╔══════════════════════════════════════════════════╗
+     ║            MAPS — LadakhArchive                  ║
+     ╚══════════════════════════════════════════════════╝ -->
+
+<!-- ── 1. Hero ── -->
+<section class="mp-hero">
+  <div class="mp-hero__overlay"></div>
+  <div class="container position-relative" style="z-index:2">
+    <span class="la-label"><i class="bi bi-map me-1"></i> Maps</span>
+    <h1 class="mp-hero__title">Maps of Ladakh</h1>
+    <p class="mp-hero__sub">
+      Interactive maps covering every region, route, monastery, national park,
+      and adventure trail across the Land of High Passes — from the Indus Valley
+      to the Karakoram frontier.
+    </p>
+    <div class="mp-hero__actions">
+      <a class="btn btn-la-primary" [routerLink]="[]" fragment="map-explorer"><i class="bi bi-compass me-2"></i>Explore Maps</a>
+      <a class="btn btn-la-outline" [routerLink]="[]" fragment="passes"><i class="bi bi-signpost-split me-2"></i>Mountain Passes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. Stats ── -->
+<section class="mp-stats bg-snow">
+  <div class="container">
+    <div class="row g-4">
+      @for (s of stats; track s.label) {
+        <div class="col-6 col-md-3">
+          <div class="mp-stats__card text-center">
+            <i class="bi {{ s.icon }} mp-stats__icon"></i>
+            <div class="mp-stats__value">{{ s.value }}</div>
+            <div class="mp-stats__label">{{ s.label }}</div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. Overview Embed Map ── -->
+<section class="mp-overview section-padding">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-globe-asia-australia me-1"></i> Overview</span>
+    <h2 class="section-title">Ladakh at a Glance</h2>
+    <p class="section-subtitle">
+      An overview of the entire Ladakh Union Territory — situated between the Kunlun Range to the north
+      and the Great Himalayas to the south, spanning 59,146 km² at an average elevation of 3,500 metres.
+    </p>
+
+    <div class="mp-overview__map-wrap">
+      <app-leaflet-map
+        [lat]="34.1526"
+        [lng]="77.5771"
+        title="Ladakh Union Territory"
+        [zoom]="6"
+        height="480px">
+      </app-leaflet-map>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. Map Explorer (Filter + Grid) ── -->
+<section class="mp-explorer section-padding bg-snow" id="map-explorer">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-search me-1"></i> Explorer</span>
+    <h2 class="section-title">Map Collection</h2>
+    <p class="section-subtitle">Browse our comprehensive collection of interactive maps by category.</p>
+
+    <!-- Category Pills -->
+    <div class="mp-filter__pills">
+      @for (cat of categories; track cat.value) {
+        <button
+          class="mp-filter__pill"
+          [class.mp-filter__pill--active]="activeCategory() === cat.value"
+          (click)="setCategory(cat.value)"
+        >
+          <i class="bi {{ cat.icon }} me-1"></i>
+          {{ cat.label }}
+          <span class="mp-filter__count">{{ getCategoryCount(cat.value) }}</span>
+        </button>
+      }
+    </div>
+
+    <!-- Map Cards Grid -->
+    @if (filteredMaps().length === 0) {
+      <div class="mp-empty text-center py-5">
+        <i class="bi bi-map mp-empty__icon"></i>
+        <h4>No maps in this category yet</h4>
+        <p class="text-muted">Check back soon — our collection is growing.</p>
+      </div>
+    } @else {
+      <div class="row g-4 mt-1">
+        @for (map of filteredMaps(); track map.id) {
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div class="mp-card" (click)="openMap(map)">
+              <div class="mp-card__visual" [style.background]="map.gradient">
+                <i class="bi {{ map.icon }} mp-card__icon"></i>
+                <div class="mp-card__overlay">
+                  <i class="bi bi-arrows-fullscreen mp-card__expand"></i>
+                </div>
+                <div class="mp-card__badge">
+                  <i class="bi bi-geo-alt me-1"></i>{{ map.locations.length }} locations
+                </div>
+              </div>
+              <div class="mp-card__body">
+                <div class="mp-card__tags">
+                  @for (tag of map.tags; track tag) {
+                    <span class="mp-card__tag">{{ tag }}</span>
+                  }
+                </div>
+                <h5 class="mp-card__title">{{ map.title }}</h5>
+                <p class="mp-card__desc">{{ map.desc }}</p>
+                <div class="mp-card__meta">
+                  <span><i class="bi bi-rulers me-1"></i>{{ map.area }}</span>
+                  <span><i class="bi bi-arrow-up me-1"></i>{{ map.elevation }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ── 5. Mountain Passes ── -->
+<section class="mp-passes section-padding" id="passes">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-triangle me-1"></i> Mountain Passes</span>
+    <h2 class="section-title">Key Mountain Passes</h2>
+    <p class="section-subtitle">
+      Ladakh is accessed and traversed through some of the world's highest motorable mountain passes.
+    </p>
+
+    <div class="row g-4 mt-2">
+      @for (pass of passes; track pass.name) {
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="mp-pass-card">
+            <div class="mp-pass-card__top" [style.background]="pass.gradient">
+              <span class="mp-pass-card__elev">{{ pass.elevation }}</span>
+            </div>
+            <div class="mp-pass-card__body">
+              <h5 class="mp-pass-card__name">{{ pass.name }}</h5>
+              <p class="mp-pass-card__route"><i class="bi bi-signpost-split me-1"></i>{{ pass.route }}</p>
+              <span class="mp-pass-card__status">
+                <i class="bi bi-calendar3 me-1"></i>{{ pass.status }}
+              </span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. Elevation Profiles ── -->
+<section class="mp-elevation section-padding bg-snow">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-graph-up me-1"></i> Elevation</span>
+    <h2 class="section-title">Route Elevation Profiles</h2>
+    <p class="section-subtitle">
+      Visual elevation profiles of the two major highways into Ladakh — essential planning for drivers and cyclists.
+    </p>
+
+    <div class="row g-4 mt-2">
+      @for (profile of elevationProfiles; track profile.name) {
+        <div class="col-12 col-lg-6">
+          <div class="mp-elev-card">
+            <div class="mp-elev-card__header">
+              <h5 class="mp-elev-card__title">{{ profile.name }} Highway</h5>
+              <div class="mp-elev-card__stats">
+                <span><i class="bi bi-rulers me-1"></i>{{ profile.distance }}</span>
+                <span><i class="bi bi-clock me-1"></i>{{ profile.days }}</span>
+                <span><i class="bi bi-arrow-up me-1"></i>Max: {{ profile.maxAlt }}</span>
+              </div>
+            </div>
+            <div class="mp-elev-card__chart">
+              <svg viewBox="0 0 700 240" preserveAspectRatio="xMidYMid meet">
+                <!-- Grid lines -->
+                <line x1="0" y1="50" x2="700" y2="50" stroke="var(--la-gray-200)" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="0" y1="100" x2="700" y2="100" stroke="var(--la-gray-200)" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="0" y1="150" x2="700" y2="150" stroke="var(--la-gray-200)" stroke-width="0.5" stroke-dasharray="4"/>
+
+                <!-- Altitude labels -->
+                <text x="705" y="54" fill="var(--la-gray-400)" font-size="9">5000m</text>
+                <text x="705" y="104" fill="var(--la-gray-400)" font-size="9">3333m</text>
+                <text x="705" y="154" fill="var(--la-gray-400)" font-size="9">1667m</text>
+
+                <!-- Fill -->
+                <path [attr.d]="getElevationPath(profile)" [attr.fill]="profile.color" opacity="0.12"/>
+
+                <!-- Line -->
+                <path [attr.d]="getElevationLine(profile)" [attr.stroke]="profile.color" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+
+                <!-- Points & labels -->
+                @for (pt of profile.points; track pt.label) {
+                  <circle [attr.cx]="getPointX(profile, pt)" [attr.cy]="getPointY(pt)" r="4" [attr.fill]="profile.color" stroke="white" stroke-width="2"/>
+                  <text
+                    [attr.x]="getPointX(profile, pt)"
+                    [attr.y]="getPointY(pt) - 10"
+                    text-anchor="middle"
+                    fill="var(--la-gray-600)"
+                    font-size="8"
+                    font-weight="600"
+                  >{{ pt.label }}</text>
+                  <text
+                    [attr.x]="getPointX(profile, pt)"
+                    [attr.y]="215"
+                    text-anchor="middle"
+                    fill="var(--la-gray-400)"
+                    font-size="7"
+                  >{{ pt.alt }}m</text>
+                }
+              </svg>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. Quick Location Finder ── -->
+<section class="mp-finder section-padding">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-pin-map me-1"></i> Locations</span>
+    <h2 class="section-title">Key Locations at a Glance</h2>
+    <p class="section-subtitle">Quick reference for the most important destinations in Ladakh.</p>
+
+    <div class="mp-finder__grid">
+      <div class="mp-finder__item">
+        <div class="mp-finder__icon" style="background:rgba(26,54,93,.1);color:var(--la-primary)"><i class="bi bi-building"></i></div>
+        <div class="mp-finder__info">
+          <h6>Leh Town</h6>
+          <span>34.1526° N, 77.5771° E · 3,524 m</span>
+        </div>
+      </div>
+      <div class="mp-finder__item">
+        <div class="mp-finder__icon" style="background:rgba(220,38,38,.1);color:#dc2626"><i class="bi bi-building"></i></div>
+        <div class="mp-finder__info">
+          <h6>Kargil Town</h6>
+          <span>34.5539° N, 76.1349° E · 2,676 m</span>
+        </div>
+      </div>
+      <div class="mp-finder__item">
+        <div class="mp-finder__icon" style="background:rgba(12,74,110,.1);color:#0c4a6e"><i class="bi bi-water"></i></div>
+        <div class="mp-finder__info">
+          <h6>Pangong Tso</h6>
+          <span>33.7595° N, 78.6600° E · 4,350 m</span>
+        </div>
+      </div>
+      <div class="mp-finder__item">
+        <div class="mp-finder__icon" style="background:rgba(5,150,105,.1);color:#059669"><i class="bi bi-water"></i></div>
+        <div class="mp-finder__info">
+          <h6>Tso Moriri</h6>
+          <span>32.9000° N, 78.3167° E · 4,522 m</span>
+        </div>
+      </div>
+      <div class="mp-finder__item">
+        <div class="mp-finder__icon" style="background:rgba(200,112,42,.1);color:var(--la-accent)"><i class="bi bi-sun"></i></div>
+        <div class="mp-finder__info">
+          <h6>Nubra Valley (Hunder)</h6>
+          <span>34.5897° N, 77.4703° E · 3,048 m</span>
+        </div>
+      </div>
+      <div class="mp-finder__item">
+        <div class="mp-finder__icon" style="background:rgba(124,58,237,.1);color:#7c3aed"><i class="bi bi-binoculars"></i></div>
+        <div class="mp-finder__info">
+          <h6>Hanle Observatory</h6>
+          <span>32.7794° N, 78.9638° E · 4,500 m</span>
+        </div>
+      </div>
+      <div class="mp-finder__item">
+        <div class="mp-finder__icon" style="background:rgba(71,82,100,.1);color:#475264"><i class="bi bi-snow2"></i></div>
+        <div class="mp-finder__info">
+          <h6>Zanskar (Padum)</h6>
+          <span>33.4608° N, 76.8856° E · 3,657 m</span>
+        </div>
+      </div>
+      <div class="mp-finder__item">
+        <div class="mp-finder__icon" style="background:rgba(180,83,9,.1);color:#b45309"><i class="bi bi-flag"></i></div>
+        <div class="mp-finder__info">
+          <h6>Turtuk Village</h6>
+          <span>34.8478° N, 76.8269° E · 2,900 m</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 8. Contribute CTA ── -->
+<section class="mp-cta">
+  <div class="mp-cta__overlay"></div>
+  <div class="container position-relative" style="z-index:2">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <span class="la-label" style="color:var(--la-accent-light)"><i class="bi bi-pin-map me-1"></i> Help Us Map Ladakh</span>
+        <h2 class="mp-cta__title">Know a Hidden Location?</h2>
+        <p class="mp-cta__desc">
+          Help us build the most comprehensive map of Ladakh. Share coordinates,
+          trails, hidden villages, and off-the-beaten-path locations that deserve to be documented.
+        </p>
+      </div>
+      <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+        <a routerLink="/contribute" class="btn btn-la-accent btn-lg">
+          <i class="bi bi-geo-alt me-2"></i>Add a Location
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 9. Map Detail Modal ── -->
+@if (activeMap()) {
+  <div class="mp-modal" (click)="closeMap()">
+    <div class="mp-modal__content" (click)="$event.stopPropagation()">
+      <button class="mp-modal__close" (click)="closeMap()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <!-- Map Embed Area -->
+      @if (activeEmbed()) {
+        <iframe class="mp-modal__iframe" [src]="activeEmbed()" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      } @else {
+        <div class="mp-modal__map" [style.background]="activeMap()!.gradient">
+          <i class="bi {{ activeMap()!.icon }} mp-modal__map-icon"></i>
+          <div class="mp-modal__map-label">
+            <span>Interactive Map</span>
+          </div>
+        </div>
+      }
+
+      <!-- Info -->
+      <div class="mp-modal__info">
+        <div class="mp-modal__tags">
+          @for (tag of activeMap()!.tags; track tag) {
+            <span class="mp-card__tag">{{ tag }}</span>
+          }
+        </div>
+        <h3 class="mp-modal__title">{{ activeMap()!.title }}</h3>
+        <p class="mp-modal__desc">{{ activeMap()!.desc }}</p>
+
+        <div class="mp-modal__details">
+          <div class="mp-modal__detail">
+            <i class="bi bi-rulers"></i>
+            <div>
+              <span class="mp-modal__detail-label">Area / Distance</span>
+              <span class="mp-modal__detail-value">{{ activeMap()!.area }}</span>
+            </div>
+          </div>
+          <div class="mp-modal__detail">
+            <i class="bi bi-arrow-up"></i>
+            <div>
+              <span class="mp-modal__detail-label">Elevation Range</span>
+              <span class="mp-modal__detail-value">{{ activeMap()!.elevation }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mp-modal__locations">
+          <h6><i class="bi bi-geo-alt me-1"></i>Key Locations</h6>
+          <div class="mp-modal__location-list">
+            @for (loc of activeMap()!.locations; track loc) {
+              <span class="mp-modal__location">{{ loc }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+

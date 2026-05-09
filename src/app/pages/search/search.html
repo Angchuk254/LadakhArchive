@@ -1,0 +1,149 @@
+﻿<!-- ===== HERO ===== -->
+<section class="se-hero">
+  <div class="se-hero__overlay"></div>
+  <div class="container position-relative" style="z-index: 2">
+    <nav class="se-breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/" class="se-breadcrumb__link"><i class="bi bi-house"></i> Home</a>
+      <i class="bi bi-chevron-right se-breadcrumb__sep"></i>
+      <span class="se-breadcrumb__current">Search</span>
+    </nav>
+    <h1 class="se-hero__title">Explore the Archive</h1>
+    <p class="se-hero__subtitle">
+      Search across 120+ entries — villages, monasteries, wildlife, treks, festivals, and more.
+    </p>
+
+    <!-- Search Bar -->
+    <div class="se-hero__search">
+      <div class="se-hero__search-inner">
+        <i class="bi bi-search se-hero__search-icon"></i>
+        <input
+          type="text"
+          class="se-hero__input"
+          placeholder="Search villages, monasteries, treks, wildlife..."
+          [ngModel]="query()"
+          (ngModelChange)="query.set($event)"
+          aria-label="Search the archive"
+        />
+        @if (query()) {
+          <button class="se-hero__clear" (click)="query.set('')" aria-label="Clear search">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        }
+      </div>
+      <div class="se-hero__hints">
+        <span>Try:</span>
+        <button (click)="query.set('Snow Leopard')">Snow Leopard</button>
+        <button (click)="query.set('Pangong')">Pangong</button>
+        <button (click)="query.set('Hemis')">Hemis</button>
+        <button (click)="query.set('Chadar')">Chadar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CATEGORY FILTERS ===== -->
+<section class="se-filters">
+  <div class="container">
+    <div class="se-filters__row">
+      @for (cat of categories; track cat.label) {
+        <button
+          class="se-filters__pill"
+          [class.active]="activeCategory() === cat.label"
+          (click)="activeCategory.set(cat.label)"
+          [style.--pill-color]="cat.color">
+          <i class="bi" [class]="cat.icon"></i>
+          {{ cat.label }}
+          <span class="se-filters__count">{{ categoryCount(cat.label) }}</span>
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESULTS ===== -->
+<section class="se-results section-padding">
+  <div class="container">
+    <!-- Results summary -->
+    <div class="se-results__header">
+      <p class="se-results__summary">
+        @if (query()) {
+          <strong>{{ resultCount() }}</strong> results for "<em>{{ query() }}</em>"
+        } @else {
+          Showing all <strong>{{ resultCount() }}</strong> entries
+        }
+      </p>
+    </div>
+
+    @if (filteredItems().length === 0) {
+      <div class="se-empty">
+        <div class="se-empty__icon">
+          <i class="bi bi-search"></i>
+        </div>
+        <h3>No results found</h3>
+        <p>Try a different keyword or browse by category above.</p>
+        <button class="se-empty__reset" (click)="query.set(''); activeCategory.set('All')">
+          <i class="bi bi-arrow-counterclockwise"></i> Reset Filters
+        </button>
+      </div>
+    } @else {
+      <div class="se-results__grid">
+        @for (item of filteredItems(); track item.slug + item.category) {
+          <a class="se-card" [routerLink]="item.route">
+            <!-- Colored Header -->
+            <div class="se-card__header" [style.background]="item.color">
+              <div class="se-card__header-pattern"></div>
+              <div class="se-card__header-content">
+                <div class="se-card__header-icon">
+                  <i class="bi" [class]="item.icon"></i>
+                </div>
+                <span class="se-card__cat-badge">{{ item.category }}</span>
+              </div>
+            </div>
+
+            <!-- Body -->
+            <div class="se-card__body">
+              <h4 class="se-card__name">{{ item.name }}</h4>
+              <p class="se-card__desc">{{ item.desc }}</p>
+
+              @if (item.tag) {
+                <span class="se-card__tag" [style.color]="item.color" [style.border-color]="item.color + '30'" [style.background]="item.color + '08'">
+                  {{ item.tag }}
+                </span>
+              }
+
+              <div class="se-card__footer">
+                <span class="se-card__cta" [style.color]="item.color">
+                  Explore <i class="bi bi-arrow-right"></i>
+                </span>
+                <span class="se-card__arrow" [style.background]="item.color">
+                  <i class="bi bi-arrow-up-right"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Accent bar -->
+            <div class="se-card__accent" [style.background]="item.color"></div>
+          </a>
+        }
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="se-cta">
+  <div class="se-cta__overlay"></div>
+  <div class="container position-relative" style="z-index: 2">
+    <h2>Can't Find What You're Looking For?</h2>
+    <p>Help us make the archive more complete — contribute data, photos, or stories.</p>
+    <div class="se-cta__actions">
+      <a routerLink="/contribute" class="btn-la-primary">
+        <i class="bi bi-plus-circle"></i> Contribute
+      </a>
+      <a routerLink="/village-search" class="btn-la-ghost">
+        <i class="bi bi-houses"></i> Village Directory
+      </a>
+    </div>
+  </div>
+</section>
+

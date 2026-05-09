@@ -1,0 +1,118 @@
+<!-- Top Navbar -->
+<nav class="la-navbar" [class.scrolled]="scrolled()">
+  <div class="container">
+    <div class="la-navbar__inner">
+      <!-- Brand / Logo -->
+      <a routerLink="/" class="la-navbar__brand" (click)="closeMenu()">
+        <i class="bi bi-mountains"></i>
+        <span class="brand-text">Ladakh<span class="brand-accent">Archive</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="la-navbar__links">
+        <li><a routerLink="/history" routerLinkActive="active">History</a></li>
+        <li><a routerLink="/culture" routerLinkActive="active">Culture</a></li>
+        <li><a routerLink="/nature" routerLinkActive="active">Nature</a></li>
+        <li><a routerLink="/politics" routerLinkActive="active">Politics</a></li>
+        <li><a routerLink="/routes" routerLinkActive="active">Routes</a></li>
+
+      </ul>
+
+      <!-- Desktop CTA -->
+      <div class="la-navbar__actions">
+        <a routerLink="/search" class="la-navbar__search-btn" aria-label="Search">
+          <i class="bi bi-search"></i>
+        </a>
+        <button class="la-navbar__theme-btn" (click)="theme.toggle()" [attr.aria-label]="theme.dark() ? 'Switch to light mode' : 'Switch to dark mode'">
+          <i class="bi" [class.bi-moon-fill]="!theme.dark()" [class.bi-sun-fill]="theme.dark()"></i>
+        </button>
+        <app-language-selector />
+        <a routerLink="/contribute" class="btn-la-accent btn-sm">
+          <i class="bi bi-plus-circle"></i> Contribute
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button
+        class="la-navbar__hamburger"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-label="Toggle navigation menu">
+        <span class="hamburger-line" [class.open]="mobileMenuOpen()"></span>
+        <span class="hamburger-line" [class.open]="mobileMenuOpen()"></span>
+        <span class="hamburger-line" [class.open]="mobileMenuOpen()"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Overlay -->
+<div
+  class="la-mobile-overlay"
+  [class.active]="mobileMenuOpen()"
+  (click)="closeMenu()">
+</div>
+
+<!-- Mobile Slide-in Menu (Left to Right) -->
+<aside class="la-mobile-menu" [class.open]="mobileMenuOpen()">
+  <div class="la-mobile-menu__header">
+    <a routerLink="/" class="la-navbar__brand" (click)="closeMenu()">
+      <i class="bi bi-mountains"></i>
+      <span class="brand-text">Ladakh<span class="brand-accent">Archive</span></span>
+    </a>
+    <button class="la-mobile-menu__close" (click)="closeMenu()" aria-label="Close menu">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+
+  <nav class="la-mobile-menu__nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
+      <i class="bi bi-house"></i> Home
+    </a>
+    <a routerLink="/search" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-search"></i> Search
+    </a>
+    <a routerLink="/history" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-clock-history"></i> History
+    </a>
+    <a routerLink="/culture" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-people"></i> Culture & People
+    </a>
+    <a routerLink="/nature" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-tree"></i> Nature & Wildlife
+    </a>
+    <a routerLink="/politics" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-bank"></i> Politics
+    </a>
+    <a routerLink="/routes" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-signpost-split"></i> Routes
+    </a>
+    <a routerLink="/education" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-mortarboard"></i> Education
+    </a>
+    <a routerLink="/gallery" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-images"></i> Gallery
+    </a>
+    <a routerLink="/monasteries" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-buildings"></i> Monasteries
+    </a>
+    <a routerLink="/blog" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-journal-richtext"></i> Blog
+    </a>
+    <a routerLink="/village-search" routerLinkActive="active" (click)="closeMenu()">
+      <i class="bi bi-houses"></i> Village Search
+    </a>
+  </nav>
+
+  <div class="la-mobile-menu__footer">
+    <div class="la-mobile-menu__footer-row">
+      <app-language-selector />
+      <button class="la-navbar__theme-btn" (click)="theme.toggle()" [attr.aria-label]="theme.dark() ? 'Switch to light mode' : 'Switch to dark mode'">
+        <i class="bi" [class.bi-moon-fill]="!theme.dark()" [class.bi-sun-fill]="theme.dark()"></i>
+      </button>
+    </div>
+    <a routerLink="/contribute" class="btn-la-accent w-100 justify-content-center" (click)="closeMenu()">
+      <i class="bi bi-plus-circle"></i> Contribute
+    </a>
+  </div>
+</aside>

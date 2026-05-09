@@ -1,0 +1,103 @@
+/* ===== 404 PAGE ===== */
+.nf-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--la-primary) 0%, #0f2240 60%, #1a365d 100%);
+  color: var(--la-white);
+  text-align: center;
+  overflow: hidden;
+  padding: 4rem 0;
+}
+
+.nf-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="12" fill="none" stroke="white" stroke-width="0.4" opacity="0.06"/><circle cx="0" cy="0" r="6" fill="none" stroke="white" stroke-width="0.3" opacity="0.04"/></svg>');
+  background-size: 80px 80px;
+}
+
+.nf-hero__illustration {
+  margin-bottom: 2rem;
+}
+
+.nf-hero__mountains {
+  max-width: 400px;
+  margin: 0 auto 1rem;
+  opacity: 0.6;
+
+  svg { width: 100%; height: auto; }
+}
+
+.nf-hero__code {
+  font-family: var(--la-font-heading);
+  font-size: clamp(6rem, 15vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.06) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nf-hero__title {
+  font-family: var(--la-font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: var(--la-white);
+}
+
+.nf-hero__subtitle {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  max-width: 480px;
+  margin: 0 auto 2.25rem;
+  line-height: 1.7;
+}
+
+.nf-hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.nf-hero__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.88rem;
+
+  &-label {
+    opacity: 0.4;
+    font-weight: 500;
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--la-radius-full);
+    transition: all var(--la-transition);
+
+    &:hover {
+      color: var(--la-white);
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .nf-hero__links-label { display: none; }
+  .nf-hero__subtitle { font-size: 0.95rem; }
+}

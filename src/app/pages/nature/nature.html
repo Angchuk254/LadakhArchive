@@ -1,0 +1,504 @@
+﻿<!-- ===== HERO BANNER ===== -->
+<section class="na-hero">
+  <div class="na-hero__overlay"></div>
+  <div class="container na-hero__container">
+    <nav class="na-breadcrumb">
+      <a routerLink="/"><i class="bi bi-house-fill"></i> Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>Nature &amp; Wildlife</span>
+    </nav>
+    <div class="na-hero__content">
+      <span class="na-hero__badge">
+        <i class="bi bi-binoculars-fill"></i> The Wild Trans-Himalaya
+      </span>
+      <h1 class="na-hero__title">
+        Nature &amp; Wildlife of<br />
+        <span class="text-accent">Ladakh</span>
+      </h1>
+      <p class="na-hero__subtitle">
+        From the elusive snow leopard prowling frozen peaks to black-necked cranes dancing on high-altitude wetlands —
+        explore one of Earth's last great wildernesses, where life thrives at the edge of possibility.
+      </p>
+    </div>
+  </div>
+  <div class="na-hero__wave">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,60 C360,100 720,0 1080,60 C1260,90 1380,80 1440,70 L1440,100 L0,100 Z" fill="var(--la-white)"/>
+    </svg>
+  </div>
+</section>
+
+
+
+<!-- ===== OVERVIEW / STATS ===== -->
+<section class="section-padding" id="overview">
+  <div class="container">
+    <div class="na-intro">
+      <div class="na-intro__text">
+        <span class="la-label"><i class="bi bi-globe-americas"></i> Overview</span>
+        <h2>A Living Laboratory at the Roof of the World</h2>
+        <p>
+          Ladakh's landscapes range from scorching cold deserts at 3,000m to permanent glaciers above 7,000m —
+          creating an extraordinary mosaic of ecosystems where uniquely adapted species have evolved to survive
+          conditions that would be fatal to most life on Earth.
+        </p>
+        <p>
+          The Trans-Himalayan region is home to over 73 mammal species, 320+ bird species, and 800+ plant species.
+          From the world's highest-density snow leopard habitat to the only Indian breeding grounds of the black-necked crane,
+          Ladakh is a biodiversity treasure chest of global significance.
+        </p>
+      </div>
+      <div class="na-intro__stats">
+        @for (s of stats; track s.label) {
+          <div class="na-intro__stat">
+            <i class="bi na-intro__stat-icon" [class]="s.icon"></i>
+            <span class="na-intro__stat-number">{{ s.number }}</span>
+            <span class="na-intro__stat-label">{{ s.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/maps" class="btn-la-primary">
+        Explore Nature on Map <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ECOSYSTEMS ===== -->
+<section class="section-padding bg-snow" id="ecosystems">
+  <div class="container">
+    <h2 class="section-title">Ecosystems &amp; Habitats</h2>
+    <p class="section-subtitle">
+      Four distinct ecological zones create a dramatic vertical gradient — from arid valley floors to permanent ice fields.
+    </p>
+
+    <div class="na-eco-grid">
+      @for (e of ecosystems; track e.name) {
+      <div class="n-eco-card" [style.background-image]="'url(' + e.image + ')'" style="background-size: cover; background-position: center;">
+        <div class="n-eco-card__overlay" [style.background]="'linear-gradient(to bottom, transparent, ' + e.color + 'dd)'"></div>
+        <div class="n-eco-card__content">
+          <div class="n-eco-card__icon" [style.background-color]="e.color"><i class="bi" [class]="e.icon"></i></div>
+          <h3>{{ e.name }}</h3>
+          <span class="n-eco-card__elev">{{ e.elevation }}</span>
+          <p>{{ e.desc }}</p>
+          <ul class="n-eco-card__feats">
+            @for (f of e.features; track f) {
+            <li><i class="bi bi-check2-circle"></i> {{ f }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/maps" class="btn-la-primary">
+        View Ecosystem Map <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIODIVERSITY CHARTS ===== -->
+<section class="na-charts-section" id="data">
+  <div class="container">
+    <div class="na-charts-header">
+      <span class="la-label"><i class="bi bi-bar-chart-fill"></i> Data &amp; Insights</span>
+      <h2 class="section-title">Biodiversity by the Numbers</h2>
+      <p class="section-subtitle">
+        A visual breakdown of Ladakh's remarkable species diversity and how it distributes across elevation zones.
+      </p>
+    </div>
+
+    <div class="na-charts-row">
+      <!-- Species Distribution Donut -->
+      <div class="na-chart-block">
+        <h4 class="na-chart-block__title">Species Distribution</h4>
+        <div class="na-chart-block__donut-wrap">
+          <svg viewBox="0 0 200 200" class="na-donut">
+            @for (s of speciesData; track s.category; let i = $index) {
+              <circle cx="100" cy="100" r="75"
+                fill="none"
+                [attr.stroke]="s.color"
+                stroke-width="26"
+                [attr.stroke-dasharray]="(s.pct * 4.712) + ' ' + (471.2 - s.pct * 4.712)"
+                [attr.stroke-dashoffset]="getDonutOffset(i)"
+                stroke-linecap="round" />
+            }
+            <text x="100" y="90" text-anchor="middle" fill="var(--la-white)" font-size="28" font-weight="800" font-family="var(--la-font-heading)">1,318</text>
+            <text x="100" y="115" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="10" font-weight="500">Total Species</text>
+          </svg>
+        </div>
+        <div class="na-chart-block__legend">
+          @for (s of speciesData; track s.category) {
+            <div class="na-chart-block__legend-item">
+              <span class="na-chart-block__legend-dot" [style.background]="s.color"></span>
+              <span class="na-chart-block__legend-name">{{ s.category }}</span>
+              <span class="na-chart-block__legend-val">{{ s.count }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Elevation Zone Bar Chart -->
+      <div class="na-chart-block">
+        <h4 class="na-chart-block__title">Species Richness by Elevation</h4>
+        <div class="na-chart-block__bars">
+          @for (z of elevationZones; track z.zone) {
+            <div class="na-bar-group">
+              <span class="na-bar-group__count">{{ z.species }}</span>
+              <div class="na-bar-group__bar" [style.height.%]="z.barHeight" [style.background]="z.color"></div>
+              <span class="na-bar-group__label">{{ z.label }}</span>
+              <span class="na-bar-group__zone">{{ z.zone }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WILDLIFE PHOTO GALLERY ===== -->
+<section class="section-padding">
+  <div class="container">
+    <span class="la-label"><i class="bi bi-camera-fill"></i> Visual Encounters</span>
+    <h2 class="section-title">Wildlife Photography</h2>
+    <p class="section-subtitle">
+      Capturing the extraordinary creatures and landscapes of the Trans-Himalayan wilderness.
+    </p>
+
+    <div class="n-gallery-grid">
+      @for (img of gallery; track img.title) {
+      <div class="n-gallery-item" [style.grid-area]="img.area" [style.background-image]="'url(' + img.image + ')'" style="background-size: cover; background-position: center; position: relative; min-height: 200px; border-radius: 1rem; overflow: hidden; cursor: pointer;">
+        <div class="n-gallery-item__overlay" style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.6));"></div>
+        <div class="n-gallery-item__content" style="position: absolute; bottom: 0; left: 0; padding: 1.5rem; color: white; width: 100%;">
+          <h4 style="margin: 0; font-size: 1.25rem;">{{ img.title }}</h4>
+          <p style="margin: 0.25rem 0 0; font-size: 0.875rem; opacity: 0.9;">{{ img.caption }}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== ICONIC ANIMALS ===== -->
+<section class="section-padding bg-snow" id="wildlife">
+  <div class="container">
+    <h2 class="section-title">Iconic Wildlife</h2>
+    <p class="section-subtitle">
+      Meet the legendary creatures of Ladakh — from the ghost cat of the mountains to the world's largest wild ass.
+    </p>
+
+    <div class="na-animals-grid">
+      @for (a of animals; track a.slug) {
+      <div class="n-animal-card" (click)="openAnimal(a)" [style.background-image]="'url(' + a.image + ')'" style="background-size: cover; background-position: center; border-radius: 1.5rem; overflow: hidden; min-height: 350px; position: relative;">
+        <div class="n-animal-card__overlay" style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
+        <div class="n-animal-card__content" style="position: absolute; bottom: 0; left: 0; padding: 2rem; color: white;">
+          <span class="n-animal-card__status" [style.background-color]="a.statusColor">{{ a.status }}</span>
+          <h3>{{ a.name }}</h3>
+          <p>{{ a.scientific }}</p>
+          <div class="n-animal-card__meta">
+            <span><i class="bi bi-geo-alt"></i> {{ a.habitat }}</span>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIRDS ===== -->
+<section class="section-padding" id="birds">
+  <div class="container">
+    <h2 class="section-title">Avian Wonders</h2>
+    <p class="section-subtitle">
+      Over 320 species from migratory cranes to resident raptors — Ladakh lies on the Central Asian Flyway, one of the world's great bird migration routes.
+    </p>
+
+    <div class="na-birds-grid">
+      @for (bird of birds; track bird.name) {
+        <div class="na-bird-card">
+          <div class="n-modal__header" [style.background-image]="'url(' + bird.image + ')'" style="background-size: cover; background-position: center; height: 300px; position: relative;">
+            <div class="n-modal__header-overlay" style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));"></div>
+            <div class="n-modal__header-inner" style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; color: white;">
+              <span class="n-modal__status" [style.background-color]="bird.statusColor">{{ bird.status }}</span>
+              <h1>{{ bird.name }} <span>{{ bird.scientific }}</span></h1>
+            </div>
+          </div>
+          <div class="na-bird-card__body">
+            <div class="na-bird-card__meta">
+              <span class="na-bird-card__status-tag" [style.borderColor]="bird.color" [style.color]="bird.color">{{ bird.status }}</span>
+              <span><i class="bi bi-geo-alt"></i> {{ bird.habitat }}</span>
+            </div>
+            <p class="na-bird-card__desc">{{ bird.desc }}</p>
+            <a [routerLink]="'/nature/bird/' + bird.slug" class="na-bird-card__cta"><i class="bi bi-eye"></i> Learn More</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLORA & VEGETATION ===== -->
+<section class="na-flora-section">
+  <div class="container">
+    <div class="na-flora-header">
+      <span class="la-label"><i class="bi bi-flower1"></i> Botanical Heritage</span>
+      <h2 class="section-title">Flora &amp; Vegetation</h2>
+      <p class="section-subtitle">
+        Over 800 plant species defy the arid landscape — from legendary blue poppies to healing herbs used in ancient Amchi medicine.
+      </p>
+    </div>
+
+    <div class="na-flora-grid">
+      @for (plant of flora; track plant.name) {
+        <div class="na-flora-card">
+          <div class="na-flora-card__icon-wrap" [style.background]="plant.color + '20'" [style.color]="plant.color">
+            <i class="bi" [class]="plant.icon"></i>
+          </div>
+          <div class="na-flora-card__body">
+            <div class="na-flora-card__top">
+              <h5 class="na-flora-card__name">{{ plant.name }}</h5>
+              <span class="na-flora-card__type">{{ plant.type }}</span>
+            </div>
+            <span class="na-flora-card__elevation">
+              <i class="bi bi-arrow-up"></i> {{ plant.elevation }}
+            </span>
+            <p class="na-flora-card__desc">{{ plant.desc }}</p>
+            <a [routerLink]="'/nature/flora/' + plant.slug" class="na-flora-card__cta"><i class="bi bi-eye"></i> Learn More</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== LAKES & WATER BODIES ===== -->
+<section class="section-padding bg-snow" id="lakes">
+  <div class="container">
+    <h2 class="section-title">Lakes &amp; Water Bodies</h2>
+    <p class="section-subtitle">
+      Jewel-like lakes, thundering glacial rivers, and ancient hot springs — water is the most precious resource in this high-altitude desert.
+    </p>
+
+    <div class="na-lakes-grid">
+      @for (lake of lakes; track lake.name) {
+        <div class="na-lake-card">
+          <div class="na-lake-card__visual" [style.background]="lake.gradient">
+            <div class="na-lake-card__bg-icon">
+              <i class="bi" [class]="lake.icon"></i>
+            </div>
+            <div class="na-lake-card__icon">
+              <i class="bi" [class]="lake.icon"></i>
+            </div>
+            <div class="na-lake-card__badge-row">
+              <span class="na-lake-card__badge">{{ lake.type }}</span>
+              <span class="na-lake-card__elev-badge">
+                <i class="bi bi-arrow-up"></i> {{ lake.elevation }}
+              </span>
+            </div>
+          </div>
+          <div class="na-lake-card__body">
+            <h4 class="na-lake-card__name">{{ lake.name }}</h4>
+            <span class="na-lake-card__length"><i class="bi bi-rulers"></i> Length: {{ lake.length }}</span>
+            <p class="na-lake-card__desc">{{ lake.desc }}</p>
+            <div class="na-lake-card__facts">
+              @for (fact of lake.facts; track fact) {
+                <span class="na-lake-card__fact">
+                  <i class="bi bi-check-circle-fill"></i> {{ fact }}
+                </span>
+              }
+            </div>
+            <a [routerLink]="'/nature/lake/' + lake.slug" class="na-lake-card__cta"><i class="bi bi-eye"></i> Learn More</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLIMATE SVG CHART ===== -->
+<section class="na-climate-section">
+  <div class="container">
+    <div class="na-climate-header">
+      <span class="la-label"><i class="bi bi-thermometer-half"></i> Climate Data</span>
+      <h2 class="section-title">Climate &amp; Seasons — Leh (3,500m)</h2>
+      <p class="section-subtitle">
+        Extreme temperature swings, minimal rainfall, and intense solar radiation define Ladakh's cold desert climate.
+      </p>
+    </div>
+
+    <div class="na-climate-chart">
+      <svg viewBox="0 0 720 320" class="na-climate-svg" preserveAspectRatio="xMidYMid meet">
+        <!-- Grid lines -->
+        <line x1="60" y1="30" x2="60" y2="260" stroke="rgba(255,255,255,0.1)" />
+        <line x1="60" y1="260" x2="700" y2="260" stroke="rgba(255,255,255,0.15)" />
+        @for (i of [0,1,2,3,4]; track i) {
+          <line x1="60" [attr.y1]="260 - i * 57.5" x2="700" [attr.y2]="260 - i * 57.5" stroke="rgba(255,255,255,0.06)" />
+          <text x="52" [attr.y]="264 - i * 57.5" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="10">{{ -15 + i * 10 }}°C</text>
+        }
+        <!-- Bars + labels for each month -->
+        @for (c of climate; track c.month; let i = $index) {
+          <!-- High temp bar -->
+          <rect [attr.x]="80 + i * 52" [attr.y]="260 - (c.high + 15) * 5.75" width="16"
+                [attr.height]="(c.high + 15) * 5.75"
+                fill="#e89b4e" rx="3" opacity="0.85" />
+          <!-- Low temp bar -->
+          <rect [attr.x]="100 + i * 52" [attr.y]="260 - (c.low + 15) * 5.75" width="16"
+                [attr.height]="(c.low + 15) * 5.75 > 0 ? (c.low + 15) * 5.75 : 0"
+                fill="#38bdf8" rx="3" opacity="0.7" />
+          <!-- Month label -->
+          <text [attr.x]="96 + i * 52" y="280" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11" font-weight="600">{{ c.month }}</text>
+          <!-- Precip dot -->
+          <circle [attr.cx]="96 + i * 52" [attr.cy]="260 - c.precip * 10" r="4" fill="#34d399" opacity="0.9" />
+        }
+        <!-- Precip line -->
+        <polyline fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.5"
+          [attr.points]="climate.map((c, i) => (96 + i * 52) + ',' + (260 - c.precip * 10)).join(' ')" />
+      </svg>
+      <div class="na-climate-legend">
+        <span><span class="na-climate-legend__dot" style="background:#e89b4e"></span> Max Temp (°C)</span>
+        <span><span class="na-climate-legend__dot" style="background:#38bdf8"></span> Min Temp (°C)</span>
+        <span><span class="na-climate-legend__dot" style="background:#34d399"></span> Precipitation (mm)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROTECTED AREAS ===== -->
+<section class="section-padding" id="protected">
+  <div class="container">
+    <h2 class="section-title">Protected Areas</h2>
+    <p class="section-subtitle">
+      Over 13,500 km² of Ladakh is officially protected — among the largest conservation areas in South Asia.
+    </p>
+
+    <div class="na-protected-grid">
+      @for (area of protectedAreas; track area.name) {
+        <div class="na-protected-card">
+          <div class="na-protected-card__icon-wrap" [style.background]="area.color + '15'" [style.color]="area.color">
+            <i class="bi" [class]="area.icon"></i>
+          </div>
+          <div class="na-protected-card__body">
+            <div class="na-protected-card__top">
+              <h5 class="na-protected-card__name">{{ area.name }}</h5>
+              <span class="na-protected-card__status">{{ area.status }}</span>
+            </div>
+            <div class="na-protected-card__meta">
+              <span><i class="bi bi-bounding-box"></i> {{ area.area }}</span>
+              <span><i class="bi bi-calendar3"></i> Est. {{ area.established }}</span>
+            </div>
+            <p class="na-protected-card__desc">{{ area.desc }}</p>
+            <a [routerLink]="'/nature/protected/' + area.slug" class="na-protected-card__cta"><i class="bi bi-eye"></i> Learn More</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONSERVATION THREATS ===== -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <h2 class="section-title">Conservation Challenges</h2>
+    <p class="section-subtitle">
+      The fragile Trans-Himalayan ecosystem faces mounting pressures from climate change, development, and human encroachment.
+    </p>
+
+    <div class="na-threats-grid">
+      @for (threat of threats; track threat.title) {
+        <div class="na-threat-card">
+          <div class="na-threat-card__icon">
+            <i class="bi" [class]="threat.icon"></i>
+          </div>
+          <h5 class="na-threat-card__title">{{ threat.title }}</h5>
+          <p class="na-threat-card__desc">{{ threat.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== WILDLIFE VIDEOS ===== -->
+<section class="na-videos-section">
+  <div class="container">
+    <div class="na-videos-header">
+      <span class="la-label"><i class="bi bi-camera-reels-fill"></i> Watch &amp; Explore</span>
+      <h2 class="section-title">Wildlife Documentaries</h2>
+      <p class="section-subtitle">
+        Breathtaking footage from the roof of the world — snow leopards, frozen rivers, and rare migratory birds.
+      </p>
+    </div>
+
+    <div class="na-videos-grid">
+      @for (vid of videos; track vid.title) {
+        <div class="na-video-card" (click)="playVideo(vid)">
+          <div class="na-video-card__visual" [style.background]="vid.gradient">
+            <img class="na-video-card__thumb" [src]="'https://img.youtube.com/vi/' + vid.youtubeId + '/hqdefault.jpg'" [alt]="vid.title">
+            <div class="na-video-card__overlay"></div>
+            <div class="na-video-card__play">
+              <i class="bi bi-play-fill"></i>
+            </div>
+            <span class="na-video-card__duration">
+              <i class="bi bi-clock"></i> {{ vid.duration }}
+            </span>
+          </div>
+          <div class="na-video-card__body">
+            <span class="na-video-card__type">{{ vid.type }}</span>
+            <h5 class="na-video-card__title">{{ vid.title }}</h5>
+            <p class="na-video-card__desc">{{ vid.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEO PLAYER MODAL ===== -->
+@if (activeVideo(); as videoUrl) {
+  <div class="na-player-overlay" (click)="closeVideo()">
+    <div class="na-player" (click)="$event.stopPropagation()">
+      <div class="na-player__header">
+        <h4 class="na-player__title">
+          <i class="bi bi-play-circle-fill"></i> {{ activeVideoTitle() }}
+        </h4>
+        <button class="na-player__close" (click)="closeVideo()" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="na-player__frame-wrap">
+        <iframe
+          class="na-player__frame"
+          [src]="videoUrl"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          frameborder="0">
+        </iframe>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- ===== CTA ===== -->
+<section class="na-cta">
+  <div class="container">
+    <div class="na-cta__inner">
+      <i class="bi bi-binoculars-fill na-cta__icon"></i>
+      <h2>Help Protect Ladakh's Wildlife</h2>
+      <p>
+        Have you spotted a snow leopard, photographed rare birds, or documented plant species in Ladakh?
+        Share your sightings and help build the most comprehensive wildlife database for the Trans-Himalaya.
+      </p>
+      <div class="na-cta__actions">
+        <a routerLink="/contribute" class="btn-la-accent">
+          <i class="bi bi-pencil-square"></i> Contribute Sightings
+        </a>
+        <a routerLink="/culture" class="btn-la-outline na-cta__outline-btn">
+          <i class="bi bi-people-fill"></i> Culture &amp; People
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

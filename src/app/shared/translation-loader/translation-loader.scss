@@ -1,0 +1,63 @@
+/* ╔══════════════════════════════════════╗
+   ║  TRANSLATION LOADER — la-tloader    ║
+   ╚══════════════════════════════════════╝ */
+
+.la-tloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: tloaderFadeIn 0.2s ease;
+
+  &__card {
+    background: var(--la-white);
+    padding: 2.5rem 3.5rem;
+    border-radius: var(--la-radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    animation: tloaderScale 0.25s ease;
+  }
+
+  &__spinner {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 1.25rem;
+    border: 3px solid var(--la-gray-200);
+    border-top-color: var(--la-accent);
+    border-radius: 50%;
+    animation: tloaderSpin 0.75s linear infinite;
+  }
+
+  &__title {
+    font-family: var(--la-font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--la-dark);
+    margin: 0 0 0.35rem;
+  }
+
+  &__sub {
+    font-size: 0.82rem;
+    color: var(--la-gray-500);
+    margin: 0;
+  }
+}
+
+@keyframes tloaderFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes tloaderScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes tloaderSpin {
+  to { transform: rotate(360deg); }
+}

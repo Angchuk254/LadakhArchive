@@ -1,0 +1,266 @@
+﻿<!-- ╔══════════════════════════════════════════════════╗
+     ║          GALLERY — LadakhArchive                 ║
+     ╚══════════════════════════════════════════════════╝ -->
+
+<!-- ── 1. Hero ── -->
+<section class="ga-hero">
+  <div class="ga-hero__overlay"></div>
+  <div class="container position-relative" style="z-index:2">
+    <span class="la-label"><i class="bi bi-images me-1"></i> Gallery</span>
+    <h1 class="ga-hero__title">Visual Archive of Ladakh</h1>
+    <p class="ga-hero__sub">
+      A curated collection of photographs and videos capturing the raw beauty,
+      ancient culture, and untamed wilderness of the Land of High Passes.
+    </p>
+    <div class="ga-hero__actions">
+      <a class="btn btn-la-primary" (click)="setTab('photos')"><i class="bi bi-image me-2"></i>Browse Photos</a>
+      <a class="btn btn-la-outline" (click)="setTab('videos')"><i class="bi bi-play-circle me-2"></i>Watch Videos</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ── 2. Stats ── -->
+<section class="ga-stats bg-snow">
+  <div class="container">
+    <div class="row g-4">
+      @for (s of stats; track s.label) {
+        <div class="col-6 col-md-3">
+          <div class="ga-stats__card text-center">
+            <i class="bi {{ s.icon }} ga-stats__icon"></i>
+            <div class="ga-stats__value">{{ s.value }}</div>
+            <div class="ga-stats__label">{{ s.label }}</div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. Category Filter Bar ── -->
+<section id="browse" class="ga-filter section-padding">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-funnel me-1"></i> Browse by Category</span>
+    <h2 class="section-title">Explore the Collection</h2>
+    <p class="section-subtitle">Filter through our growing archive of photographs and videos by category.</p>
+
+    <!-- Category Pills -->
+    <div class="ga-filter__pills">
+      @for (cat of categories; track cat.value) {
+        <button
+          class="ga-filter__pill"
+          [class.ga-filter__pill--active]="activeCategory() === cat.value"
+          (click)="setCategory(cat.value)"
+        >
+          <i class="bi {{ cat.icon }} me-1"></i>
+          {{ cat.label }}
+          <span class="ga-filter__count">{{ activeTab() === 'videos' ? getVideoCategoryCount(cat.value) : getCategoryCount(cat.value) }}</span>
+        </button>
+      }
+    </div>
+
+    <!-- Tab Switcher -->
+    <div class="ga-filter__tabs">
+      <button class="ga-filter__tab" [class.ga-filter__tab--active]="activeTab() === 'photos'" (click)="setTab('photos')">
+        <i class="bi bi-image me-1"></i> Photos ({{ filteredPhotos().length }})
+      </button>
+      <button class="ga-filter__tab" [class.ga-filter__tab--active]="activeTab() === 'videos'" (click)="setTab('videos')">
+        <i class="bi bi-camera-video me-1"></i> Videos ({{ filteredVideos().length }})
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. Photo Grid ── -->
+@if (activeTab() === 'photos') {
+  <section class="ga-photos">
+    <div class="container">
+      @if (filteredPhotos().length === 0) {
+        <div class="ga-empty text-center py-5">
+          <i class="bi bi-image ga-empty__icon"></i>
+          <h4>No photos in this category yet</h4>
+          <p class="text-muted">Check back soon — our archive is always growing.</p>
+        </div>
+      } @else {
+        <div class="row g-4">
+          @for (photo of filteredPhotos(); track photo.id) {
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="ga-photo-card" (click)="openLightbox(photo)">
+                <div class="ga-photo-card__img" [style.background]="photo.gradient">
+                  <i class="bi {{ photo.icon }} ga-photo-card__placeholder"></i>
+                  <div class="ga-photo-card__overlay">
+                    <i class="bi bi-arrows-fullscreen ga-photo-card__expand"></i>
+                  </div>
+                </div>
+                <div class="ga-photo-card__body">
+                  <div class="ga-photo-card__tags">
+                    @for (tag of photo.tags; track tag) {
+                      <span class="ga-photo-card__tag">{{ tag }}</span>
+                    }
+                  </div>
+                  <h5 class="ga-photo-card__title">{{ photo.title }}</h5>
+                  <div class="ga-photo-card__meta">
+                    <span><i class="bi bi-geo-alt me-1"></i>{{ photo.location }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </section>
+}
+
+<!-- ── 5. Video Grid ── -->
+@if (activeTab() === 'videos') {
+  <section class="ga-videos">
+    <div class="container">
+      @if (filteredVideos().length === 0) {
+        <div class="ga-empty text-center py-5">
+          <i class="bi bi-camera-video ga-empty__icon"></i>
+          <h4>No videos in this category yet</h4>
+          <p class="text-muted">Check back soon — our archive is always growing.</p>
+        </div>
+      } @else {
+        <div class="row g-4">
+          @for (vid of filteredVideos(); track vid.id) {
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="ga-video-card" (click)="playVideo(vid)">
+                <div class="ga-video-card__thumb" [style.background]="vid.gradient">
+                  <i class="bi {{ vid.icon }} ga-video-card__placeholder"></i>
+                  <div class="ga-video-card__play">
+                    <i class="bi bi-play-fill"></i>
+                  </div>
+                  <span class="ga-video-card__duration">
+                    <i class="bi bi-clock me-1"></i>{{ vid.duration }}
+                  </span>
+                </div>
+                <div class="ga-video-card__body">
+                  <div class="ga-video-card__tags">
+                    @for (tag of vid.tags; track tag) {
+                      <span class="ga-video-card__tag">{{ tag }}</span>
+                    }
+                  </div>
+                  <h5 class="ga-video-card__title">{{ vid.title }}</h5>
+                  <p class="ga-video-card__desc">{{ vid.desc }}</p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </section>
+}
+
+<!-- ── 6. Featured Collections ── -->
+<section id="collections" class="ga-collections section-padding bg-snow">
+  <div class="container">
+    <span class="la-label text-center d-block"><i class="bi bi-collection me-1"></i> Curated</span>
+    <h2 class="section-title">Featured Collections</h2>
+    <p class="section-subtitle">Hand-picked thematic collections curated by our team of photographers and archivists.</p>
+
+    <div class="row g-4 mt-2">
+      @for (col of collections; track col.title) {
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="ga-collection-card">
+            <div class="ga-collection-card__icon" [style.background]="col.color + '18'" [style.color]="col.color">
+              <i class="bi {{ col.icon }}"></i>
+            </div>
+            <h5 class="ga-collection-card__title">{{ col.title }}</h5>
+            <p class="ga-collection-card__desc">{{ col.desc }}</p>
+            <div class="ga-collection-card__footer">
+              <span class="ga-collection-card__count">
+                <i class="bi bi-images me-1"></i>{{ col.count }} items
+              </span>
+              <a class="ga-collection-card__link">
+                View Collection <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/contribute" class="btn-la-primary">
+        Submit Your Photos <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. Contribute CTA ── -->
+<section id="contribute-cta" class="ga-cta">
+  <div class="ga-cta__overlay"></div>
+  <div class="container position-relative" style="z-index:2">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <span class="la-label" style="color:var(--la-accent-light)"><i class="bi bi-camera me-1"></i> Contribute</span>
+        <h2 class="ga-cta__title">Share Your Ladakh Story</h2>
+        <p class="ga-cta__desc">
+          Have stunning photographs or videos from Ladakh? Contribute to our growing archive
+          and help preserve the visual heritage of this extraordinary region for future generations.
+        </p>
+      </div>
+      <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+        <a routerLink="/contribute" class="btn btn-la-accent btn-lg">
+          <i class="bi bi-upload me-2"></i>Submit Your Work
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 8. Photo Lightbox Modal ── -->
+@if (lightboxItem()) {
+  <div class="ga-lightbox" (click)="closeLightbox()">
+    <div class="ga-lightbox__content" (click)="$event.stopPropagation()">
+      <button class="ga-lightbox__close" (click)="closeLightbox()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <div class="ga-lightbox__image" [style.background]="lightboxItem().gradient">
+        <i class="bi {{ lightboxItem().icon }} ga-lightbox__icon"></i>
+      </div>
+
+      <div class="ga-lightbox__info">
+        <div class="ga-lightbox__tags">
+          @for (tag of lightboxItem().tags; track tag) {
+            <span class="ga-photo-card__tag">{{ tag }}</span>
+          }
+        </div>
+        <h3 class="ga-lightbox__title">{{ lightboxItem().title }}</h3>
+        <p class="ga-lightbox__desc">{{ lightboxItem().desc }}</p>
+        <div class="ga-lightbox__meta">
+          <span><i class="bi bi-geo-alt me-1"></i>{{ lightboxItem().location }}</span>
+          <span><i class="bi bi-person me-1"></i>{{ lightboxItem().photographer }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- ── 9. Video Player Modal ── -->
+@if (activeVideo()) {
+  <div class="ga-video-modal" (click)="closeVideo()">
+    <div class="ga-video-modal__content" (click)="$event.stopPropagation()">
+      <div class="ga-video-modal__header">
+        <h5 class="ga-video-modal__title">{{ activeVideoTitle() }}</h5>
+        <button class="ga-video-modal__close" (click)="closeVideo()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="ga-video-modal__player">
+        <iframe
+          [src]="activeVideo()"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+}
+

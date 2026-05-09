@@ -1,0 +1,125 @@
+﻿@if (institution(); as inst) {
+
+<!-- Hero -->
+<section class="id-hero" [style.background-image]="'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(' + inst.heroImage + ')'">
+  <div class="id-hero__overlay"></div>
+  <div class="container position-relative">
+    <a routerLink="/education" class="id-hero__back"><i class="bi bi-arrow-left me-1"></i> Education</a>
+    <div class="id-hero__icon" [style.background]="inst.color + '33'"><i class="bi" [class]="inst.icon"></i></div>
+    <span class="id-hero__type">{{ inst.type }} · Est. {{ inst.est }}</span>
+    <h1 class="id-hero__title">{{ inst.name }}</h1>
+    <div class="id-hero__stats">
+      <div class="id-hero__stat"><i class="bi bi-geo-alt"></i><span>{{ inst.location }}</span></div>
+      <div class="id-hero__stat"><i class="bi bi-people"></i><span>{{ inst.students }}</span></div>
+      <div class="id-hero__stat"><i class="bi bi-journal-bookmark"></i><span>{{ inst.programs }}</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Jump Nav -->
+<nav class="ed-jumpnav">
+  <div class="container">
+    <div class="ed-jumpnav__wrap">
+      <a routerLink="/education" class="ed-jumpnav__parent"><i class="bi bi-arrow-left"></i> Education</a>
+      <div class="ed-jumpnav__inner">
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'overview'" (click)="setTab('overview')">
+          <i class="bi bi-info-circle"></i> Overview
+        </button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'highlights'" (click)="setTab('highlights')">
+          <i class="bi bi-star"></i> Highlights
+        </button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'programs'" (click)="setTab('programs')">
+          <i class="bi bi-journal-bookmark"></i> Programs
+        </button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'achievements'" (click)="setTab('achievements')">
+          <i class="bi bi-trophy"></i> Achievements
+        </button>
+        <button class="ed-jumpnav__link" [class.active]="activeTab() === 'map'" (click)="setTab('map')">
+          <i class="bi bi-map"></i> Location Map
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Tab Content -->
+<section class="section-padding">
+  <div class="container">
+
+    @if (activeTab() === 'overview') {
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-7">
+          <p class="la-label text-accent"><i class="bi bi-info-circle"></i> About the Institution</p>
+          <h2 class="section-title">Overview</h2>
+          <p class="id-overview">{{ inst.desc }}</p>
+        </div>
+        <div class="col-lg-5">
+          <div class="id-overview-img" [style.background-image]="'url(' + inst.image + ')'"></div>
+        </div>
+      </div>
+    }
+
+    @if (activeTab() === 'highlights') {
+      <p class="la-label text-accent"><i class="bi bi-star"></i> What Makes It Special</p>
+      <h2 class="section-title">Key Highlights</h2>
+      <div class="id-highlights">
+        @for (h of inst.highlights; track h) {
+          <div class="id-highlights__item">
+            <i class="bi bi-check-circle-fill" [style.color]="inst.color"></i>
+            <span>{{ h }}</span>
+          </div>
+        }
+      </div>
+    }
+
+    @if (activeTab() === 'programs') {
+      <p class="la-label text-accent"><i class="bi bi-journal-bookmark"></i> Academics</p>
+      <h2 class="section-title">Programs Offered</h2>
+      <div class="id-highlights">
+        @for (p of inst.programsList; track p.name) {
+          <div class="id-highlights__item">
+            <i class="bi bi-mortarboard-fill" [style.color]="inst.color"></i>
+            <span><strong>{{ p.name }}</strong> &mdash; {{ p.level }}</span>
+          </div>
+        }
+      </div>
+    }
+
+    @if (activeTab() === 'achievements') {
+      <p class="la-label text-accent"><i class="bi bi-trophy"></i> Milestones</p>
+      <h2 class="section-title">Achievements</h2>
+      <div class="id-highlights">
+        @for (a of inst.achievements; track a) {
+          <div class="id-highlights__item">
+            <i class="bi bi-award-fill" [style.color]="inst.color"></i>
+            <span>{{ a }}</span>
+          </div>
+        }
+      </div>
+    }
+
+    @if (activeTab() === 'map') {
+      <p class="la-label text-accent" [style.color]="inst.color"><i class="bi bi-map"></i> Campus Map</p>
+      <h2 class="section-title">Location</h2>
+      <p class="text-muted mb-4 d-block">Find {{ inst.name }} on the map of Ladakh.</p>
+      <app-leaflet-map
+        [lat]="inst.lat"
+        [lng]="inst.lng"
+        [title]="inst.name"
+        [zoom]="inst.zoom || 15"
+        height="450px">
+      </app-leaflet-map>
+    }
+
+  </div>
+</section>
+
+} @else {
+<section class="section-padding text-center">
+  <div class="container">
+    <h2>Institution not found</h2>
+    <a routerLink="/education" class="btn-la-primary mt-3"><i class="bi bi-arrow-left"></i> Back to Education</a>
+  </div>
+</section>
+}
+

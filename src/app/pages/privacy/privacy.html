@@ -1,0 +1,108 @@
+﻿<!-- ═══════════════════════════════════════════ -->
+<!--          PRIVACY POLICY PAGE             -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- 1 · Hero -->
+<section class="pv-hero">
+  <div class="pv-hero__overlay"></div>
+  <div class="container position-relative">
+    <p class="la-label text-accent mb-2">Legal</p>
+    <h1 class="pv-hero__title">Privacy Policy</h1>
+    <p class="pv-hero__sub">
+      Your privacy matters to us. This policy explains how Ladakh Archive collects, uses
+      and protects your information when you visit our website.
+    </p>
+    <p class="pv-hero__date">
+      <i class="bi bi-calendar3 me-1"></i> Last updated: {{ lastUpdated }}
+    </p>
+  </div>
+</section>
+
+<!-- 2 · Summary -->
+<section class="section-padding">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">Our Commitment</h2>
+        <p class="section-subtitle">
+          Ladakh Archive is a non-commercial educational platform dedicated to preserving
+          and sharing Ladakhi heritage. We are committed to transparency and respect your
+          right to privacy. We collect minimal data and never sell your personal information.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-3 justify-content-center">
+      <div class="col-md-4 col-sm-6 text-center">
+        <div class="pv-stat">
+          <div class="pv-stat__icon">
+            <i class="bi bi-shield-check"></i>
+          </div>
+          <h6 class="pv-stat__label">No Data Selling</h6>
+          <p class="pv-stat__desc">We never sell or trade your personal information</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 text-center">
+        <div class="pv-stat">
+          <div class="pv-stat__icon">
+            <i class="bi bi-eye-slash"></i>
+          </div>
+          <h6 class="pv-stat__label">Minimal Collection</h6>
+          <p class="pv-stat__desc">Only essential data for site functionality</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 text-center">
+        <div class="pv-stat">
+          <div class="pv-stat__icon">
+            <i class="bi bi-lock"></i>
+          </div>
+          <h6 class="pv-stat__label">Secure Storage</h6>
+          <p class="pv-stat__desc">Protected with industry-standard security measures</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · Policy Sections -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <div class="pv-sections-grid">
+      @for(section of sections; track section.title; let i = $index) {
+        <div class="pv-section" [class.pv-section--accent]="i === 0">
+          <div class="pv-section__icon-wrap">
+            <i class="bi {{ section.icon }}"></i>
+          </div>
+          <span class="pv-section__num">0{{ i + 1 }}</span>
+          <h3 class="pv-section__title">{{ section.title }}</h3>
+          <p class="pv-section__content">{{ section.content }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- 4 · CTA -->
+<section class="pv-cta">
+  <div class="pv-cta__overlay"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <h2 class="pv-cta__title">Have Questions about Your Privacy?</h2>
+        <p class="pv-cta__desc">
+          We're here to help. If you have any concerns about how we handle your data,
+          don't hesitate to reach out through our contribute page.
+        </p>
+      </div>
+      <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
+        <a routerLink="/contribute" class="btn btn-la-accent btn-lg me-2">
+          <i class="bi bi-envelope me-2"></i>Contact Us
+        </a>
+        <a routerLink="/terms" class="btn btn-la-outline btn-lg" style="border-color: rgba(255,255,255,.3); color: var(--la-white);">
+          <i class="bi bi-file-text me-2"></i>Terms of Use
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,364 @@
+﻿<!-- ===== HERO SECTION ===== -->
+<section class="la-hero" style="background-image: url('https://images.unsplash.com/photo-1544923246-77307dddd546?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center;">
+  <div class="la-hero__overlay" style="background: linear-gradient(to bottom, rgba(26,54,93,0.7), rgba(26,54,93,0.9));"></div>
+  <div class="container la-hero__container">
+    <div class="la-hero__content">
+      <span class="la-hero__badge">
+        <i class="bi bi-geo-alt-fill"></i> The Roof of the World
+      </span>
+      <h1 class="la-hero__title">
+        Discover & Document<br />
+        <span class="text-accent">Ladakh</span>
+      </h1>
+      <p class="la-hero__subtitle">
+        A comprehensive digital archive of Ladakh's history, culture, people,
+        nature, politics, and everything that makes this high-altitude desert
+        one of the most extraordinary regions on Earth.
+      </p>
+      <div class="la-hero__actions">
+        <a routerLink="/history" class="btn-la-accent">
+          <i class="bi bi-compass"></i> Start Exploring
+        </a>
+        <a routerLink="/contribute" class="btn-la-outline la-hero__outline-btn">
+          <i class="bi bi-plus-circle"></i> Contribute
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="la-hero__scroll" (click)="scrollToContent()">
+    <i class="bi bi-chevron-double-down"></i>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section class="la-stats">
+  <div class="container">
+    <div class="la-stats__grid">
+      @for (stat of stats; track stat.label) {
+        <div class="la-stats__item">
+          <span class="la-stats__value">{{ stat.value }}</span>
+          <span class="la-stats__label">{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ===== CATEGORIES SECTION ===== -->
+<section class="section-padding bg-snow" id="explore">
+  <div class="container">
+    <h2 class="section-title">Explore the Archive</h2>
+    <p class="section-subtitle">
+      Dive deep into every aspect of Ladakh — from its ancient history and
+      living culture to its stunning natural landscapes and evolving politics.
+    </p>
+
+    <div class="la-category-grid container">
+      @for (cat of categories; track cat.title) {
+        <a [routerLink]="cat.link" class="la-category-card" [style.background-image]="'url(' + cat.image + ')'" style="background-size: cover; background-position: center; position: relative; overflow: hidden; border-radius: 1rem; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; text-decoration: none; color: white;">
+          <div class="la-category-card__overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0)); z-index: 1;"></div>
+          <div class="la-category-card__content" style="position: relative; z-index: 2;">
+            <div class="la-category-card__icon" [style.background]="cat.color" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+              <i class="bi" [class]="cat.icon" style="font-size: 1.25rem;"></i>
+            </div>
+            <h5 class="la-category-card__title" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">{{ cat.title }}</h5>
+            <p class="la-category-card__desc" style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">{{ cat.desc }}</p>
+            <span class="la-category-card__link" style="font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">
+              Explore <i class="bi bi-arrow-right"></i>
+            </span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED / ABOUT SECTION ===== -->
+<section class="section-padding" id="about">
+  <div class="container">
+    <div class="la-about">
+      <div class="la-about__image-wrap">
+        <div class="la-about-image" style="background-image: url('https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?auto=format&fit=crop&q=80&w=1200'); background-size: cover; background-position: center; height: 500px; border-radius: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
+          <!-- Real image replaces placeholder -->
+        </div>
+      </div>
+      <div class="la-about__text">
+        <span class="la-label">About the Archive</span>
+        <h2>Preserving Ladakh's Legacy<br />for Future Generations</h2>
+        <p>
+          LadakhArchive is more than a website — it's a living document that captures
+          the essence of Ladakh. From the ancient monasteries of Alchi and Hemis to the
+          pristine waters of Pangong Tso and Tso Moriri, from the political movements
+          shaping its future to the educational institutions empowering its youth.
+        </p>
+        <p>
+          Our mission is to create the most comprehensive, accessible, and accurate
+          resource about Ladakh — built by the community, for the world.
+        </p>
+        <div class="la-about__actions">
+          <a routerLink="/about" class="btn-la-primary">
+            <i class="bi bi-info-circle"></i> Learn More
+          </a>
+          <a routerLink="/contribute" class="btn-la-ghost">
+            <i class="bi bi-heart"></i> Get Involved
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS / FEATURES SECTION ===== -->
+<section class="section-padding bg-snow" id="features">
+  <div class="container">
+    <h2 class="section-title">What You'll Find Here</h2>
+    <p class="section-subtitle">
+      A one-stop resource covering every dimension of Ladakh life and land.
+    </p>
+
+    <div class="la-feature-grid">
+      <div class="la-feature">
+        <i class="bi bi-journal-richtext"></i>
+        <h5>In-Depth Articles</h5>
+        <p>Well-researched articles on history, culture, geography, and current affairs of Ladakh.</p>
+      </div>
+      <div class="la-feature">
+        <i class="bi bi-map"></i>
+        <h5>Interactive Maps</h5>
+        <p>Explore routes, passes, villages, and landmarks across the Ladakh region.</p>
+      </div>
+      <div class="la-feature">
+        <i class="bi bi-camera"></i>
+        <h5>Photo Gallery</h5>
+        <p>Stunning photography documenting landscapes, festivals, daily life and wildlife.</p>
+      </div>
+      <div class="la-feature">
+        <i class="bi bi-calendar-event"></i>
+        <h5>Historical Timeline</h5>
+        <p>Navigate through key events that shaped Ladakh from ancient times to present.</p>
+      </div>
+      <div class="la-feature">
+        <i class="bi bi-people"></i>
+        <h5>Community Voices</h5>
+        <p>First-hand accounts and stories from Ladakhi people about their land and traditions.</p>
+      </div>
+      <div class="la-feature">
+        <i class="bi bi-book"></i>
+        <h5>Educational Resources</h5>
+        <p>Learning materials, research papers, and educational content about the region.</p>
+      </div>
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/about" class="btn-la-primary">
+        Learn More About the Archive <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED PLACES SECTION ===== -->
+<section class="section-padding" id="places">
+  <div class="container">
+    <h2 class="section-title">Iconic Places of Ladakh</h2>
+    <p class="section-subtitle">
+      From shimmering high-altitude lakes to the world's highest passes — discover
+      the landmarks that define this extraordinary land.
+    </p>
+
+    <div class="la-places-grid">
+      @for (place of featuredPlaces; track place.name) {
+        <div class="la-place-card">
+          <div class="la-place-card__visual" [style.background-image]="'url(' + place.image + ')'" style="background-size: cover; background-position: center; height: 200px; position: relative;">
+            <div class="la-place-card__overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);"></div>
+            <span class="la-place-card__tag" style="z-index: 2;">{{ place.tag }}</span>
+          </div>
+          <div class="la-place-card__body">
+            <h5 class="la-place-card__name">{{ place.name }}</h5>
+            <p class="la-place-card__desc">{{ place.desc }}</p>
+            <div class="la-place-card__meta">
+              <span><i class="bi bi-geo-alt"></i> {{ place.altitude }}</span>
+              <a [routerLink]="place.link" class="la-place-card__link">
+                Explore <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTERACTIVE LOCATION EXPLORER ===== -->
+<app-location-explorer></app-location-explorer>
+
+<!-- ===== VILLAGE SEARCH TEASER ===== -->
+<section class="section-padding bg-snow" id="village-search">
+  <div class="container text-center">
+    <span class="la-label"><i class="bi bi-search me-1"></i> Discover</span>
+    <h2 class="section-title">Search Villages in Ladakh</h2>
+    <p class="section-subtitle">
+      Explore 130+ villages across Leh and Kargil — find history, population,
+      elevation, nearby landmarks, and facilities for any village by name or pincode.
+    </p>
+    <div class="section-cta-row">
+      <a routerLink="/village-search" class="btn-la-primary">
+        <i class="bi bi-search"></i> Open Village Search
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHOTO GALLERY PREVIEW ===== -->
+<section class="la-gallery-section" id="gallery-preview">
+  <div class="container">
+    <div class="la-gallery-header">
+      <span class="la-label"><i class="bi bi-camera-reels"></i> Gallery</span>
+      <h2 class="section-title">Visual Stories</h2>
+      <p class="section-subtitle">
+        A glimpse into the breathtaking beauty of Ladakh through the lens.
+      </p>
+    </div>
+
+    <div class="la-gallery-grid">
+      @for (img of galleryImages; track img.title; let i = $index) {
+        <div class="la-gallery-item" [style.grid-area]="img.area" [style.background-image]="'url(' + img.image + ')'" style="background-size: cover; background-position: center; position: relative; border-radius: 0.75rem; overflow: hidden; min-height: 200px;">
+          <div class="la-gallery-item__overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); opacity: 0; transition: opacity 0.3s ease-in-out; display: flex; align-items: flex-end; padding: 1.5rem;">
+            <!-- Overlay content handled by CSS usually, but adding inline for certainty -->
+            <div class="la-gallery-item__info">
+              <span class="la-gallery-item__title">{{ img.title }}</span>
+              <span class="la-gallery-item__location">
+                <i class="bi bi-geo-alt-fill"></i> {{ img.location }}
+              </span>
+            </div>
+            <span class="la-gallery-item__zoom">
+              <i class="bi bi-arrows-fullscreen"></i>
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="la-gallery-cta">
+      <a routerLink="/gallery" class="btn-la-accent">
+        <i class="bi bi-images"></i> View Full Gallery
+      </a>
+      <span class="la-gallery-cta__count">
+        <i class="bi bi-collection"></i> 200+ photos in the archive
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LATEST ARTICLES / STORIES ===== -->
+<section class="section-padding" id="articles">
+  <div class="container">
+    <div class="la-articles-header">
+      <div>
+        <h2 class="section-title la-articles-header__title">Latest from the Archive</h2>
+        <p class="section-subtitle la-articles-header__subtitle">
+          Stories, research, and insights from across Ladakh.
+        </p>
+      </div>
+      <a routerLink="/blog" class="btn-la-outline la-articles-header__btn">
+        View All Articles <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="la-articles-grid">
+      @for (article of latestArticles; track article.title) {
+        <div class="la-article-card">
+          <div class="la-article-card__image" [style.background-image]="'url(' + article.image + ')'" style="background-size: cover; background-position: center; height: 200px;">
+            <span class="la-article-card__badge">{{ article.category }}</span>
+          </div>
+          <div class="la-article-card__body">
+            <div class="la-article-card__meta">
+              <span><i class="bi bi-calendar3"></i> {{ article.date }}</span>
+              <span><i class="bi bi-clock"></i> {{ article.readTime }}</span>
+            </div>
+            <h5 class="la-article-card__title">{{ article.title }}</h5>
+            <p class="la-article-card__excerpt">{{ article.excerpt }}</p>
+            <a [routerLink]="article.link" class="la-article-card__link">
+              Read More <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== FESTIVALS & EVENTS ===== -->
+<section class="section-padding bg-snow" id="festivals">
+  <div class="container">
+    <h2 class="section-title">Festivals & Celebrations</h2>
+    <p class="section-subtitle">
+      Experience the vibrant cultural celebrations that bring Ladakh alive throughout the year.
+    </p>
+
+    <div class="la-festivals-grid">
+      @for (fest of festivals; track fest.name) {
+        <div class="la-festival-card">
+          <div class="la-festival-card__icon">
+            <i class="bi" [class]="fest.icon"></i>
+          </div>
+          <div class="la-festival-card__content">
+            <div class="la-festival-card__header">
+              <h5 class="la-festival-card__name">{{ fest.name }}</h5>
+              <span class="la-festival-card__month">
+                <i class="bi bi-calendar-event"></i> {{ fest.month }}
+              </span>
+            </div>
+            <p class="la-festival-card__desc">{{ fest.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="text-center mt-4">
+      <a routerLink="/culture" class="btn-la-primary"><i class="bi bi-arrow-right me-2"></i>Explore All Festivals & Culture</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DID YOU KNOW? ===== -->
+<section class="section-padding" id="did-you-know">
+  <div class="container">
+    <div class="la-dyk">
+      <div class="la-dyk__icon" [style.background]="currentFact().color">
+        <i class="bi" [class]="currentFact().icon"></i>
+      </div>
+      <div class="la-dyk__content">
+        <h5 class="la-dyk__label">Did You Know?</h5>
+        <p class="la-dyk__fact">{{ currentFact().fact }}</p>
+        <button class="la-dyk__next" (click)="nextFact()">
+          <i class="bi bi-arrow-right"></i> Another Fact
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="la-cta">
+  <div class="container">
+    <div class="la-cta__inner">
+      <h2>Help Us Build This Archive</h2>
+      <p>
+        LadakhArchive is a community-driven project. Whether you're a historian,
+        writer, photographer, or simply someone who loves Ladakh — your contribution matters.
+      </p>
+      <div class="la-cta__actions">
+        <a routerLink="/contribute" class="btn-la-accent">
+          <i class="bi bi-pencil-square"></i> Start Contributing
+        </a>
+        <a routerLink="/about" class="btn-la-outline la-cta__outline-btn">
+          <i class="bi bi-info-circle"></i> Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

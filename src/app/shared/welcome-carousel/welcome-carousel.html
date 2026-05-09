@@ -1,0 +1,98 @@
+@if (visible()) {
+
+<div class="wc-overlay" (click)="close()">
+  <div class="wc-panel" (click)="$event.stopPropagation()">
+
+    <!-- Close button -->
+    <button class="wc-close" (click)="close()" aria-label="Close">
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+    <!-- Progress bar -->
+    <div class="wc-progress">
+      <div class="wc-progress__bar" [style.width.%]="progress()"></div>
+    </div>
+
+    <!-- Slide content -->
+    @if (slide(); as s) {
+      <div class="wc-slide">
+
+        <!-- Icon + tag -->
+        <div class="wc-slide__header">
+          <div class="wc-slide__icon" [style.background]="s.tagColor + '18'" [style.color]="s.tagColor">
+            <i [class]="'bi ' + s.icon"></i>
+          </div>
+          <span class="wc-slide__tag" [style.background]="s.tagColor">{{ s.tag }}</span>
+        </div>
+
+        <!-- Title & description -->
+        <h3 class="wc-slide__title">{{ s.title }}</h3>
+        <p class="wc-slide__desc">{{ s.description }}</p>
+
+        <!-- Bullet points -->
+        @if (s.bullets) {
+          <ul class="wc-bullets">
+            @for (b of s.bullets; track b.text) {
+              <li class="wc-bullets__item">
+                <i [class]="'bi ' + b.icon" [style.color]="s.tagColor"></i>
+                <span>{{ b.text }}</span>
+              </li>
+            }
+          </ul>
+        }
+
+        <!-- Optional CTA -->
+        @if (s.cta) {
+          <a [routerLink]="s.cta.route" class="wc-slide__cta" (click)="close()">
+            {{ s.cta.label }} <i class="bi bi-arrow-right"></i>
+          </a>
+        }
+
+      </div>
+    }
+
+    <!-- Navigation -->
+    <div class="wc-nav">
+      <div class="wc-dots">
+        @for (s of slides; track s.title; let i = $index) {
+          <button
+            class="wc-dots__dot"
+            [class.wc-dots__dot--active]="i === current()"
+            (click)="goTo(i)"
+            [attr.aria-label]="'Go to slide ' + (i + 1)">
+          </button>
+        }
+      </div>
+
+      <div class="wc-nav__actions">
+        @if (current() > 0) {
+          <button class="wc-nav__btn wc-nav__btn--prev" (click)="prev()">
+            <i class="bi bi-arrow-left"></i> Back
+          </button>
+        } @else {
+          <button class="wc-nav__btn wc-nav__btn--skip" (click)="close()">
+            Skip
+          </button>
+        }
+
+        @if (current() < total - 1) {
+          <button class="wc-nav__btn wc-nav__btn--next" (click)="next()">
+            Next <i class="bi bi-arrow-right"></i>
+          </button>
+        } @else {
+          <button class="wc-nav__btn wc-nav__btn--done" (click)="dontShowAgain()">
+            Got it! <i class="bi bi-check-lg"></i>
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Don't show again -->
+    <button class="wc-dismiss" (click)="dontShowAgain()">
+      <i class="bi bi-eye-slash me-1"></i> Don't show this again
+    </button>
+
+  </div>
+</div>
+
+}

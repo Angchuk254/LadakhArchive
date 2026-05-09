@@ -1,1 +1,522 @@
-/* You can add global styles to this file, and also import other style files */
+/* ============================================================
+   LADAKH ARCHIVE — Global Theme
+   ============================================================ */
+
+/* ---------- Google Font ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Tibetan:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
+/* ---------- CSS Custom Properties (Design Tokens) ---------- */
+:root {
+  /* Primary — deep Ladakh mountain blue */
+  --la-primary: #1a365d;
+  --la-primary-light: #2b5797;
+  --la-primary-dark: #0f2240;
+
+  /* Accent — warm earth / monastery gold */
+  --la-accent: #c8702a;
+  --la-accent-light: #e89b4e;
+  --la-accent-dark: #9c5520;
+
+  /* Neutrals */
+  --la-white: #ffffff;
+  --la-snow: #f7f8fa;
+  --la-gray-100: #eef0f4;
+  --la-gray-200: #d5d9e2;
+  --la-gray-300: #b0b8c9;
+  --la-gray-400: #8892a4;
+  --la-gray-500: #64707f;
+  --la-gray-600: #475264;
+  --la-gray-700: #2f3949;
+  --la-gray-800: #1e2533;
+  --la-dark: #111827;
+
+  /* Semantic */
+  --la-success: #16a34a;
+  --la-info: #0284c7;
+  --la-warning: #eab308;
+  --la-danger: #dc2626;
+
+  /* Typography */
+  --la-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --la-font-heading: 'Playfair Display', Georgia, serif;
+
+  /* Transitions */
+  --la-transition: 0.25s ease;
+  --la-transition-slow: 0.4s ease;
+
+  /* Shadows */
+  --la-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --la-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --la-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  /* Border Radius */
+  --la-radius-sm: 4px;
+  --la-radius: 8px;
+  --la-radius-lg: 12px;
+  --la-radius-xl: 20px;
+  --la-radius-full: 9999px;
+
+  /* Extra neutrals used site-wide */
+  --la-gray-50: #f9fafb;
+  --la-gray-900: #0b1120;
+
+  /* Extended shadows */
+  --la-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.13);
+}
+
+/* ---------- Dark Mode ---------- */
+html[data-theme="dark"] {
+  --la-white: #111827;
+  --la-snow: #151c2b;
+  --la-gray-100: #1e2533;
+  --la-gray-200: #2f3949;
+  --la-gray-300: #475264;
+  --la-gray-400: #64707f;
+  --la-gray-500: #8892a4;
+  --la-gray-600: #b0b8c9;
+  --la-gray-700: #d5d9e2;
+  --la-gray-800: #eef0f4;
+  --la-dark: #f1f3f7;
+
+  --la-primary: #5499c7;
+  --la-primary-light: #6bb3e0;
+  --la-primary-dark: #3a7cb8;
+
+  --la-accent: #e89b4e;
+  --la-accent-light: #f0b573;
+  --la-accent-dark: #c8702a;
+
+  --la-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --la-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --la-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --la-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.45);
+
+  --la-gray-50: #0f1624;
+  --la-gray-900: #e4e8f0;
+
+  color-scheme: dark;
+
+  body {
+    background-color: #111827;
+    color: #f1f3f7;
+  }
+
+  img {
+    opacity: 0.92;
+  }
+}
+
+/* ---------- Tibetan Script Adjustments ---------- */
+html[lang="bo"] {
+  /* 22px root = 37.5% larger than 16px — compensates for Tibetan's smaller x-height */
+  font-size: 22px;
+
+  --la-font-body: 'Noto Sans Tibetan', 'Inter', system-ui, sans-serif;
+  --la-font-heading: 'Noto Sans Tibetan', 'Playfair Display', Georgia, serif;
+
+  body {
+    line-height: 2.1;
+  }
+
+  /* Floor for content text — nothing below 1rem (=22px) */
+  p, li, td, th, dd, dt, label, span, a, blockquote {
+    font-size: max(1rem, inherit);
+  }
+}
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--la-font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--la-dark);
+  background-color: var(--la-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--la-font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--la-primary);
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+  color: var(--la-gray-600);
+}
+
+a {
+  color: var(--la-primary-light);
+  text-decoration: none;
+  transition: color var(--la-transition);
+
+  &:hover {
+    color: var(--la-accent);
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Consistent Buttons ---------- */
+.btn-la-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--la-font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--la-white);
+  background: var(--la-primary);
+  border: 2px solid var(--la-primary);
+  border-radius: var(--la-radius);
+  cursor: pointer;
+  transition: all var(--la-transition);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--la-primary-light);
+    border-color: var(--la-primary-light);
+    color: var(--la-white);
+    transform: translateY(-1px);
+    box-shadow: var(--la-shadow);
+  }
+}
+
+.btn-la-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--la-font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--la-white);
+  background: var(--la-accent);
+  border: 2px solid var(--la-accent);
+  border-radius: var(--la-radius);
+  cursor: pointer;
+  transition: all var(--la-transition);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--la-accent-dark);
+    border-color: var(--la-accent-dark);
+    color: var(--la-white);
+    transform: translateY(-1px);
+    box-shadow: var(--la-shadow);
+  }
+}
+
+.btn-la-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--la-font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--la-primary);
+  background: transparent;
+  border: 2px solid var(--la-primary);
+  border-radius: var(--la-radius);
+  cursor: pointer;
+  transition: all var(--la-transition);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--la-primary);
+    color: var(--la-white);
+    transform: translateY(-1px);
+    box-shadow: var(--la-shadow);
+  }
+}
+
+.btn-la-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--la-font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--la-primary);
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--la-radius);
+  cursor: pointer;
+  transition: all var(--la-transition);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--la-gray-100);
+    color: var(--la-primary-dark);
+  }
+}
+
+/* ---------- Utility Classes ---------- */
+.section-padding {
+  padding: 5rem 0;
+}
+
+.section-padding-sm {
+  padding: 3rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+  color: var(--la-gray-500);
+  font-size: 1.1rem;
+}
+
+.bg-snow { background-color: var(--la-snow); }
+.bg-dark-la { background-color: var(--la-dark); }
+.bg-primary-la { background-color: var(--la-primary); }
+.text-accent { color: var(--la-accent); }
+.text-primary-la { color: var(--la-primary); }
+
+/* ---------- Section Label ---------- */
+.la-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--la-accent);
+  margin-bottom: 0.65rem;
+
+  i {
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------- Section Learn-More CTA ---------- */
+.section-cta-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: var(--la-accent);
+  color: var(--la-white);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--la-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--la-gray-300);
+  border-radius: var(--la-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--la-gray-400);
+}
+
+/* ---------- Shared Jump-Nav ---------- */
+[class*="-jumpnav"] {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--la-white);
+  border-bottom: 1px solid var(--la-gray-100);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 0.5rem 0;
+}
+
+[class*="-jumpnav__inner"] {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  padding: 0.65rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+[class*="-jumpnav__link"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--la-radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--la-gray-500);
+  text-decoration: none;
+  transition: all 0.2s;
+
+  i {
+    font-size: 0.85rem;
+  }
+
+  &:hover {
+    background: var(--la-gray-100);
+    color: var(--la-primary);
+  }
+
+  &.active {
+    background: var(--la-primary);
+    color: #fff;
+  }
+}
+
+[class*="-jumpnav__wrap"] {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0;
+}
+
+[class*="-jumpnav__parent"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  padding: 0.45rem 1rem;
+  border-radius: var(--la-radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--la-primary);
+  text-decoration: none;
+  border: 1px solid var(--la-gray-200);
+  background: var(--la-gray-50);
+  transition: all 0.2s;
+  flex-shrink: 0;
+
+  &:hover {
+    background: var(--la-gray-100);
+    color: var(--la-primary-dark);
+  }
+
+  i {
+    font-size: 0.85rem;
+  }
+}
+
+[class*="-jumpnav__wrap"] [class*="-jumpnav__inner"] {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  [class*="-jumpnav__link"] {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  [class*="-jumpnav__parent"] {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.78rem;
+  }
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+  /* Hide non-content elements */
+  app-navbar,
+  app-footer,
+  app-back-to-top,
+  app-welcome-carousel,
+  app-translation-loader,
+  .ba-progress,
+  .ba-jumpnav,
+  .ba-sidebar,
+  .ba-share,
+  .ba-hero__actions,
+  .ba-cta,
+  .la-cta,
+  .btt,
+  [class*="__overlay"],
+  button {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.6;
+    color: #000;
+    background: #fff;
+  }
+
+  h1, h2, h3, h4 {
+    color: #000;
+    page-break-after: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .ba-hero {
+    min-height: auto;
+    padding: 1rem 0;
+    background: none !important;
+    color: #000;
+  }
+
+  .ba-article {
+    column-count: 1;
+  }
+}

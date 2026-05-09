@@ -1,0 +1,579 @@
+﻿<!-- ===== HERO BANNER ===== -->
+<section class="hi-hero">
+  <div class="hi-hero__overlay"></div>
+  <div class="container hi-hero__container">
+    <nav class="hi-breadcrumb">
+      <a routerLink="/"><i class="bi bi-house-fill"></i> Home</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>History</span>
+    </nav>
+    <div class="hi-hero__content">
+      <span class="hi-hero__badge">
+        <i class="bi bi-clock-history"></i> 1000+ Years of Civilization
+      </span>
+      <h1 class="hi-hero__title">
+        The History of<br />
+        <span class="text-accent">Ladakh</span>
+      </h1>
+      <p class="hi-hero__subtitle">
+        From the ancient petroglyphs of the Indus Valley to the modern Union Territory —
+        trace the remarkable story of a land caught between empires, shaped by faith,
+        and sustained by the resilience of its people.
+      </p>
+    </div>
+  </div>
+
+  <!-- Decorative bottom wave -->
+  <div class="hi-hero__wave">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,60 C360,100 720,0 1080,60 C1260,90 1380,80 1440,70 L1440,100 L0,100 Z" fill="var(--la-white)"/>
+    </svg>
+  </div>
+</section>
+
+
+
+<!-- ===== INTRO / OVERVIEW ===== -->
+<section class="section-padding" id="overview">
+  <div class="container">
+    <div class="hi-intro">
+      <div class="hi-intro__text">
+        <span class="la-label"><i class="bi bi-book"></i> Overview</span>
+        <h2>A History Spanning Millennia</h2>
+        <p>
+          Ladakh — meaning "Land of High Passes" — sits at the intersection of the Silk Road,
+          the Tibetan Plateau, and the Indian subcontinent. For millennia, it has been a melting
+          pot where Buddhist monks, Central Asian traders, Tibetan warriors, Mughal emperors,
+          and Dogra generals all left their mark.
+        </p>
+        <p>
+          Its history is not just one of conquests and treaties, but also of monasteries built
+          on cliffs, trade caravans crossing the Karakoram, and a unique cultural identity that
+          has endured through every upheaval.
+        </p>
+        <div class="hi-intro__stats">
+          <div class="hi-intro__stat">
+            <span class="hi-intro__stat-value">3000+</span>
+            <span class="hi-intro__stat-label">Years of Human Settlement</span>
+          </div>
+          <div class="hi-intro__stat">
+            <span class="hi-intro__stat-value">900</span>
+            <span class="hi-intro__stat-label">Years of Independent Rule</span>
+          </div>
+          <div class="hi-intro__stat">
+            <span class="hi-intro__stat-value">20+</span>
+            <span class="hi-intro__stat-label">Ruling Dynasties</span>
+          </div>
+        </div>
+      </div>
+      <div class="hi-intro__visual">
+        <div class="hi-intro__image-stack">
+          <div class="hi-intro__image hi-intro__image--1">
+            <div class="hi-intro__placeholder">
+              <i class="bi bi-bank2"></i>
+              <span>Leh Palace</span>
+            </div>
+          </div>
+          <div class="hi-intro__image hi-intro__image--2">
+            <div class="hi-intro__placeholder">
+              <i class="bi bi-building"></i>
+              <span>Ancient Monastery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/timeline" class="btn-la-primary">
+        Explore Full Timeline <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KINGDOMS CARDS ===== -->
+<section class="section-padding bg-snow" id="kingdoms">
+  <div class="container">
+    <h2 class="section-title">Historical Kingdoms & Regions</h2>
+    <p class="section-subtitle">
+      The territories that comprised the greater Ladakh region, each with its own rulers and unique heritage.
+    </p>
+
+    <div class="hi-kingdoms-grid">
+      @for (kingdom of kingdoms; track kingdom.name) {
+        <div class="hi-kingdom-card">
+          <div class="hi-kingdom-card__icon">
+            <i class="bi" [class]="kingdom.icon"></i>
+          </div>
+          <div class="hi-kingdom-card__body">
+            <h5 class="hi-kingdom-card__name">{{ kingdom.name }}</h5>
+            <span class="hi-kingdom-card__period">{{ kingdom.period }}</span>
+            <p class="hi-kingdom-card__desc">{{ kingdom.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== HISTORICAL MAPS / TERRITORIAL EVOLUTION ===== -->
+<section class="section-padding" id="maps">
+  <div class="container">
+    <h2 class="section-title">How Ladakh's Borders Changed</h2>
+    <p class="section-subtitle">
+      Track the territorial evolution of Ladakh across five pivotal periods — from independent kingdom to Union Territory.
+    </p>
+
+    <div class="hi-maps-timeline">
+      @for (map of historicalMaps; track map.era; let i = $index; let last = $last) {
+        <div class="hi-map-card" [class.hi-map-card--active]="i === 1">
+          <div class="hi-map-card__header">
+            <div class="hi-map-card__icon" [style.background]="map.color">
+              <i class="bi" [class]="map.icon"></i>
+            </div>
+            <div>
+              <h5 class="hi-map-card__era">{{ map.era }}</h5>
+              <span class="hi-map-card__year" [style.color]="map.color">{{ map.year }}</span>
+            </div>
+          </div>
+
+          <!-- SVG Territory visual -->
+          <div class="hi-map-card__visual">
+            <svg viewBox="0 0 240 100" class="hi-map-card__svg">
+              <!-- Background region outline -->
+              <path d="M20,80 Q60,10 120,40 Q180,70 220,20 L220,85 Q120,95 20,85 Z"
+                    fill="rgba(0,0,0,0.04)" stroke="var(--la-gray-200)" stroke-width="1"/>
+              <!-- Controlled territory fill -->
+              @if (map.controlPct > 0) {
+                <path d="M20,80 Q60,10 120,40 Q180,70 220,20 L220,85 Q120,95 20,85 Z"
+                      [attr.fill]="map.color" fill-opacity="0.15"
+                      [attr.stroke]="map.color" stroke-width="1.5" stroke-dasharray="4,3"/>
+              }
+              <!-- Era label -->
+              <text x="120" y="60" text-anchor="middle" font-size="10" fill="var(--la-gray-400)" font-family="Inter, sans-serif">
+                {{ map.extent }}
+              </text>
+            </svg>
+            @if (map.controlPct > 0) {
+              <div class="hi-map-card__pct">
+                <span class="hi-map-card__pct-value" [style.color]="map.color">{{ map.controlPct }}%</span>
+                <span class="hi-map-card__pct-label">Self-Governance</span>
+              </div>
+            } @else {
+              <div class="hi-map-card__pct">
+                <span class="hi-map-card__pct-value" style="color: var(--la-danger)">0%</span>
+                <span class="hi-map-card__pct-label">Independence Lost</span>
+              </div>
+            }
+          </div>
+
+          <p class="hi-map-card__desc">{{ map.desc }}</p>
+
+          @if (!last) {
+            <div class="hi-map-card__connector">
+              <i class="bi bi-arrow-right"></i>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== POPULATION & DEMOGRAPHICS ===== -->
+<section class="hi-demographics-section" id="population">
+  <div class="container">
+    <div class="hi-demographics-header">
+      <span class="la-label"><i class="bi bi-bar-chart-fill"></i> Data & Demographics</span>
+      <h2 class="section-title">Population Through the Centuries</h2>
+      <p class="section-subtitle">
+        From a sparse high-altitude population to a growing Union Territory — see how Ladakh's numbers have evolved.
+      </p>
+    </div>
+
+    <div class="hi-charts-row">
+      <!-- Population Bar Chart -->
+      <div class="hi-chart-card">
+        <h5 class="hi-chart-card__title">
+          <i class="bi bi-people-fill"></i> Population Growth
+        </h5>
+        <div class="hi-bar-chart">
+          <svg viewBox="0 0 400 220" class="hi-bar-chart__svg">
+            <!-- Grid lines -->
+            <line x1="50" y1="20" x2="50" y2="180" stroke="var(--la-gray-200)" stroke-width="1"/>
+            <line x1="50" y1="180" x2="380" y2="180" stroke="var(--la-gray-200)" stroke-width="1"/>
+            <line x1="50" y1="120" x2="380" y2="120" stroke="var(--la-gray-100)" stroke-width="0.5" stroke-dasharray="4"/>
+            <line x1="50" y1="60" x2="380" y2="60" stroke="var(--la-gray-100)" stroke-width="0.5" stroke-dasharray="4"/>
+
+            <!-- Y axis labels -->
+            <text x="45" y="185" text-anchor="end" font-size="9" fill="var(--la-gray-400)">0</text>
+            <text x="45" y="125" text-anchor="end" font-size="9" fill="var(--la-gray-400)">150K</text>
+            <text x="45" y="65" text-anchor="end" font-size="9" fill="var(--la-gray-400)">300K</text>
+
+            <!-- Bars -->
+            @for (d of populationData; track d.year; let i = $index) {
+              <rect
+                [attr.x]="65 + i * 45"
+                [attr.y]="180 - d.barHeight * 2.5"
+                width="28"
+                [attr.height]="d.barHeight * 2.5"
+                rx="3"
+                fill="var(--la-accent)"
+                [attr.fill-opacity]="0.3 + (i * 0.1)"
+              />
+              <!-- Value on top -->
+              <text
+                [attr.x]="79 + i * 45"
+                [attr.y]="175 - d.barHeight * 2.5"
+                text-anchor="middle" font-size="8" font-weight="600" fill="var(--la-accent)">
+                {{ (d.population / 1000) | number:'1.0-0' }}K
+              </text>
+              <!-- Year label -->
+              <text
+                [attr.x]="79 + i * 45"
+                y="195"
+                text-anchor="middle" font-size="8.5" fill="var(--la-gray-400)">
+                {{ d.year }}
+              </text>
+            }
+          </svg>
+        </div>
+      </div>
+
+      <!-- Religious Demographics Donut -->
+      <div class="hi-chart-card">
+        <h5 class="hi-chart-card__title">
+          <i class="bi bi-pie-chart-fill"></i> Religious Demographics
+        </h5>
+        <div class="hi-donut-chart">
+          <svg viewBox="0 0 200 200" class="hi-donut-chart__svg">
+            <!-- Donut segments -->
+            @for (d of demographics; track d.group) {
+              <circle cx="100" cy="100" r="70"
+                fill="none"
+                [attr.stroke]="d.color"
+                stroke-width="28"
+                [attr.stroke-dasharray]="d.pct * 4.398 + ' ' + (440 - d.pct * 4.398)"
+                [attr.stroke-dashoffset]="-(d.offset * 4.398)"
+                stroke-linecap="round"
+              />
+            }
+            <!-- Center text -->
+            <text x="100" y="95" text-anchor="middle" font-size="18" font-weight="800" fill="var(--la-dark)" font-family="'Playfair Display', serif">
+              310K+
+            </text>
+            <text x="100" y="112" text-anchor="middle" font-size="9" fill="var(--la-gray-400)" font-family="Inter, sans-serif">
+              Population (2024)
+            </text>
+          </svg>
+          <div class="hi-donut-chart__legend">
+            @for (d of demographics; track d.group) {
+              <div class="hi-donut-chart__legend-item">
+                <span class="hi-donut-chart__dot" [style.background]="d.color"></span>
+                <span class="hi-donut-chart__label">{{ d.group }}</span>
+                <span class="hi-donut-chart__value" [style.color]="d.color">{{ d.pct }}%</span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRADE ROUTES & SILK ROAD ===== -->
+<section class="section-padding bg-snow" id="trade">
+  <div class="container">
+    <h2 class="section-title">Trade Routes & the Silk Road</h2>
+    <p class="section-subtitle">
+      For centuries, Ladakh was a vital nexus in the trans-Himalayan trade network linking India, Tibet, Central Asia, and China.
+    </p>
+
+    <!-- SVG Route Map -->
+    <div class="hi-routes-map">
+      <svg viewBox="0 0 700 320" class="hi-routes-map__svg">
+        <!-- Background terrain suggestion -->
+        <defs>
+          <linearGradient id="terrainGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--la-gray-100)" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="var(--la-snow)" stop-opacity="0.3"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="700" height="320" rx="12" fill="url(#terrainGrad)"/>
+
+        <!-- Mountain silhouette -->
+        <path d="M0,280 L80,200 L150,240 L220,160 L300,220 L380,140 L450,200 L520,120 L600,180 L700,140 L700,320 L0,320 Z"
+              fill="var(--la-primary)" fill-opacity="0.05"/>
+
+        <!-- Route lines -->
+        <line x1="350" y1="160" x2="500" y2="60" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+        <line x1="350" y1="160" x2="580" y2="160" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+        <line x1="350" y1="160" x2="150" y2="220" stroke="#059669" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+        <line x1="350" y1="160" x2="520" y2="50" stroke="#c8702a" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+
+        <!-- Leh (Center Hub) -->
+        <circle cx="350" cy="160" r="18" fill="var(--la-accent)" stroke="var(--la-white)" stroke-width="3"/>
+        <text x="350" y="164" text-anchor="middle" font-size="10" font-weight="700" fill="var(--la-white)" font-family="Inter, sans-serif">LEH</text>
+
+        <!-- Yarkand -->
+        <circle cx="500" cy="60" r="10" fill="#7c3aed" opacity="0.8"/>
+        <text x="500" y="50" text-anchor="middle" font-size="9" fill="#7c3aed" font-weight="600" font-family="Inter, sans-serif">Yarkand</text>
+
+        <!-- Lhasa -->
+        <circle cx="580" cy="160" r="10" fill="#dc2626" opacity="0.8"/>
+        <text x="580" y="150" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600" font-family="Inter, sans-serif">Lhasa</text>
+
+        <!-- Srinagar -->
+        <circle cx="150" cy="220" r="10" fill="#059669" opacity="0.8"/>
+        <text x="150" y="210" text-anchor="middle" font-size="9" fill="#059669" font-weight="600" font-family="Inter, sans-serif">Srinagar</text>
+
+        <!-- Kashgar -->
+        <circle cx="520" cy="50" r="10" fill="#c8702a" opacity="0.8"/>
+        <text x="545" y="45" text-anchor="start" font-size="9" fill="#c8702a" font-weight="600" font-family="Inter, sans-serif">Kashgar</text>
+
+        <!-- Pass labels -->
+        <text x="440" y="100" text-anchor="middle" font-size="7" fill="var(--la-gray-400)" font-family="Inter, sans-serif" transform="rotate(-30, 440, 100)">Karakoram Pass</text>
+        <text x="475" y="175" text-anchor="middle" font-size="7" fill="var(--la-gray-400)" font-family="Inter, sans-serif">Chang La</text>
+        <text x="240" y="200" text-anchor="middle" font-size="7" fill="var(--la-gray-400)" font-family="Inter, sans-serif" transform="rotate(15, 240, 200)">Zoji La</text>
+      </svg>
+    </div>
+
+    <!-- Route Cards -->
+    <div class="hi-routes-grid">
+      @for (route of tradeRoutes; track route.name) {
+        <div class="hi-route-card">
+          <div class="hi-route-card__icon" [style.background]="route.color">
+            <i class="bi" [class]="route.icon"></i>
+          </div>
+          <div class="hi-route-card__body">
+            <h5 class="hi-route-card__name">{{ route.name }}</h5>
+            <div class="hi-route-card__path">
+              <span>{{ route.from }}</span>
+              <i class="bi bi-arrow-right"></i>
+              <span>{{ route.to }}</span>
+            </div>
+            <div class="hi-route-card__meta">
+              <span><i class="bi bi-geo-alt"></i> {{ route.pass }}</span>
+            </div>
+            <p class="hi-route-card__goods">
+              <strong>Key goods:</strong> {{ route.goods }}
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/maps" class="btn-la-primary">
+        View Interactive Maps <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WARS & CONFLICTS ===== -->
+<section class="section-padding" id="wars">
+  <div class="container">
+    <h2 class="section-title">Wars & Conflicts</h2>
+    <p class="section-subtitle">
+      The battles and confrontations that shaped Ladakh's borders, alliances, and political destiny.
+    </p>
+
+    <div class="hi-wars-grid">
+      @for (war of wars; track war.name) {
+        <div class="hi-war-card">
+          <div class="hi-war-card__top">
+            <div class="hi-war-card__icon" [style.background]="war.color">
+              <i class="bi" [class]="war.icon"></i>
+            </div>
+            <div class="hi-war-card__header">
+              <h5 class="hi-war-card__name">{{ war.name }}</h5>
+              <span class="hi-war-card__year" [style.color]="war.color">{{ war.year }}</span>
+            </div>
+          </div>
+
+          <p class="hi-war-card__desc">{{ war.desc }}</p>
+
+          <div class="hi-war-card__footer">
+            <div class="hi-war-card__severity">
+              <span class="hi-war-card__severity-label">Impact</span>
+              <div class="hi-war-card__severity-bar">
+                <svg viewBox="0 0 100 8" class="hi-war-card__severity-svg">
+                  <rect x="0" y="0" width="100" height="8" rx="4" fill="var(--la-gray-100)"/>
+                  <rect x="0" y="0" [attr.width]="war.severity" height="8" rx="4" [attr.fill]="war.color" opacity="0.8"/>
+                </svg>
+              </div>
+            </div>
+            <span class="hi-war-card__result">
+              <i class="bi bi-flag-fill"></i> {{ war.result }}
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CULTURAL HERITAGE MONUMENTS ===== -->
+<section class="section-padding bg-snow" id="heritage">
+  <div class="container">
+    <h2 class="section-title">Cultural Heritage Monuments</h2>
+    <p class="section-subtitle">
+      The palaces, monasteries, and fortresses that stand as testaments to Ladakh's rich architectural legacy.
+    </p>
+
+    <div class="hi-monuments-grid">
+      @for (m of monuments; track m.name) {
+        <a class="hi-monument-card" [routerLink]="['/history/monument', m.slug]">
+          <div class="hi-monument-card__visual">
+            <div class="hi-monument-card__placeholder" [style.background]="m.gradient">
+              <i class="bi" [class]="m.icon"></i>
+            </div>
+            <span class="hi-monument-card__year-badge">Est. {{ m.year }}</span>
+          </div>
+          <div class="hi-monument-card__body">
+            <h5 class="hi-monument-card__name">{{ m.name }}</h5>
+            <div class="hi-monument-card__meta">
+              <span><i class="bi bi-person"></i> {{ m.builder }}</span>
+              <span><i class="bi bi-tag"></i> {{ m.style }}</span>
+            </div>
+            <p class="hi-monument-card__desc">{{ m.desc }}</p>
+            <span class="hi-monument-card__cta">
+              <i class="bi bi-eye"></i> View Details
+            </span>
+          </div>
+        </a>
+      }
+    </div>
+    <div class="section-cta-row">
+      <a routerLink="/gallery" class="btn-la-primary">
+        Explore Heritage Gallery <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTERACTIVE TIMELINE ===== -->
+<section class="section-padding">
+  <div class="container">
+    <h2 class="section-title">Timeline of Ladakh</h2>
+    <p class="section-subtitle">
+      Navigate through the key events that shaped Ladakh from prehistoric times to the present day.
+    </p>
+
+    <div class="hi-timeline">
+      @for (era of timeline; track era.era; let i = $index; let last = $last) {
+        <!-- Era marker -->
+        <div class="hi-timeline__era">
+          <div class="hi-timeline__era-dot" [style.background]="era.color">
+            <i class="bi" [class]="era.icon"></i>
+          </div>
+          <div class="hi-timeline__era-info">
+            <h3 class="hi-timeline__era-title">{{ era.era }}</h3>
+            <span class="hi-timeline__era-period">{{ era.period }}</span>
+          </div>
+        </div>
+
+        <!-- Events -->
+        @for (event of era.events; track event.title; let j = $index) {
+          <div class="hi-timeline__event" [class.hi-timeline__event--right]="j % 2 !== 0">
+            <div class="hi-timeline__event-dot" [style.border-color]="era.color"></div>
+            <div class="hi-timeline__event-card">
+              <span class="hi-timeline__event-year" [style.color]="era.color">{{ event.year }}</span>
+              <h5 class="hi-timeline__event-title">{{ event.title }}</h5>
+              <p class="hi-timeline__event-desc">{{ event.desc }}</p>
+            </div>
+          </div>
+        }
+
+        @if (!last) {
+          <div class="hi-timeline__spacer"></div>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEY FIGURES ===== -->
+<section class="hi-figures-section">
+  <div class="container">
+    <div class="hi-figures-header">
+      <span class="la-label"><i class="bi bi-people-fill"></i> Notable Figures</span>
+      <h2 class="section-title">People Who Shaped Ladakh</h2>
+      <p class="section-subtitle">
+        Kings, monks, warriors, and visionaries — the individuals whose legacies define Ladakh's story.
+      </p>
+    </div>
+
+    <div class="hi-figures-grid">
+      @for (figure of keyFigures; track figure.name) {
+        <div class="hi-figure-card">
+          <div class="hi-figure-card__avatar">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <div class="hi-figure-card__body">
+            <h5 class="hi-figure-card__name">{{ figure.name }}</h5>
+            <span class="hi-figure-card__title">{{ figure.title }}</span>
+            <span class="hi-figure-card__period">
+              <i class="bi bi-calendar3"></i> {{ figure.period }}
+            </span>
+            <p class="hi-figure-card__desc">{{ figure.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== HISTORICAL QUOTES & INSCRIPTIONS ===== -->
+<section class="hi-quotes-section">
+  <div class="container">
+    <div class="hi-quotes-header">
+      <span class="la-label"><i class="bi bi-chat-quote-fill"></i> Voices of History</span>
+      <h2 class="section-title">Words Through the Ages</h2>
+      <p class="section-subtitle">
+        How travelers, scholars, and leaders have spoken about this remarkable land across the centuries.
+      </p>
+    </div>
+
+    <div class="hi-quotes-grid">
+      @for (quote of quotes; track quote.author) {
+        <div class="hi-quote-card">
+          <i class="bi bi-quote hi-quote-card__mark"></i>
+          <blockquote class="hi-quote-card__text">{{ quote.text }}</blockquote>
+          <div class="hi-quote-card__author">
+            <div class="hi-quote-card__avatar">
+              <i class="bi bi-person-fill"></i>
+            </div>
+            <div>
+              <span class="hi-quote-card__name">{{ quote.author }}</span>
+              <span class="hi-quote-card__role">{{ quote.role }} · {{ quote.year }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="hi-cta">
+  <div class="container">
+    <div class="hi-cta__inner">
+      <i class="bi bi-journal-richtext hi-cta__icon"></i>
+      <h2>Help Document Ladakh's History</h2>
+      <p>
+        Do you have historical knowledge, family stories, old photographs, or research about Ladakh?
+        Contribute to this archive and help preserve the region's incredible heritage.
+      </p>
+      <div class="hi-cta__actions">
+        <a routerLink="/contribute" class="btn-la-accent">
+          <i class="bi bi-pencil-square"></i> Contribute Now
+        </a>
+        <a routerLink="/" class="btn-la-outline hi-cta__outline-btn">
+          <i class="bi bi-house"></i> Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

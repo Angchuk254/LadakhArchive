@@ -1,0 +1,222 @@
+﻿@if (area(); as a) {
+
+<!-- ═══╦═ 1. HERO ═╦═══ -->
+<section class="pd-hero" [style.background-image]="'url(' + a.heroImage + ')'">
+  <div class="pd-hero__overlay"></div>
+  <div class="container position-relative z-1">
+    <a routerLink="/nature" class="pd-hero__back"><i class="bi bi-arrow-left me-1"></i> Back to Nature &amp; Wildlife</a>
+    <div class="pd-hero__icon-wrap"><i [class]="'bi ' + a.icon"></i></div>
+    <h1 class="pd-hero__title">{{a.name}}</h1>
+    <p class="pd-hero__sub">{{a.description}}</p>
+    <div class="pd-hero__stats">
+      <span class="pd-hero__stat"><i class="bi bi-rulers"></i> {{a.area}}</span>
+      <span class="pd-hero__stat"><i class="bi bi-calendar-event"></i> Est. {{a.established}}</span>
+      <span class="pd-hero__stat" [style.background]="'rgba(255,255,255,.22)'"><i class="bi bi-shield-check"></i> {{a.status}}</span>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<nav class="ed-jumpnav">
+  <div class="container">
+    <a routerLink="/nature" class="ed-jumpnav__parent"><i class="bi bi-arrow-left"></i> Nature & Wildlife</a>
+  </div>
+</nav>
+
+<!-- ═══╦═ 2. OVERVIEW ═╦═══ -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <h2 class="section-title text-start">Overview</h2>
+        <p class="section-subtitle text-start">Ecological Significance</p>
+        <div class="pd-content-text">{{a.overview}}</div>
+        
+        <h3 class="pd-subheading mt-5"><i class="bi bi-book text-accent me-2"></i>19th Century Expeditions</h3>
+        <div class="pd-content-text">{{a.historicalAccounts}}</div>
+
+        <h3 class="pd-subheading mt-5"><i class="bi bi-moon-stars text-accent me-2"></i>Myths & Folklore</h3>
+        <div class="pd-content-text">{{a.myths}}</div>
+      </div>
+      
+      <div class="col-lg-5">
+        <div class="pd-feature-image mb-4">
+           <img [src]="a.image" [alt]="a.name" class="img-fluid rounded-4 shadow-sm" style="width: 100%; height: 350px; object-fit: cover;">
+        </div>
+        
+        <div class="pd-info-card mb-4" style="background: var(--la-white);">
+          <h5 class="mb-3"><i class="bi bi-microscope text-accent me-2"></i>2025–2026 Research</h5>
+          <p class="pd-content-text" style="font-size: .9rem;">{{a.research}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══╦═ 3. HIGHLIGHTS & MAP ═╦═══ -->
+<section class="section-padding">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-6">
+        <h2 class="section-title text-start">Key Highlights</h2>
+        <div class="pd-highlights__list mt-4">
+          @for (h of a.highlights; track h; let i = $index) {
+            <span class="pd-highlights__item">
+              <span class="pd-highlights__num" [style.background]="a.color">{{i + 1}}</span> {{h}}
+            </span>
+          }
+        </div>
+      </div>
+      <div class="col-lg-6">
+         <h2 class="section-title text-start">Geographic Location</h2>
+         <div class="rounded-4 overflow-hidden shadow-sm mt-4" style="height: 350px;">
+           <app-leaflet-map
+             [lat]="a.lat" [lng]="a.lng" [title]="a.name" [zoom]="a.zoom || 8"
+             height="100%" style="display: block;">
+           </app-leaflet-map>
+         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══╦═ 4. QUICK FACTS ═╦═══ -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <h2 class="section-title text-start">At A Glance</h2>
+    <div class="pd-facts">
+      @for (f of a.facts; track f.label) {
+        <div class="pd-facts__card">
+          <div class="pd-facts__icon" [style.color]="a.color"><i [class]="'bi ' + f.icon"></i></div>
+          <span class="pd-facts__label">{{f.label}}</span>
+          <span class="pd-facts__value">{{f.value}}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══╦═ 5. KEY SPECIES & CONSERVATION ═╦═══ -->
+<section class="section-padding">
+  <div class="container">
+    <h2 class="section-title">Key Species &amp; Conservation</h2>
+    <p class="section-subtitle">Wildlife and current ecological pressures</p>
+    <div class="row g-4 mt-2">
+      <div class="col-lg-7">
+        <div class="pd-info-card h-100" style="background: var(--la-gray-50);">
+          <h5><i class="bi bi-bug text-accent me-2"></i>Predators & Herbivores</h5>
+          <p class="pd-content-text">{{a.keySpecies}}</p>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="pd-info-card h-100" style="background: var(--la-gray-50);">
+          <h5><i class="bi bi-exclamation-triangle text-accent me-2"></i>Critical Threats</h5>
+          <div class="pd-threats">
+            @for (t of a.threats; track t; let i = $index) {
+              <span class="pd-threats__item">
+                <span class="pd-threats__num" style="background:#e63946"><i class="bi bi-exclamation"></i></span> {{t}}
+              </span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══╦═ 6. PHOTO GALLERY ═╦═══ -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <h2 class="section-title">Expedition Gallery</h2>
+    <p class="section-subtitle">Visual documentation of {{a.name}}</p>
+    <div class="row g-4 mt-2">
+      @for (p of a.photos; track p.id) {
+        <div class="col-md-6 col-lg-4">
+          <div class="pd-photo" (click)="openLightbox(p)">
+            <div class="pd-photo__img" [style.background-image]="'url(' + p.image + ')'">
+              <div class="pd-photo__overlay"><i class="bi bi-arrows-fullscreen pd-photo__expand"></i></div>
+            </div>
+            <div class="pd-photo__body">
+              <h6 class="pd-photo__title">{{p.title}}</h6>
+              <span class="pd-photo__loc"><i class="bi bi-geo-alt me-1"></i>{{p.location}}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══╦═ 7. VISITOR INFORMATION ═╦═══ -->
+<section class="section-padding">
+  <div class="container">
+    <h2 class="section-title">Visitor Logistics</h2>
+    <div class="pd-info-card bg-snow mt-4 mx-auto" style="max-width: 900px;">
+      <p class="pd-content-text text-center m-0">{{a.visitorInfo}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══╦═ 8. RELATED AREAS ═╦═══ -->
+<section class="section-padding bg-snow">
+  <div class="container">
+    <h2 class="section-title">Related Protected Areas</h2>
+    <div class="row g-4 justify-content-center mt-2">
+      @for (r of relatedAreas(); track r.slug) {
+        @if (r.found) {
+        <div class="col-md-5 col-lg-4">
+          <a [routerLink]="'/nature/protected-areas/' + r.slug" class="pd-related">
+            <div class="pd-related__icon" [style.background]="r.color"><i [class]="'bi ' + r.icon"></i></div>
+            <h6 class="pd-related__name">{{r.name}}</h6>
+            <span class="pd-related__type" [style.color]="r.color">{{r.type}}</span>
+            <span class="pd-related__link" [style.color]="r.color">View Details <i class="bi bi-arrow-right"></i></span>
+          </a>
+        </div>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══╦═ CTA ═╦═══ -->
+<section class="pd-cta text-center">
+  <div class="pd-cta__overlay"></div>
+  <div class="container position-relative z-1">
+    <h2 class="pd-cta__title">Protect Ladakh's Natural Heritage</h2>
+    <p class="pd-cta__desc">Learn how you can contribute to the conservation of these vital ecosystems.</p>
+    <div class="pd-cta__actions">
+      <a routerLink="/contribute" class="btn btn-light btn-lg"><i class="bi bi-heart me-2"></i>Contribute</a>
+      <a routerLink="/nature" class="btn btn-outline-light btn-lg"><i class="bi bi-arrow-left me-2"></i>All Nature &amp; Wildlife</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══╦═ LIGHTBOX ═╦═══ -->
+@if (lightboxPhoto(); as lp) {
+  <div class="pd-lightbox" (click)="closeLightbox()">
+    <div class="pd-lightbox__content position-relative" (click)="$event.stopPropagation()">
+      <button class="pd-lightbox__close" (click)="closeLightbox()"><i class="bi bi-x-lg"></i></button>
+      <div class="pd-lightbox__image" [style.background-image]="'url(' + lp.image + ')'"></div>
+      <div class="pd-lightbox__info">
+        <h5 class="pd-lightbox__title">{{lp.title}}</h5>
+        <p class="pd-lightbox__desc">{{lp.description}}</p>
+        <span class="pd-lightbox__loc"><i class="bi bi-geo-alt me-1"></i>{{lp.location}}</span>
+      </div>
+    </div>
+  </div>
+}
+
+} @else {
+
+<!-- 404 -->
+<section class="section-padding text-center">
+  <div class="container">
+    <i class="bi bi-shield-exclamation display-1 text-muted mb-3 d-block"></i>
+    <h2>Protected Area Not Found</h2>
+    <p class="text-muted mb-4">The protected area you're looking for doesn't exist.</p>
+    <a routerLink="/nature" class="btn btn-la-primary"><i class="bi bi-arrow-left me-2"></i>Back to Nature &amp; Wildlife</a>
+  </div>
+</section>
+
+}
+
