@@ -1,4 +1,4 @@
-﻿<!-- ===== HERO BANNER ===== -->
+<!-- ===== HERO BANNER ===== -->
 <section class="hi-hero">
   <div class="hi-hero__overlay"></div>
   <div class="container hi-hero__container">
@@ -460,33 +460,28 @@
       Navigate through the key events that shaped Ladakh from prehistoric times to the present day.
     </p>
 
-    <div class="hi-timeline">
+    <div class="la-timeline">
       @for (era of timeline; track era.era; let i = $index; let last = $last) {
         <!-- Era marker -->
-        <div class="hi-timeline__era">
-          <div class="hi-timeline__era-dot" [style.background]="era.color">
-            <i class="bi" [class]="era.icon"></i>
-          </div>
-          <div class="hi-timeline__era-info">
-            <h3 class="hi-timeline__era-title">{{ era.era }}</h3>
-            <span class="hi-timeline__era-period">{{ era.period }}</span>
+        <div class="la-timeline__era">
+          <div class="la-timeline__era-card" [style.background]="era.color">
+            {{ era.era }}
+            <span>{{ era.period }}</span>
           </div>
         </div>
 
         <!-- Events -->
         @for (event of era.events; track event.title; let j = $index) {
-          <div class="hi-timeline__event" [class.hi-timeline__event--right]="j % 2 !== 0">
-            <div class="hi-timeline__event-dot" [style.border-color]="era.color"></div>
-            <div class="hi-timeline__event-card">
-              <span class="hi-timeline__event-year" [style.color]="era.color">{{ event.year }}</span>
-              <h5 class="hi-timeline__event-title">{{ event.title }}</h5>
-              <p class="hi-timeline__event-desc">{{ event.desc }}</p>
+          <div class="la-timeline__item" [class.la-timeline__item--right]="j % 2 !== 0">
+            <div class="la-timeline__dot" [style.border-color]="era.color">
+              <i class="bi" [class]="era.icon" [style.color]="era.color"></i>
+            </div>
+            <div class="la-timeline__card">
+              <span class="la-timeline__year" [style.color]="era.color" [style.background]="era.color + '1a'">{{ event.year }}</span>
+              <h5 class="la-timeline__title">{{ event.title }}</h5>
+              <p class="la-timeline__desc">{{ event.desc }}</p>
             </div>
           </div>
-        }
-
-        @if (!last) {
-          <div class="hi-timeline__spacer"></div>
         }
       }
     </div>

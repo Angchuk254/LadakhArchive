@@ -1,4 +1,4 @@
-﻿@if (era(); as e) {
+@if (era(); as e) {
 
 <!-- Hero -->
 <section class="ed-hero" [style.background-image]="'linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9)), url(' + e.heroImage + ')'">
@@ -62,13 +62,16 @@
     @if (activeTab() === 'timeline') {
       <p class="la-label text-accent"><i class="bi bi-clock-history"></i> The Sequence</p>
       <h2 class="section-title">Key Events in This Era</h2>
-      <div class="erd-timeline mt-4">
-        @for (ev of filteredTimeline(); track ev.year) {
-          <div class="erd-timeline__item">
-            <span class="erd-timeline__year" [style.color]="ev.color">{{ ev.year }}</span>
-            <div>
-              <strong>{{ ev.title }}</strong>
-              <p>{{ ev.desc }}</p>
+      <div class="la-timeline mt-4">
+        @for (ev of filteredTimeline(); track ev.year; let j = $index) {
+          <div class="la-timeline__item" [class.la-timeline__item--right]="j % 2 !== 0">
+            <div class="la-timeline__dot" [style.border-color]="ev.color">
+              <i class="bi bi-clock-history" [style.color]="ev.color"></i>
+            </div>
+            <div class="la-timeline__card">
+              <span class="la-timeline__year" [style.color]="ev.color" [style.background]="ev.color + '1a'">{{ ev.year }}</span>
+              <h5 class="la-timeline__title">{{ ev.title }}</h5>
+              <p class="la-timeline__desc">{{ ev.desc }}</p>
             </div>
           </div>
         }

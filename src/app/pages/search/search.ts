@@ -1,4 +1,4 @@
-﻿import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -49,7 +49,7 @@ export class Search {
 
   items: SearchItem[] = [
     // â”€â”€ Villages â”€â”€
-    { name: 'Leh', slug: 'leh', category: 'Villages', icon: 'bi-building', color: '#1a365d', desc: 'Capital of Ladakh, ancient trade hub, Leh Palace', route: '/village-search/leh', tag: 'Leh' },
+    { name: 'Leh', slug: 'leh', category: 'Villages', icon: 'bi-building', color: '#1a365d', desc: 'Capital of Ladakh, Ancient trade hub, Leh Palace', route: '/village-search/leh', tag: 'Leh' },
     { name: 'Diskit', slug: 'diskit', category: 'Villages', icon: 'bi-flag', color: '#c8702a', desc: 'Diskit Gompa, Nubra gateway, Maitreya Buddha', route: '/village-search/diskit', tag: 'Leh' },
     { name: 'Hunder', slug: 'hunder', category: 'Villages', icon: 'bi-umbrella', color: '#059669', desc: 'Bactrian camels, sand dunes, Silk Road heritage', route: '/village-search/hunder', tag: 'Leh' },
     { name: 'Hemis', slug: 'hemis-village', category: 'Villages', icon: 'bi-bank', color: '#7c3aed', desc: 'Hemis Gompa, Hemis Festival, Snow Leopard habitat', route: '/village-search/hemis', tag: 'Leh' },
@@ -59,7 +59,7 @@ export class Search {
     { name: 'Dras', slug: 'dras', category: 'Villages', icon: 'bi-snow', color: '#475264', desc: 'Second coldest inhabited place, Kargil War theatre', route: '/village-search/dras', tag: 'Kargil' },
     { name: 'Zanskar (Padum)', slug: 'padum', category: 'Villages', icon: 'bi-snow2', color: '#6d28d9', desc: 'Chadar Trek, remote Buddhist kingdom, frozen river walks', route: '/village-search/padum', tag: 'Kargil' },
     { name: 'Thiksey', slug: 'thiksey', category: 'Villages', icon: 'bi-building', color: '#b45309', desc: 'Thiksey Gompa, Mini Potala, morning prayer ceremony', route: '/village-search/thiksey', tag: 'Leh' },
-    { name: 'Lamayuru', slug: 'lamayuru', category: 'Villages', icon: 'bi-moon', color: '#854d0e', desc: 'Moonland landscape, ancient monastery, butter festivals', route: '/village-search/lamayuru', tag: 'Leh' },
+    { name: 'Lamayuru', slug: 'lamayuru', category: 'Villages', icon: 'bi-moon', color: '#854d0e', desc: 'Moonland landscape, Ancient monastery, butter festivals', route: '/village-search/lamayuru', tag: 'Leh' },
     { name: 'Hanle', slug: 'hanle', category: 'Villages', icon: 'bi-stars', color: '#1e3a5f', desc: 'Dark Sky Reserve, astronomical observatory', route: '/village-search/hanle', tag: 'Leh' },
     { name: 'Chumathang', slug: 'chumathang', category: 'Villages', icon: 'bi-droplet-half', color: '#d97706', desc: 'Natural hot springs, geothermal energy, Indus Valley scenery', route: '/village-search/chumathang', tag: 'Leh' },
     { name: 'Chilling', slug: 'chilling', category: 'Villages', icon: 'bi-hammer', color: '#92400e', desc: 'Copper craftsmanship, Markha Valley trailhead', route: '/village-search/chilling', tag: 'Leh' },
@@ -80,7 +80,7 @@ export class Search {
     { name: 'Phuktal Monastery', slug: 'phuktal', category: 'Monasteries', icon: 'bi-building', color: '#475264', desc: 'Cave monastery in Zanskar, accessible only on foot', route: '/monasteries/phuktal' },
 
     // â”€â”€ Wildlife â”€â”€
-    { name: 'Snow Leopard', slug: 'snow-leopard', category: 'Wildlife', icon: 'bi-binoculars-fill', color: '#7c3aed', desc: 'The Ghost of the Mountains â€” approx. 200 in Ladakh', route: '/nature/wildlife/snow-leopard' },
+    { name: 'Snow Leopard', slug: 'snow-leopard', category: 'Wildlife', icon: 'bi-binoculars-fill', color: '#7c3aed', desc: 'The Ghost of the Mountains — approx. 200 in Ladakh', route: '/nature/wildlife/snow-leopard' },
     { name: 'Black-Necked Crane', slug: 'black-necked-crane', category: 'Wildlife', icon: 'bi-feather2', color: '#1a365d', desc: 'Near Threatened; breeds at Hanle & Chushul wetlands', route: '/nature/wildlife/black-necked-crane' },
     { name: 'Tibetan Wild ass (Kiang)', slug: 'tibetan-wild-ass', category: 'Wildlife', icon: 'bi-speedometer2', color: '#059669', desc: 'Largest wild ass species, roams Changthang Plateau', route: '/nature/wildlife/tibetan-wild-ass' },
     { name: 'Himalayan Brown Bear', slug: 'himalayan-brown-bear', category: 'Wildlife', icon: 'bi-shield-fill', color: '#92400e', desc: 'Critically Endangered, found in Deosai & Suru Valley', route: '/nature/wildlife/himalayan-brown-bear' },
@@ -90,15 +90,15 @@ export class Search {
     // â”€â”€ Birds â”€â”€
     { name: 'Black-Necked Crane', slug: 'black-necked-crane', category: 'Birds', icon: 'bi-feather2', color: '#1a365d', desc: 'Near Threatened; breeds at Hanle & Chushul wetlands', route: '/nature/bird/black-necked-crane' },
     { name: 'Golden Eagle', slug: 'golden-eagle', category: 'Birds', icon: 'bi-feather', color: '#b45309', desc: 'Powerful raptor soaring over Changthang & Hemis NP', route: '/nature/bird/golden-eagle' },
-    { name: 'Lammergeier', slug: 'lammergeier', category: 'Birds', icon: 'bi-feather', color: '#dc2626', desc: 'Bearded Vulture â€” bone-dropping feeding technique', route: '/nature/bird/lammergeier' },
-    { name: 'Himalayan Snowcock', slug: 'himalayan-snowcock', category: 'Birds', icon: 'bi-feather', color: '#6d28d9', desc: 'High-altitude gamebird of alpine meadows', route: '/nature/bird/himalayan-snowcock' },
+    { name: 'Lammergeier', slug: 'lammergeier', category: 'Birds', icon: 'bi-feather', color: '#dc2626', desc: 'Bearded Vulture — bone-dropping feeding technique', route: '/nature/bird/lammergeier' },
+    { name: 'Himalayan Snowcock', slug: 'himalayan-snowcock', category: 'Birds', icon: 'bi-feather', color: '#6d28d9', desc: 'High-altitude gamebird of Alpine meadows', route: '/nature/bird/himalayan-snowcock' },
     { name: 'Brown-Headed Gull', slug: 'brown-headed-gull', category: 'Birds', icon: 'bi-feather', color: '#0284c7', desc: 'Breeds at Pangong Tso and Tso Kar lakes', route: '/nature/bird/brown-headed-gull' },
     { name: 'Eurasian Magpie', slug: 'eurasian-magpie', category: 'Birds', icon: 'bi-feather', color: '#059669', desc: 'Ubiquitous in Leh, one of the most intelligent birds', route: '/nature/bird/eurasian-magpie' },
     { name: 'Robin accentor', slug: 'robin-accentor', category: 'Birds', icon: 'bi-feather', color: '#854d0e', desc: 'Small passerine of rocky slopes above 3,500 m', route: '/nature/bird/robin-accentor' },
     { name: 'Chukar Partridge', slug: 'chukar-partridge', category: 'Birds', icon: 'bi-feather', color: '#475264', desc: 'National bird of Pakistan, found across Ladakh\'s arid hills', route: '/nature/bird/chukar-partridge' },
 
     // â”€â”€ Flora â”€â”€
-    { name: 'Blue Poppy (Meconopsis)', slug: 'blue-poppy', category: 'Flora', icon: 'bi-flower2', color: '#2e86c1', desc: 'Rare Himalayan wildflower at 3,800â€“5,000 m', route: '/nature/flora/blue-poppy' },
+    { name: 'Blue Poppy (Meconopsis)', slug: 'blue-poppy', category: 'Flora', icon: 'bi-flower2', color: '#2e86c1', desc: 'Rare Himalayan wildflower at 3,800–5,000 m', route: '/nature/flora/blue-poppy' },
     { name: 'Edelweiss', slug: 'edelweiss', category: 'Flora', icon: 'bi-flower1', color: '#6d28d9', desc: 'alpine icon found in rocky meadows above 4,000 m', route: '/nature/flora/edelweiss' },
     { name: 'Sea Buckthorn', slug: 'sea-buckthorn', category: 'Flora', icon: 'bi-tree', color: '#c8702a', desc: 'Orange berry bush, Ladakh\'s superfood of the cold desert', route: '/nature/flora/sea-buckthorn' },
     { name: 'Juniper (Shukpa)', slug: 'juniper', category: 'Flora', icon: 'bi-tree-fill', color: '#059669', desc: 'Sacred incense plant used in Buddhist ceremonies', route: '/nature/flora/juniper' },
@@ -114,7 +114,7 @@ export class Search {
     { name: 'Zanskar River', slug: 'zanskar-river', category: 'Lakes', icon: 'bi-water', color: '#059669', desc: 'Frozen Chadar trek route, thrilling white-water rafting', route: '/nature/lake/zanskar-river' },
 
     // â”€â”€ Treks â”€â”€
-    { name: 'Markha Valley Trek', slug: 'markha-valley', category: 'Treks', icon: 'bi-signpost-split', color: '#10b981', desc: '65 km through Hemis NP, 6â€“8 days, Kongmaru La at 16,700 ft', route: '/routes/trek/markha-valley', tag: 'Moderateâ€“Hard' },
+    { name: 'Markha Valley Trek', slug: 'markha-valley', category: 'Treks', icon: 'bi-signpost-split', color: '#10b981', desc: '65 km through Hemis NP, 6–8 days, Kongmaru La at 16,700 ft', route: '/routes/trek/markha-valley', tag: 'Moderate–Hard' },
     { name: 'Chadar Trek (Frozen River)', slug: 'chadar-frozen-river', category: 'Treks', icon: 'bi-snow', color: '#0284c7', desc: 'Walk on frozen Zanskar River in -30ÂaC winter', route: '/routes/trek/chadar-frozen-river', tag: 'Extreme' },
     { name: 'Stok Kangri Climb', slug: 'stok-kangri', category: 'Treks', icon: 'bi-triangle-fill', color: '#dc2626', desc: 'Non-technical 6,153 m summit, most accessible 6000er', route: '/routes/trek/stok-kangri', tag: 'Extreme' },
     { name: 'Sham Valley Trek', slug: 'sham-valley', category: 'Treks', icon: 'bi-signpost-split', color: '#f59e0b', desc: 'Gentle 3-day trek through traditional villages', route: '/routes/trek/sham-valley', tag: 'Easy' },
@@ -126,14 +126,14 @@ export class Search {
     { name: 'Leh â†’ Pangong Tso', slug: 'leh-pangong-tso', category: 'Road Trips', icon: 'bi-truck', color: '#0284c7', desc: 'Drive through Chang La to the iconic blue lake', route: '/routes/trip/leh-pangong-tso', tag: 'Iconic' },
     { name: 'Leh â†’ Tso Moriri', slug: 'leh-tso-moriri', category: 'Road Trips', icon: 'bi-truck', color: '#7c3aed', desc: 'Remote journey to pristine Ramsar wetland', route: '/routes/trip/leh-tso-moriri', tag: 'Off-Beat' },
     { name: 'Manali â†’ Leh Highway', slug: 'manali-leh-highway', category: 'Road Trips', icon: 'bi-truck', color: '#c8702a', desc: '474 km through 5 high passes, iconic road journey', route: '/routes/trip/manali-leh-highway', tag: 'Epic' },
-    { name: 'Srinagar â†’ Leh Highway', slug: 'srinagar-leh', category: 'Road Trips', icon: 'bi-truck', color: '#dc2626', desc: 'NH1 via Sonamarg, Zoji La, Kargil â€” 434 km', route: '/routes/trip/srinagar-leh', tag: 'Classic' },
+    { name: 'Srinagar â†’ Leh Highway', slug: 'srinagar-leh', category: 'Road Trips', icon: 'bi-truck', color: '#dc2626', desc: 'NH1 via Sonamarg, Zoji La, Kargil — 434 km', route: '/routes/trip/srinagar-leh', tag: 'Classic' },
     { name: 'Leh â†’ Hanle', slug: 'leh-hanle', category: 'Road Trips', icon: 'bi-truck', color: '#1e3a5f', desc: 'Journey to India\'s first Dark Sky Reserve', route: '/routes/trip/leh-hanle', tag: 'Off-Beat' },
 
     // â”€â”€ Monuments â”€â”€
     { name: 'Leh Palace', slug: 'leh-palace', category: 'Monuments', icon: 'bi-bank2', color: '#1a365d', desc: '17th-century royal palace, 9 storeys, built by Sengge Namgyal', route: '/history/monument/leh-palace' },
     { name: 'Hemis Monastery', slug: 'hemis-monastery', category: 'Monuments', icon: 'bi-bank2', color: '#7c3aed', desc: 'Largest monastery in Ladakh, founded 1630', route: '/history/monument/hemis-monastery' },
     { name: 'alchi Monastery', slug: 'alchi-monastery', category: 'Monuments', icon: 'bi-bank2', color: '#2563eb', desc: '1000-year-old Kashmiri Buddhist murals, UNESCO-nominated', route: '/history/monument/alchi-monastery' },
-    { name: 'Basgo Fortress', slug: 'basgo-fortress', category: 'Monuments', icon: 'bi-bank2', color: '#854d0e', desc: '15th-century citadel, survived a 3-year Mongol siege', route: '/history/monument/basgo-fortress' },
+    { name: 'Basgo Fortress', slug: 'basgo-fortress', category: 'Monuments', icon: 'bi-bank2', color: '#854d0e', desc: '15th-century citadel, survived A 3-year Mongol siege', route: '/history/monument/basgo-fortress' },
     { name: 'Shey Palace', slug: 'shey-palace', category: 'Monuments', icon: 'bi-bank2', color: '#d97706', desc: 'Former summer capital, copper-gilt Shakyamuni statue', route: '/history/monument/shey-palace' },
     { name: 'Diskit Monastery', slug: 'diskit-monastery', category: 'Monuments', icon: 'bi-bank2', color: '#059669', desc: 'Oldest gompa in Nubra, 14th century, 32 m Maitreya Buddha', route: '/history/monument/diskit-monastery' },
 
@@ -143,7 +143,7 @@ export class Search {
     { name: 'Saga Dawa', slug: 'saga-dawa', category: 'Festivals', icon: 'bi-brightness-high', color: '#d97706', desc: 'Birth, enlightenment & parinirvana of Buddha', route: '/culture/festival/saga-dawa' },
     { name: 'Ladakh Festival', slug: 'ladakh-festival', category: 'Festivals', icon: 'bi-flag', color: '#0284c7', desc: 'Government-organized cultural extravaganza in September', route: '/culture/festival/ladakh-festival' },
     { name: 'Dosmoche', slug: 'dosmoche', category: 'Festivals', icon: 'bi-mask', color: '#dc2626', desc: 'Scapegoat festival to drive away evil spirits', route: '/culture/festival/dosmoche' },
-    { name: 'Matho Nagrang', slug: 'matho-nagrang', category: 'Festivals', icon: 'bi-eye', color: '#059669', desc: 'Oracle festival â€” monks enter trance at Matho Gompa', route: '/culture/festival/matho-nagrang' },
+    { name: 'Matho Nagrang', slug: 'matho-nagrang', category: 'Festivals', icon: 'bi-eye', color: '#059669', desc: 'Oracle festival — monks enter trance at Matho Gompa', route: '/culture/festival/matho-nagrang' },
     { name: 'Stok Guru Tsechu', slug: 'stok-guru-tsechu', category: 'Festivals', icon: 'bi-stars', color: '#854d0e', desc: 'Masked dance at Stok Monastery honouring Guru Rinpoche', route: '/culture/festival/stok-guru-tsechu' },
 
     // â”€â”€ Institutions â”€â”€
@@ -158,7 +158,7 @@ export class Search {
     { name: 'Living with Snow Leopards: Conservation in Hemis', slug: 'living-with-snow-leopards', category: 'Blog', icon: 'bi-binoculars', color: '#059669', desc: 'How locals and scientists protect the Ghost of the Mountains', route: '/blog/living-with-snow-leopards', tag: 'Nature' },
     { name: 'The Demand for Statehood', slug: 'demand-for-statehood', category: 'Blog', icon: 'bi-megaphone', color: '#dc2626', desc: 'Why Ladakh is demanding full statehood and constitutional safeguards', route: '/blog/demand-for-statehood', tag: 'Politics' },
     { name: 'Vanishing Tongues: Languages of Ladakh', slug: 'vanishing-tongues-languages-of-ladakh', category: 'Blog', icon: 'bi-chat-text', color: '#7c3aed', desc: 'The endangered linguistic diversity of the region', route: '/blog/vanishing-tongues-languages-of-ladakh', tag: 'Culture' },
-    { name: 'Walking the Chadar: a Frozen River Journey', slug: 'walking-the-chadar', category: 'Blog', icon: 'bi-snow', color: '#0284c7', desc: 'a first-person account of the legendary frozen river trek', route: '/blog/walking-the-chadar', tag: 'Travel' },
+    { name: 'Walking the Chadar: A Frozen River Journey', slug: 'walking-the-chadar', category: 'Blog', icon: 'bi-snow', color: '#0284c7', desc: ' A first-person account of the legendary frozen river trek', route: '/blog/walking-the-chadar', tag: 'Travel' },
     { name: 'Monasteries & Modern Life', slug: 'monasteries-and-modern-life', category: 'Blog', icon: 'bi-building', color: '#c8702a', desc: 'How Ladakhi monasteries are adapting to the 21st century', route: '/blog/monasteries-and-modern-life', tag: 'Culture' },
   ];
 

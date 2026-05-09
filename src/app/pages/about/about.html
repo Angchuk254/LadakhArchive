@@ -1,4 +1,4 @@
-﻿<!-- ╔══════════════════════════════════════════════════╗
+<!-- ╔══════════════════════════════════════════════════╗
      ║           ABOUT — LadakhArchive                  ║
      ╚══════════════════════════════════════════════════╝ -->
 
@@ -79,13 +79,16 @@
     <h2 class="section-title">Our Journey So Far</h2>
     <p class="section-subtitle">From a small idea in Leh to a growing digital archive reaching the world.</p>
 
-    <div class="ab-journey__timeline">
-      @for (m of milestones; track m.year) {
-        <div class="ab-journey__item">
-          <div class="ab-journey__year">{{ m.year }}</div>
-          <div class="ab-journey__content">
-            <h5>{{ m.title }}</h5>
-            <p>{{ m.desc }}</p>
+    <div class="la-timeline">
+      @for (m of milestones; track m.year; let i = $index) {
+        <div class="la-timeline__item" [class.la-timeline__item--right]="i % 2 !== 0">
+          <div class="la-timeline__dot">
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <div class="la-timeline__card">
+            <span class="la-timeline__year">{{ m.year }}</span>
+            <h5 class="la-timeline__title">{{ m.title }}</h5>
+            <p class="la-timeline__desc">{{ m.desc }}</p>
           </div>
         </div>
       }

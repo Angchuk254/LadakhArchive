@@ -1,4 +1,4 @@
-﻿<!-- ===== HERO BANNER ===== -->
+<!-- ===== HERO BANNER ===== -->
 <section class="po-hero">
   <div class="po-hero__overlay"></div>
   <div class="container po-hero__container">
@@ -103,15 +103,16 @@
       <h2 class="section-title">Political Timeline: 1834 – Present</h2>
       <p class="section-subtitle">Key events that shaped Ladakh's political landscape</p>
     </div>
-    <div class="po-timeline">
-      <div class="po-timeline__line"></div>
+    <div class="la-timeline">
       @for (ev of timeline; track ev.year; let i = $index) {
-        <div class="po-timeline__item" [class.po-timeline__item--right]="i % 2 !== 0">
-          <div class="po-timeline__dot" [style.background]="ev.color"></div>
-          <div class="po-timeline__card">
-            <span class="po-timeline__year" [style.color]="ev.color">{{ ev.year }}</span>
-            <h5 class="po-timeline__title">{{ ev.title }}</h5>
-            <p class="po-timeline__desc">{{ ev.desc }}</p>
+        <div class="la-timeline__item" [class.la-timeline__item--right]="i % 2 !== 0">
+          <div class="la-timeline__dot" [style.border-color]="ev.color">
+            <i class="bi bi-calendar-event" [style.color]="ev.color"></i>
+          </div>
+          <div class="la-timeline__card">
+            <span class="la-timeline__year" [style.color]="ev.color" [style.background]="ev.color + '1a'">{{ ev.year }}</span>
+            <h5 class="la-timeline__title">{{ ev.title }}</h5>
+            <p class="la-timeline__desc">{{ ev.desc }}</p>
           </div>
         </div>
       }

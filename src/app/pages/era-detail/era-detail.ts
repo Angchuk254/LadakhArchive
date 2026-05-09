@@ -45,14 +45,14 @@ export class EraDetail {
       icon: 'bi-hourglass-split',
       image: 'https://images.unsplash.com/photo-1544284560-6479f6eeb248?auto=format&fit=crop&q=80&w=800',
       heroImage: 'https://images.unsplash.com/photo-1544284560-6479f6eeb248?auto=format&fit=crop&q=80&w=1600',
-      desc: 'Before 1947, Ladakh was the crossroads of High asia. Operating as an independent kingdom for centuries before succumbing to the Dogra general Zorawar Singh in 1834, it became part of the princely state of Jammu & Kashmir. During this era, Leh was one of the busiest terminals on the Silk Route. It was the crucial intersection where the prized Pashmina wool of Western Tibet (the Changthang) met merchants from Kashmir, Yarkand, and British India. Politically, Ladakhis had minimal representation, governed harshly from Srinagar by the Dogra apparatus, heavily taxing the peasantry and disrupting ancient trade monopolies.', 
+      desc: 'Before 1947, Ladakh was the crossroads of High Asia. Operating as an independent kingdom for centuries before succumbing to the Dogra general Zorawar Singh in 1834, it became part of the princely state of Jammu & Kashmir. During this era, Leh was one of the busiest terminals on the Silk Route. It was the crucial intersection where the prized Pashmina wool of Western Tibet (the Changthang) met merchants from Kashmir, Yarkand, and British India. Politically, Ladakhis had minimal representation, governed harshly from Srinagar by the Dogra apparatus, heavily taxing the peasantry and disrupting ancient trade monopolies.', 
       keyFigures: [
         { name: 'Zorawar Singh', role: 'Dogra general who conquered Ladakh in 1834' }, 
         { name: 'King Tsepal Namgyal', role: 'Last independent king of Ladakh, deposed by the Dogras' }, 
         { name: 'William Moorcroft', role: 'Pioneering British explorer and intelligence officer (1820s)' },
         { name: 'Ghulam Rassol Galwan', role: 'Famous Ladakhi explorer & caravan leader for western expeditions' }
       ], 
-      legacy: 'The crushing end of the Namgyal dynasty under the Dogra invasion permanently altered Ladakh\'s trajectory, ripping it from its Tibetan-oriented isolation and binding it to the subcontinent\'s geopolitics. Yet, the Silk Route trade flourished, bringing a cosmopolitan mix of Central asian, Kashmiri, and British influences into Leh, shaping modern Ladakhi culture. The era laid the foundation for Ladakh\'s modern political grievances regarding external domination.',
+      legacy: 'The crushing end of the Namgyal dynasty under the Dogra invasion permanently altered Ladakh\'s trajectory, ripping it from its Tibetan-oriented isolation and binding it to the subcontinent\'s geopolitics. Yet, the Silk Route trade flourished, bringing a cosmopolitan mix of Central Asian, Kashmiri, and British influences into Leh, shaping modern Ladakhi culture. The era laid the foundation for Ladakh\'s modern political grievances regarding external domination.',
       travelerAccounts: [
         { author: 'William Moorcroft', year: '1822', quote: 'The trade of Leh is the lifeblood of the valley. It is a grand, high-altitude bazaar where the fine wool of the Changthang meets the shrewd merchants of Kashmir. The landscape is desolate beyond measure, yet the enterprise of its people is unyielding.' },
         { author: 'alexander Cunningham', year: '1854', quote: 'The physical endurance of the Ladakhi is remarkable; they haul burdens over the highest, most suffocating passes in the world with a cheerful disposition that belies the brutal reality of the Dogra taxation upon them.' },
@@ -66,7 +66,7 @@ export class EraDetail {
     { 
       id: 'accession', 
       title: 'accession & Early Integration', 
-      period: '1947 â€“ 1962', 
+      period: '1947 – 1962', 
       color: '#059669', 
       icon: 'bi-flag-fill',
       image: 'https://images.unsplash.com/photo-1590059530472-7634f596ee24?auto=format&fit=crop&q=80&w=800',
@@ -83,13 +83,13 @@ export class EraDetail {
         { author: 'Neville Maxwell', year: '1970 (retrospective on 1962)', quote: 'The aksai Chin plateau was a desolate, oxygen-starved wasteland that India claimed but China occupied. The building of the Chinese highway through it, unnoticed for years, highlighted the immense, terrifying void of the Ladakhi frontier.' }
       ],
       myths: [
-        { title: 'The Miracle of the First Flight', story: 'When air Commodore Mehar Singh landed the first Dakota aircraft on the dusty, makeshift airstrip of Leh on May 24, 1948, local Ladakhisâ€”who had never seen a mechanical vehicle, let alone an airplaneâ€”offered the machine bundles of grass, believing it to be a divine, giant flying horse sent by the gods to save them from the impending invasion.' }
+        { title: 'The Miracle of the First Flight', story: 'When air Commodore Mehar Singh landed the first Dakota aircraft on the dusty, makeshift airstrip of Leh on May 24, 1948, local Ladakhis—who had never seen a mechanical vehicle, let alone an airplane—offered the machine bundles of grass, believing it to be a divine, giant flying horse sent by the gods to save them from the impending invasion.' }
       ]
     },
     { 
       id: 'autonomy', 
       title: 'autonomy Movement', 
-      period: '1964 â€“ 1995', 
+      period: '1964 – 1995', 
       color: '#c8702a', 
       icon: 'bi-megaphone-fill',
       image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800',
@@ -111,7 +111,7 @@ export class EraDetail {
     { 
       id: 'lahdc', 
       title: 'Hill Council Era', 
-      period: '1995 â€“ 2019', 
+      period: '1995 – 2019', 
       color: '#dc2626', 
       icon: 'bi-building',
       image: 'https://images.unsplash.com/photo-1581791534721-e599df4417f7?auto=format&fit=crop&q=80&w=800',
@@ -133,7 +133,7 @@ export class EraDetail {
     { 
       id: 'ut', 
       title: 'Union Territory & Beyond', 
-      period: '2019 â€“ Present', 
+      period: '2019 – Present', 
       color: '#0284c7', 
       icon: 'bi-star-fill',
       image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=800',

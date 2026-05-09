@@ -35,7 +35,7 @@ export class VillageSearch {
     {
       name: 'Leh', slug: 'leh', block: 'Leh', district: 'Leh', pincode: '194101',
       elevation: '3,524 m', population: 30870, coordinates: '34.1526Âa N, 77.5771Âa E',
-      history: 'Leh was the capital of the Himalayan kingdom of Ladakh, an important stopover on ancient trade routes along the Indus Valley between Tibet and Central asia. The town became part of India after independence in 1947.',
+      history: 'Leh was the capital of the Himalayan kingdom of Ladakh, an important stopover on ancient trade routes along the Indus Valley between Tibet and Central Asia. The town became part of India after independence in 1947.',
       nearbyPlaces: ['Shanti Stupa', 'Leh Palace', 'Namgyal Tsemo', 'Sankar Monastery', 'Hall of Fame'],
       facilities: ['District Hospital', 'KVK airport', 'army Cantonment', 'Universities', 'Banks'],
       knownFor: 'Capital of Ladakh, ancient trade hub, Leh Palace', icon: 'bi-building', color: '#1a365d',

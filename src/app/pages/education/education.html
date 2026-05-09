@@ -1,4 +1,4 @@
-﻿<!-- ═══════════════════ HERO ═══════════════════ -->
+<!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="ed-hero">
   <div class="ed-hero__overlay"></div>
   <svg class="ed-hero__wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
@@ -79,33 +79,19 @@
       From monastery halls to modern universities — the evolution of education in Ladakh across centuries.
     </p>
 
-    <div class="ed-timeline__stepper">
+    <div class="la-timeline">
       @for (t of timeline; track t.year; let i = $index) {
-        <div class="ed-timeline__step">
-          <!-- Marker & Line -->
-          <div class="ed-timeline__marker">
-            <div class="ed-timeline__dot" [style.background]="t.color">
-              <i class="bi {{ t.icon }}"></i>
-            </div>
-            @if (i !== timeline.length - 1) {
-              <div class="ed-timeline__line" [style.background]="t.color + '60'"></div>
-            }
+        <div class="la-timeline__item" [class.la-timeline__item--right]="i % 2 !== 0">
+          <div class="la-timeline__dot" [style.border-color]="t.color">
+            <i class="bi" [class]="t.icon" [style.color]="t.color"></i>
           </div>
-          
-          <!-- Content Card -->
-          <div class="ed-timeline__content">
-            <div class="ed-timeline__card" [style.--accent-color]="t.color">
-              <div class="ed-timeline__card-body">
-                <span class="ed-timeline__year" [style.color]="t.color">{{ t.year }}</span>
-                <h3>{{ t.title }}</h3>
-                <p>{{ t.desc }}</p>
-              </div>
-              @if (t.image) {
-                <div class="ed-timeline__card-image">
-                  <img [src]="t.image" [alt]="t.title" loading="lazy" />
-                </div>
-              }
-            </div>
+          <div class="la-timeline__card">
+            <span class="la-timeline__year" [style.color]="t.color" [style.background]="t.color + '1a'">{{ t.year }}</span>
+            <h5 class="la-timeline__title">{{ t.title }}</h5>
+            <p class="la-timeline__desc">{{ t.desc }}</p>
+            @if (t.image) {
+              <img [src]="t.image" [alt]="t.title" class="la-timeline__image" loading="lazy" />
+            }
           </div>
         </div>
       }

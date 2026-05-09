@@ -20,21 +20,21 @@ const ALL_PLACES: LadakhPlace[] = [
   /* ── Towns / Urban ── */
   { name: 'Leh', type: 'Town', lat: 34.1526, lng: 77.5771, altitude: '3,524m', district: 'Leh', icon: '🏙️', color: '#1a365d', desc: 'The capital and cultural heart of Ladakh, at 3,524m on the banks of the Indus.' },
   { name: 'Kargil', type: 'Town', lat: 34.5551, lng: 76.1349, altitude: '2,676m', district: 'Kargil', icon: '🏙️', color: '#1a365d', desc: 'Gateway to Zanskar and the second largest town of Ladakh.' },
-  { name: 'Padum', type: 'Town', lat: 33.4671, lng: 76.9270, altitude: '3,500m', district: 'Kargil', icon: '🏘️', color: '#1a365d', desc: 'The tiny capital of Zanskar — medieval atmosphere and ancient monasteries.' },
+  { name: 'Padum', type: 'Town', lat: 33.4671, lng: 76.9270, altitude: '3,500m', district: 'Kargil', icon: '🏘️', color: '#1a365d', desc: 'The tiny capital of Zanskar — medieval atmosphere and Ancient monasteries.' },
   { name: 'Diskit', type: 'Town', lat: 34.6053, lng: 77.5707, altitude: '3,100m', district: 'Leh', icon: '🏘️', color: '#1a365d', desc: 'Administrative centre of Nubra Valley with the iconic 32m Maitreya Buddha.' },
 
   /* ── Monasteries ── */
   { name: 'Hemis Monastery', type: 'Monastery', lat: 33.9142, lng: 77.7028, altitude: '3,563m', district: 'Leh', icon: '🛕', color: '#7c3aed', desc: 'Largest and richest monastery in Ladakh — home of the spectacular Hemis Tsechu.' },
   { name: 'Thiksey Monastery', type: 'Monastery', lat: 33.9855, lng: 77.6678, altitude: '3,600m', district: 'Leh', icon: '🛕', color: '#7c3aed', desc: 'A 12-storey monastery complex resembling the Potala Palace — spectacular at sunrise.' },
-  { name: 'Spituk Monastery', type: 'Monastery', lat: 34.1357, lng: 77.5350, altitude: '3,524m', district: 'Leh', icon: '🛕', color: '#7c3aed', desc: 'Ancient Gelugpa monastery perched on a hilltop overlooking the Indus and Leh airport.' },
+  { name: 'Spituk Monastery', type: 'Monastery', lat: 34.1357, lng: 77.5350, altitude: '3,524m', district: 'Leh', icon: '🛕', color: '#7c3aed', desc: 'Ancient Gelugpa monastery perched on A hilltop overlooking the Indus and Leh airport.' },
   { name: 'Diskit Monastery', type: 'Monastery', lat: 34.6009, lng: 77.5641, altitude: '3,098m', district: 'Leh', icon: '🛕', color: '#7c3aed', desc: '500-year-old monastery towering over Nubra Valley beneath the giant Buddha statue.' },
   { name: 'Lamayuru Monastery', type: 'Monastery', lat: 34.2729, lng: 76.7834, altitude: '3,510m', district: 'Leh', icon: '🛕', color: '#7c3aed', desc: 'One of Ladakh\'s oldest monasteries, set in the surreal Moonland eroded landscape.' },
   { name: 'Alchi Monastery', type: 'Monastery', lat: 34.2256, lng: 77.1823, altitude: '3,100m', district: 'Leh', icon: '🛕', color: '#7c3aed', desc: '11th-century temple with rare Kashmiri-style murals — among the finest Buddhist art.' },
-  { name: 'Phugtal Monastery', type: 'Monastery', lat: 33.1844, lng: 77.0620, altitude: '3,800m', district: 'Kargil', icon: '🛕', color: '#7c3aed', desc: 'A cave monastery carved into a cliff face above the Tsarap River — accessible only on foot.' },
-  { name: 'Rangdum Monastery', type: 'Monastery', lat: 33.8961, lng: 76.2560, altitude: '3,657m', district: 'Kargil', icon: '🛕', color: '#7c3aed', desc: 'Isolated Gelugpa monastery on a hillock in the wide Suru Valley.' },
+  { name: 'Phugtal Monastery', type: 'Monastery', lat: 33.1844, lng: 77.0620, altitude: '3,800m', district: 'Kargil', icon: '🛕', color: '#7c3aed', desc: ' A cave monastery carved into A cliff face above the Tsarap River — accessible only on foot.' },
+  { name: 'Rangdum Monastery', type: 'Monastery', lat: 33.8961, lng: 76.2560, altitude: '3,657m', district: 'Kargil', icon: '🛕', color: '#7c3aed', desc: 'Isolated Gelugpa monastery on A hillock in the wide Suru Valley.' },
   { name: 'Karsha Monastery', type: 'Monastery', lat: 33.5031, lng: 76.8793, altitude: '3,600m', district: 'Kargil', icon: '🛕', color: '#7c3aed', desc: 'Zanskar\'s largest monastery housing over 100 monks with centuries-old frescoes.' },
-  { name: 'Stok Palace', type: 'Monastery', lat: 34.0729, lng: 77.5458, altitude: '3,407m', district: 'Leh', icon: '🏯', color: '#7c3aed', desc: 'Residence of Ladakh\'s royal family — now a museum with royal artifacts and thangkas.' },
-  { name: 'Likir Monastery', type: 'Monastery', lat: 34.2895, lng: 77.0610, altitude: '3,720m', district: 'Leh', icon: '🛕', color: '#7c3aed', desc: 'Ancient monastery with a colossal golden Maitreya Buddha overlooking the Sham Valley.' },
+  { name: 'Stok Palace', type: 'Monastery', lat: 34.0729, lng: 77.5458, altitude: '3,407m', district: 'Leh', icon: '🏯', color: '#7c3aed', desc: 'Residence of Ladakh\'s royal family — now A museum with royal artifacts and thangkas.' },
+  { name: 'Likir Monastery', type: 'Monastery', lat: 34.2895, lng: 77.0610, altitude: '3,720m', district: 'Leh', icon: '🛕', color: '#7c3aed', desc: 'Ancient monastery with A colossal golden Maitreya Buddha overlooking the Sham Valley.' },
 
   /* ── Lakes ── */
   { name: 'Pangong Tso', type: 'Lake', lat: 33.7607, lng: 78.6425, altitude: '4,350m', district: 'Leh', icon: '🏔️', color: '#0284c7', desc: 'The iconic high-altitude lake stretching 134 km into Tibet, famous for ever-changing blues.' },
@@ -52,14 +52,14 @@ const ALL_PLACES: LadakhPlace[] = [
   { name: 'Wari La', type: 'Pass', lat: 34.2381, lng: 77.7925, altitude: '5,290m', district: 'Leh', icon: '⛰️', color: '#c8702a', desc: 'Alternative route to Nubra Valley, far less crowded than Khardung La.' },
 
   /* ── Valleys ── */
-  { name: 'Nubra Valley', type: 'Valley', lat: 34.6500, lng: 77.5000, altitude: '3,048m', district: 'Leh', icon: '🏜️', color: '#059669', desc: 'Valley of flowers with Bactrian camels, sand dunes, and the ancient Diskit Monastery.' },
+  { name: 'Nubra Valley', type: 'Valley', lat: 34.6500, lng: 77.5000, altitude: '3,048m', district: 'Leh', icon: '🏜️', color: '#059669', desc: 'Valley of flowers with Bactrian camels, sand dunes, and the Ancient Diskit Monastery.' },
   { name: 'Zanskar Valley', type: 'Valley', lat: 33.5000, lng: 76.8000, altitude: '3,500m', district: 'Kargil', icon: '🏜️', color: '#059669', desc: 'Ladakh\'s most isolated sub-region — remote monasteries and the frozen Chadar Trek.' },
   { name: 'Suru Valley', type: 'Valley', lat: 34.0000, lng: 76.3000, altitude: '2,800m', district: 'Kargil', icon: '🏜️', color: '#059669', desc: 'Green valley stretching from Kargil toward Zanskar, flanked by the Himalayan glaciers.' },
   { name: 'Changthang Plateau', type: 'Valley', lat: 33.5000, lng: 78.5000, altitude: '4,500m', district: 'Leh', icon: '🏜️', color: '#059669', desc: 'High-altitude cold desert plateau home to nomadic Changpa herders and wildlife sanctuaries.' },
   { name: 'Markha Valley', type: 'Valley', lat: 33.7850, lng: 77.4900, altitude: '3,800m', district: 'Leh', icon: '🏜️', color: '#059669', desc: 'Where Ladakh\'s most popular trek winds through Hemis National Park.' },
 
   /* ── Villages ── */
-  { name: 'Turtuk', type: 'Village', lat: 34.8470, lng: 76.8300, altitude: '2,900m', district: 'Leh', icon: '🏡', color: '#dc2626', desc: 'India\'s last village before Pakistan — a Balti settlement with apricot orchards opened in 2010.' },
+  { name: 'Turtuk', type: 'Village', lat: 34.8470, lng: 76.8300, altitude: '2,900m', district: 'Leh', icon: '🏡', color: '#dc2626', desc: 'India\'s last village before Pakistan — A Balti settlement with apricot orchards opened in 2010.' },
   { name: 'Hunder', type: 'Village', lat: 34.6473, lng: 77.4939, altitude: '3,100m', district: 'Leh', icon: '🏡', color: '#dc2626', desc: 'Home to the famous white sand dunes and Bactrian camel rides in Nubra Valley.' },
   { name: 'Korzok', type: 'Village', lat: 32.8590, lng: 78.2250, altitude: '4,522m', district: 'Leh', icon: '🏡', color: '#dc2626', desc: 'Tiny village on the shores of Tso Moriri — one of India\'s highest inhabited settlements.' },
   { name: 'Hanle', type: 'Village', lat: 32.7830, lng: 78.9610, altitude: '4,500m', district: 'Leh', icon: '🏡', color: '#dc2626', desc: 'Home to the Indian Astronomical Observatory — 270+ clear nights per year.' },
@@ -71,8 +71,8 @@ const ALL_PLACES: LadakhPlace[] = [
 
   /* ── Wildlife / Heritage ── */
   { name: 'Hemis National Park', type: 'Wildlife', lat: 33.7000, lng: 77.8000, altitude: '3,300m', district: 'Leh', icon: '🐆', color: '#059669', desc: 'India\'s largest national park and the only place where snow leopards outnumber humans.' },
-  { name: 'Shanti Stupa', type: 'Museum', lat: 34.1751, lng: 77.5772, altitude: '3,620m', district: 'Leh', icon: '☸️', color: '#7c3aed', desc: 'White-domed Buddhist stupa atop a hill offering 360° panoramic views of Leh.' },
-  { name: 'Leh Palace', type: 'Museum', lat: 34.1656, lng: 77.5861, altitude: '3,600m', district: 'Leh', icon: '🏯', color: '#c8702a', desc: '17th-century nine-storey royal palace modelled on the Potala in Lhasa — now a museum.' },
+  { name: 'Shanti Stupa', type: 'Museum', lat: 34.1751, lng: 77.5772, altitude: '3,620m', district: 'Leh', icon: '☸️', color: '#7c3aed', desc: 'White-domed Buddhist stupa atop A hill offering 360° panoramic views of Leh.' },
+  { name: 'Leh Palace', type: 'Museum', lat: 34.1656, lng: 77.5861, altitude: '3,600m', district: 'Leh', icon: '🏯', color: '#c8702a', desc: '17th-century nine-storey royal palace modelled on the Potala in Lhasa — now A museum.' },
   { name: 'Hall of Fame Museum', type: 'Museum', lat: 34.1580, lng: 77.5700, altitude: '3,524m', district: 'Leh', icon: '🏛️', color: '#1a365d', desc: 'Military museum honouring Kargil War heroes and the Indian Army\'s campaigns in Ladakh.' },
   { name: 'Drang Drung Glacier', type: 'Wildlife', lat: 33.7500, lng: 76.4700, altitude: '4,400m', district: 'Kargil', icon: '🧊', color: '#0284c7', desc: 'One of Ladakh\'s largest glaciers, visible dramatically from Pensi La on the Zanskar route.' },
   { name: 'Magnetic Hill', type: 'Wildlife', lat: 34.2200, lng: 77.3400, altitude: '3,490m', district: 'Leh', icon: '🧲', color: '#c8702a', desc: 'The famous "anti-gravity" spot on the Srinagar–Leh Highway where vehicles appear to roll uphill.' },
@@ -91,7 +91,7 @@ const ALL_PLACES: LadakhPlace[] = [
       <span class="la-label"><i class="bi bi-map-fill me-1"></i>Explore Ladakh</span>
       <h2 class="section-title">Find Any Place on the Map</h2>
       <p class="section-subtitle">
-        Search monasteries, lakes, passes, villages, and more — every location plotted on a live interactive map of Ladakh.
+        Search monasteries, lakes, passes, villages, and more — every location plotted on A live interactive map of Ladakh.
       </p>
     </div>
 
@@ -210,7 +210,7 @@ const ALL_PLACES: LadakhPlace[] = [
         <!-- Hint when nothing is selected -->
         @if (!selectedPlace()) {
           <div class="lex-hint">
-            <i class="bi bi-cursor-fill"></i> Click a marker or result to explore
+            <i class="bi bi-cursor-fill"></i> Click A marker or result to explore
           </div>
         }
       </div>

@@ -520,3 +520,108 @@ img {
     column-count: 1;
   }
 }
+/* ---------- GLOBAL TIMELINE ---------- */
+.la-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+
+  &__era {
+    grid-column: 1 / -1;
+    margin: 2rem 0 1rem;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__era-card {
+    background: var(--la-primary);
+    color: var(--la-white);
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--la-radius-full);
+    font-family: var(--la-font-heading);
+    font-weight: 800;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      opacity: 0.85;
+      font-family: var(--la-font-body);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__dot {
+    display: none;
+  }
+
+  &__card {
+    background: var(--la-white);
+    border: 1px solid var(--la-gray-100);
+    border-radius: var(--la-radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--la-shadow-sm);
+    transition: all var(--la-transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:hover {
+      box-shadow: var(--la-shadow);
+      transform: translateY(-3px);
+      border-color: var(--la-primary-light);
+    }
+  }
+
+  &__year {
+    display: inline-block;
+    font-family: var(--la-font-heading);
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--la-accent);
+    background: rgba(200, 112, 42, 0.1);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--la-radius-full);
+    align-self: flex-start;
+  }
+
+  &__title {
+    font-family: var(--la-font-heading);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--la-dark);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  &__desc {
+    font-size: 0.95rem;
+    color: var(--la-gray-600);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+  
+  &__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--la-radius);
+    margin-top: 1.25rem;
+    border: 1px solid var(--la-gray-100);
+  }
+}

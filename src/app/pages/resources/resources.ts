@@ -24,7 +24,7 @@ export class Resources {
   categories = ['all', 'Historical accounts', 'Books', 'Scientific Journals', 'archive Documents', 'NGOs'];
 
   resources: Resource[] = [
-    // â•â•â•â• 1800s: The Great Game & Early Explorers â•â•â•â•
+    // ════ 1800s: The Great Game & Early Explorers ════
     {
       title: 'Travels in the Himalayan Provinces of Hindustan and the Panjab',
       authorOrOrg: 'William Moorcroft & George Trebeck',
@@ -41,12 +41,12 @@ export class Resources {
       year: 1854,
       type: 'Historical account',
       era: '1800s',
-      desc: 'a monumental work by the British boundary commissioner. Cunningham provided the first comprehensive map of Ladakh, alongside extensive data on weather, sociology, and the devastating impacts of the Dogra conquest.',
+      desc: ' A monumental work by the British boundary commissioner. Cunningham provided the first comprehensive map of Ladakh, alongside extensive data on weather, sociology, and the devastating impacts of the Dogra conquest.',
       icon: 'bi-globe-americas',
       tags: ['Geography', 'Primary Source', 'Cartography'],
     },
     {
-      title: 'Trans-Himalaya: Discoveries and adventures in Tibet',
+      title: 'Trans-Himalaya: Discoveries and Adventures in Tibet',
       authorOrOrg: 'Sven Hedin',
       year: 1909,
       type: 'Historical account',
@@ -56,40 +56,40 @@ export class Resources {
       tags: ['Exploration', 'Karakoram', 'Survival'],
     },
     {
-      title: 'a History of Western Tibet',
+      title: ' A History of Western Tibet',
       authorOrOrg: 'a. H. Francke',
       year: 1907,
       type: 'Historical account',
       era: '1900s',
-      desc: 'Reverend Francke of the Moravian Mission compiled the first definitive history of the Ladakhi kings (the Namgyal Dynasty) by translating ancient Tibetan chronicles found in local monasteries.',
+      desc: 'Reverend Francke of the Moravian Mission compiled the first definitive history of the Ladakhi kings (the Namgyal Dynasty) by translating Ancient Tibetan chronicles found in local monasteries.',
       icon: 'bi-book-half',
       tags: ['Moravian Mission', 'Namgyal Dynasty', 'Translation'],
     },
 
-    // â•â•â•â• 1900s: Cultural Shifts & Early Modernization â•â•â•â•
+    // ════ 1900s: Cultural Shifts & Early Modernization ════
     {
       title: 'ancient Futures: Learning from Ladakh',
       authorOrOrg: 'Helena Norberg-Hodge',
       year: 1991,
       type: 'Book',
       era: '1900s',
-      desc: 'a seminal, globally recognized work examining the catastrophic impact of sudden Western modernization on Ladakh\'s traditional culture and fragile environment, arguing fiercely for localized, sustainable solutions.',
+      desc: ' A seminal, globally recognized work examining the catastrophic impact of sudden Western modernization on Ladakh\'s traditional culture and fragile environment, arguing fiercely for localized, sustainable solutions.',
       link: 'https://www.localfutures.org/programs/ancient-futures/',
       icon: 'bi-book',
       tags: ['anthropology', 'Environment', 'Development'],
     },
     {
-      title: 'Ladakh: Crossroads of High asia',
+      title: 'Ladakh: Crossroads of High Asia',
       authorOrOrg: 'Janet Rizvi',
       year: 1996,
       type: 'Book',
       era: '1900s',
-      desc: 'Considered the modern Bible on the region. a comprehensive historical, cultural, and geographical overview of Ladakh, drawing on decades of personal experience and rigorous academic research.',
+      desc: 'Considered the modern Bible on the region. A comprehensive historical, cultural, and geographical overview of Ladakh, drawing on decades of personal experience and rigorous academic research.',
       icon: 'bi-book',
       tags: ['History', 'Culture', 'Geography'],
     },
     {
-      title: 'a Cultural History of Tibet',
+      title: ' A Cultural History of Tibet',
       authorOrOrg: 'David Snellgrove & Hugh Richardson',
       year: 1968,
       type: 'Book',
@@ -99,9 +99,9 @@ export class Resources {
       tags: ['Buddhism', 'Tibet', 'Theology'],
     },
 
-    // â•â•â•â• 2000s & 2020s: Scientific Research & Modern NGOs â•â•â•â•
+    // ════ 2000s & 2020s: Scientific Research & Modern NGOs ════
     {
-      title: 'Snow Leopard Population assessment in India (SPaI)',
+      title: 'Snow Leopard Population assessment in India (SPAI)',
       authorOrOrg: 'Wildlife Institute of India (WII)',
       year: 2024,
       type: 'Scientific Journal',
@@ -116,7 +116,7 @@ export class Resources {
       year: 2025,
       type: 'Scientific Journal',
       era: '2020s',
-      desc: 'Deep-strata core sampling extracted from the bed of Tso Moriri yielding an uninterrupted 10,000-year timeline of Holocene climate shifts across High asia, revealing profound historical drought cycles.',
+      desc: 'Deep-strata core sampling extracted from the bed of Tso Moriri yielding an uninterrupted 10,000-year timeline of Holocene climate shifts across High Asia, revealing profound historical drought cycles.',
       icon: 'bi-funnel',
       tags: ['Geology', 'Limnology', 'Climate Change'],
     },

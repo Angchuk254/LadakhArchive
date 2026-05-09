@@ -1,4 +1,4 @@
-﻿import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { LeafletMapComponent } from '../../shared/leaflet-map/leaflet-map';
 
@@ -45,7 +45,7 @@ export class InstitutionDetail {
     {
       slug: 'secmol', name: 'SECMOL', type: 'alternative School', est: '1988', location: 'Phey, Leh',
       lat: 34.0950, lng: 77.4670, zoom: 14,
-      desc: 'Founded by Sonam Wangchuk (inspiration for 3 Idiots), SECMOL uses innovative solar-powered campus, hands-on learning, and Ladakhi-medium instruction. Students learn by building, farming, and creating â€” not just textbooks.',
+      desc: 'Founded by Sonam Wangchuk (inspiration for 3 Idiots), SECMOL uses innovative solar-powered campus, hands-on learning, and Ladakhi-medium instruction. Students learn by building, farming, and creating — not just textbooks.',
       icon: 'bi-lightbulb', color: '#dc2626',
       image: 'https://images.unsplash.com/photo-1509062522246-373b1e974501?auto=format&fit=crop&q=80&w=800',
       heroImage: 'https://images.unsplash.com/photo-1509062522246-373b1e974501?auto=format&fit=crop&q=80&w=1600',
@@ -61,7 +61,7 @@ export class InstitutionDetail {
       icon: 'bi-award', color: '#c8702a',
       image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800',
       heroImage: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1600',
-      students: '2,800+', programs: 'Kâ€“12 CBSE',
+      students: '2,800+', programs: 'K–12 CBSE',
       highlights: ['Multiple branches in Leh district', 'CBSE affiliated', 'Holistic cultural education', 'Strong academic track record'],
       achievements: ['Consistent 90%+ CBSE board pass rates', 'Expanded to 5 branches across Leh district', 'State-level toppers in multiple years', 'Pioneered cultural curriculum integration in Ladakh'],
       programsList: [{ name: 'Kindergarten', level: 'Pre-Primary' }, { name: 'Primary School (I-V)', level: 'Primary' }, { name: 'Middle School (VI-VIII)', level: 'Middle' }, { name: 'Secondary (IX-X)', level: 'Secondary' }, { name: 'Senior Secondary (XI-XII)', level: 'Sr. Secondary' }],
@@ -73,7 +73,7 @@ export class InstitutionDetail {
       icon: 'bi-heart', color: '#7c3aed',
       image: 'https://images.unsplash.com/photo-1524178232363-1fb28f74b0cd?auto=format&fit=crop&q=80&w=800',
       heroImage: 'https://images.unsplash.com/photo-1524178232363-1fb28f74b0cd?auto=format&fit=crop&q=80&w=1600',
-      students: '900+', programs: 'Kâ€“12 CBSE + Buddhist Studies',
+      students: '900+', programs: 'K–12 CBSE + Buddhist Studies',
       highlights: ['Free education for underprivileged', 'Meditation integrated curriculum', 'Students from remote villages', 'International volunteer teachers'],
       achievements: ['Provides free boarding and education to 900+ students', 'International meditation centre recognized globally', 'Volunteer teacher exchange program with multiple countries', 'Students consistently perform well in CBSE exams'],
       programsList: [{ name: 'Primary School (I-V)', level: 'Primary' }, { name: 'Middle School (VI-VIII)', level: 'Middle' }, { name: 'Secondary (IX-X)', level: 'Secondary' }, { name: 'Senior Secondary (XI-XII)', level: 'Sr. Secondary' }, { name: 'Buddhist Studies', level: 'Supplementary' }],
@@ -97,7 +97,7 @@ export class InstitutionDetail {
       icon: 'bi-book', color: '#059669',
       image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800',
       heroImage: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1600',
-      students: '1,200+', programs: 'Kâ€“12 CBSE',
+      students: '1,200+', programs: 'K–12 CBSE',
       highlights: ['Top school in Kargil district', 'Community-driven education', 'Strong CBSE results', 'Rural outreach programs'],
       achievements: ['Highest pass percentage among Kargil schools consistently', 'Community scholarship fund supporting underprivileged students', 'Rural outreach centers in remote villages of Kargil', 'State-level science exhibition winners'],
       programsList: [{ name: 'Kindergarten', level: 'Pre-Primary' }, { name: 'Primary School (I-V)', level: 'Primary' }, { name: 'Middle School (VI-VIII)', level: 'Middle' }, { name: 'Secondary (IX-X)', level: 'Secondary' }, { name: 'Senior Secondary (XI-XII)', level: 'Sr. Secondary' }],

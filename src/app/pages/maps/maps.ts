@@ -42,13 +42,13 @@ export class Maps {
   maps: MapItem[] = [
     // Regional
     {
-      id: 1, title: 'Ladakh Union Territory â€” Overview', category: 'region',
+      id: 1, title: 'Ladakh Union Territory — Overview', category: 'region',
       desc: 'Complete administrative map of Ladakh UT showing Leh and Kargil districts, tehsils, block boundaries, and major settlements.',
       gradient: 'linear-gradient(135deg, #1a365d, #2b5797)', icon: 'bi-map',
       embedId: '!1m14!1m12!1m3!1d435518.67!2d77.5!3d34.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['UT', 'administrative', 'Districts'],
       locations: ['Leh', 'Kargil', 'Diskit', 'Zanskar', 'Dras', 'Nyoma'],
-      area: '59,146 kmÂ²', elevation: '2,500â€“7,672 m',
+      area: '59,146 km²', elevation: '2,500–7,672 m',
     },
     {
       id: 2, title: 'Leh District Map', category: 'region',
@@ -57,7 +57,7 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d217759.3!2d77.58!3d34.16!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Leh', 'District', 'Towns'],
       locations: ['Leh Town', 'Hemis', 'Thiksey', 'Stok', 'Phyang', 'Spituk'],
-      area: '45,110 kmÂ²', elevation: '3,000â€“7,672 m',
+      area: '45,110 km²', elevation: '3,000–7,672 m',
     },
     {
       id: 3, title: 'Kargil District Map', category: 'region',
@@ -66,27 +66,27 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d217759.3!2d76.13!3d34.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Kargil', 'District', 'LoC'],
       locations: ['Kargil Town', 'Drass', 'Zanskar', 'Suru Valley', 'Padum'],
-      area: '14,036 kmÂ²', elevation: '2,676â€“7,135 m',
+      area: '14,036 km²', elevation: '2,676–7,135 m',
     },
 
     // Routes & Passes
     {
-      id: 4, title: 'Manaliâ€“Leh Highway', category: 'route',
-      desc: 'The 479 km Manaliâ€“Leh Highway crossing Rohtang, Baralacha, Nakee La, Lachalung La, and Tanglang La passes. Includes fuel stops and campsites.',
+      id: 4, title: 'Manali–Leh Highway', category: 'route',
+      desc: 'The 479 km Manali–Leh Highway crossing Rohtang, Baralacha, Nakee La, Lachalung La, and Tanglang La passes. Includes fuel stops and campsites.',
       gradient: 'linear-gradient(135deg, #059669, #10b981)', icon: 'bi-signpost-split',
       embedId: '!1m14!1m12!1m3!1d435518.67!2d77.18!3d33.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Highway', 'Passes', 'Manali'],
       locations: ['Manali', 'Rohtang', 'Keylong', 'Sarchu', 'Pang', 'Upshi', 'Leh'],
-      area: '479 km', elevation: '1,950â€“5,328 m',
+      area: '479 km', elevation: '1,950–5,328 m',
     },
     {
-      id: 5, title: 'Srinagarâ€“Leh Highway (NH1)', category: 'route',
-      desc: 'The 434 km Srinagarâ€“Leh route via Sonamarg, Zoji La, Drass, Kargil, Mulbekh, Lamayuru, and the Indus Valley to Leh.',
+      id: 5, title: 'Srinagar–Leh Highway (NH1)', category: 'route',
+      desc: 'The 434 km Srinagar–Leh route via Sonamarg, Zoji La, Drass, Kargil, Mulbekh, Lamayuru, and the Indus Valley to Leh.',
       gradient: 'linear-gradient(135deg, #1e40af, #3b82f6)', icon: 'bi-signpost-split',
       embedId: '!1m14!1m12!1m3!1d435518.67!2d76.5!3d34.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Highway', 'Srinagar', 'NH1'],
       locations: ['Srinagar', 'Sonamarg', 'Zoji La', 'Drass', 'Kargil', 'Lamayuru', 'Leh'],
-      area: '434 km', elevation: '1,585â€“3,528 m',
+      area: '434 km', elevation: '1,585–3,528 m',
     },
     {
       id: 6, title: 'Khardung La & Nubra Valley Road', category: 'route',
@@ -95,7 +95,7 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d217759.3!2d77.6!3d34.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Khardung La', 'Nubra', 'High Pass'],
       locations: ['South Pullu', 'Khardung La', 'North Pullu', 'Khalsar', 'Diskit', 'Hunder', 'Turtuk'],
-      area: '120 km', elevation: '3,500â€“5,359 m',
+      area: '120 km', elevation: '3,500–5,359 m',
     },
     {
       id: 7, title: 'Pangong Lake Route', category: 'route',
@@ -104,27 +104,27 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d217759.3!2d78.0!3d34.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Pangong', 'Chang La', 'Lake'],
       locations: ['Karu', 'Chang La', 'Tangste', 'Lukung', 'Spangmik', 'Man-Merak'],
-      area: '160 km', elevation: '3,500â€“5,360 m',
+      area: '160 km', elevation: '3,500–5,360 m',
     },
     {
       id: 8, title: 'Zanskar Valley Road', category: 'route',
-      desc: 'The remote road from Kargil to Padum via Pensi La (14,000 ft) through the isolated Zanskar Valley â€” one of the most remote inhabited regions on Earth.',
+      desc: 'The remote road from Kargil to Padum via Pensi La (14,000 ft) through the isolated Zanskar Valley — one of the most remote inhabited regions on Earth.',
       gradient: 'linear-gradient(135deg, #475264, #64748b)', icon: 'bi-signpost-split',
       embedId: '!1m14!1m12!1m3!1d217759.3!2d76.8!3d33.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Zanskar', 'Remote', 'Pensi La'],
       locations: ['Kargil', 'Rangdum', 'Pensi La', 'Padum', 'Karsha', 'Zangla'],
-      area: '240 km', elevation: '2,676â€“4,400 m',
+      area: '240 km', elevation: '2,676–4,400 m',
     },
 
     // Monasteries
     {
       id: 9, title: 'Leh Valley Monastery Circuit', category: 'monastery',
-      desc: 'a map of all major monasteries along the Leh Valley â€” from Spituk to Chemrey â€” covering the most visited gompa circuit in Ladakh.',
+      desc: ' A map of all major monasteries along the Leh Valley — from Spituk to Chemrey — covering the most visited gompa circuit in Ladakh.',
       gradient: 'linear-gradient(135deg, #c8702a, #e89b4e)', icon: 'bi-building',
       embedId: '!1m14!1m12!1m3!1d108879.6!2d77.5!3d34.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Gompa', 'Buddhist', 'Circuit'],
       locations: ['Spituk', 'Phyang', 'Shey', 'Thiksey', 'Hemis', 'Stakna', 'Chemrey'],
-      area: '50 km stretch', elevation: '3,200â€“3,600 m',
+      area: '50 km stretch', elevation: '3,200–3,600 m',
     },
     {
       id: 10, title: 'ancient Monastery Map', category: 'monastery',
@@ -133,18 +133,18 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d435518.67!2d77.2!3d34.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['ancient', '10th Century', 'Heritage'],
       locations: ['alchi', 'Lamayuru', 'Mangyu', 'Phugtal', 'Sani', 'Karsha'],
-      area: 'Region-wide', elevation: '3,100â€“4,200 m',
+      area: 'Region-wide', elevation: '3,100–4,200 m',
     },
 
     // Nature & Wildlife
     {
       id: 11, title: 'Hemis National Park', category: 'nature',
-      desc: 'India\'s largest national park (4,400 kmÂ²) and snow leopard capital. Shows trekking trails, wildlife zones, and key spotting locations.',
+      desc: 'India\'s largest national park (4,400 km²) and snow leopard capital. Shows trekking trails, wildlife zones, and key spotting locations.',
       gradient: 'linear-gradient(135deg, #059669, #0d9488)', icon: 'bi-tree',
       embedId: '!1m14!1m12!1m3!1d108879.6!2d77.6!3d33.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['National Park', 'Snow Leopard', 'Trek'],
       locations: ['Rumbak', 'Markha Valley', 'Hemis Gompa', 'Shan Valley', 'Yurutse'],
-      area: '4,400 kmÂ²', elevation: '3,300â€“6,000 m',
+      area: '4,400 km²', elevation: '3,300–6,000 m',
     },
     {
       id: 12, title: 'Lakes of Ladakh', category: 'nature',
@@ -153,19 +153,19 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d435518.67!2d78.0!3d33.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Lakes', 'High altitude', 'Wetlands'],
       locations: ['Pangong Tso', 'Tso Moriri', 'Tso Kar', 'Yarab Tso', 'Hanle Marshes'],
-      area: 'Region-wide', elevation: '4,200â€“5,100 m',
+      area: 'Region-wide', elevation: '4,200–5,100 m',
     },
     {
       id: 13, title: 'Changthang Wildlife Sanctuary', category: 'nature',
-      desc: 'The vast Changthang Cold Desert Wildlife Sanctuary â€” home to kiang, Tibetan wolf, black-necked cranes, and Changpa nomadic settlements.',
+      desc: 'The vast Changthang Cold Desert Wildlife Sanctuary — home to kiang, Tibetan wolf, black-necked cranes, and Changpa nomadic settlements.',
       gradient: 'linear-gradient(135deg, #713f12, #a16207)', icon: 'bi-binoculars',
       embedId: '!1m14!1m12!1m3!1d435518.67!2d78.5!3d33.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Sanctuary', 'Changthang', 'Kiang'],
       locations: ['Hanle', 'Nyoma', 'Chumur', 'Korzok', 'Puga Hot Springs'],
-      area: '4,000 kmÂ²', elevation: '4,300â€“5,800 m',
+      area: '4,000 km²', elevation: '4,300–5,800 m',
     },
 
-    // adventure
+    // Adventure
     {
       id: 14, title: 'Chadar Trek Route', category: 'adventure',
       desc: 'The legendary frozen river trek on the Zanskar River from Chilling to Nerak. Shows campsites, river sections, and alternate routes.',
@@ -173,7 +173,7 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d108879.6!2d77.1!3d33.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Chadar', 'Winter Trek', 'Frozen River'],
       locations: ['Chilling', 'Tilat Sumdo', 'Tibb Cave', 'Deepyokma', 'Nerak', 'Lingshed'],
-      area: '62 km', elevation: '3,300â€“3,700 m',
+      area: '62 km', elevation: '3,300–3,700 m',
     },
     {
       id: 15, title: 'Markha Valley Trek', category: 'adventure',
@@ -182,27 +182,27 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d108879.6!2d77.5!3d33.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Trek', 'Markha', 'Multi-day'],
       locations: ['Spituk', 'Zinchen', 'Yurutse', 'Skiu', 'Markha', 'Hankar', 'Nimaling', 'Kongmaru La'],
-      area: '65 km', elevation: '3,400â€“5,260 m',
+      area: '65 km', elevation: '3,400–5,260 m',
     },
     {
       id: 16, title: 'Cycling Routes Map', category: 'adventure',
-      desc: 'all major cycling routes in Ladakh â€” Manaliâ€“Leh, Srinagarâ€“Leh, Lehâ€“Pangong, and the challenging Lehâ€“Hanle loop. Includes elevation profiles.',
+      desc: 'all major cycling routes in Ladakh — Manali–Leh, Srinagar–Leh, Leh–Pangong, and the challenging Leh–Hanle loop. Includes elevation profiles.',
       gradient: 'linear-gradient(135deg, #dc2626, #f97316)', icon: 'bi-bicycle',
       embedId: '!1m14!1m12!1m3!1d435518.67!2d77.5!3d34.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Cycling', 'Endurance', 'Multi-Route'],
       locations: ['Manali', 'Tanglang La', 'Leh', 'Khardung La', 'Chang La', 'Hanle'],
-      area: '1,500+ km total', elevation: '1,950â€“5,600 m',
+      area: '1,500+ km total', elevation: '1,950–5,600 m',
     },
 
     // Historical
     {
       id: 17, title: 'ancient Silk Route Through Ladakh', category: 'historical',
-      desc: 'The historical Silk Road routes that passed through Ladakh connecting Central asia to the Indian subcontinent via the Karakoram Pass and Nubra Valley.',
+      desc: 'The historical Silk Road routes that passed through Ladakh connecting Central Asia to the Indian subcontinent via the Karakoram Pass and Nubra Valley.',
       gradient: 'linear-gradient(135deg, #92400e, #c8702a)', icon: 'bi-clock-history',
       embedId: '!1m14!1m12!1m3!1d435518.67!2d77.8!3d35.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Silk Road', 'Trade', 'ancient'],
-      locations: ['Karakoram Pass', 'Hunder', 'Leh', 'Kargil', 'Baltistan', 'Central asia'],
-      area: 'Trans-regional', elevation: '3,500â€“5,578 m',
+      locations: ['Karakoram Pass', 'Hunder', 'Leh', 'Kargil', 'Baltistan', 'Central Asia'],
+      area: 'Trans-regional', elevation: '3,500–5,578 m',
     },
     {
       id: 18, title: 'Dogra & British Era Forts', category: 'historical',
@@ -211,7 +211,7 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d435518.67!2d77.0!3d34.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Forts', 'Dogra', 'Colonial'],
       locations: ['Leh Palace', 'Zorawar Fort', 'Basgo', 'Turtuk', 'Dras War Memorial'],
-      area: 'Region-wide', elevation: '2,700â€“4,500 m',
+      area: 'Region-wide', elevation: '2,700–4,500 m',
     },
     {
       id: 19, title: '1999 Kargil War Locations', category: 'historical',
@@ -220,23 +220,23 @@ export class Maps {
       embedId: '!1m14!1m12!1m3!1d217759.3!2d76.1!3d34.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0',
       tags: ['Kargil War', '1999', 'Memorial'],
       locations: ['Tiger Hill', 'Tololing', 'Point 4875', 'Batalik', 'Drass War Memorial'],
-      area: 'Kargil sector', elevation: '2,700â€“5,500 m',
+      area: 'Kargil sector', elevation: '2,700–5,500 m',
     },
   ];
 
   /* â”€â”€ Key Passes Data â”€â”€ */
   passes = [
-    { name: 'Khardung La', elevation: '5,359 m (17,582 ft)', route: 'Leh â†’ Nubra Valley', status: 'Open Junâ€“Oct', gradient: 'linear-gradient(135deg, #7c3aed, #a78bfa)' },
-    { name: 'Chang La', elevation: '5,360 m (17,590 ft)', route: 'Leh â†’ Pangong Lake', status: 'Open Junâ€“Sep', gradient: 'linear-gradient(135deg, #0c4a6e, #06b6d4)' },
-    { name: 'Tanglang La', elevation: '5,328 m (17,480 ft)', route: 'Manaliâ€“Leh Highway', status: 'Open Junâ€“Oct', gradient: 'linear-gradient(135deg, #059669, #10b981)' },
-    { name: 'Zoji La', elevation: '3,528 m (11,575 ft)', route: 'Srinagarâ€“Leh Highway', status: 'Open Mayâ€“Nov', gradient: 'linear-gradient(135deg, #1e40af, #3b82f6)' },
-    { name: 'Pensi La', elevation: '4,400 m (14,436 ft)', route: 'Kargil â†’ Zanskar', status: 'Open Junâ€“Oct', gradient: 'linear-gradient(135deg, #475264, #64748b)' },
-    { name: 'Wari La', elevation: '5,312 m (17,428 ft)', route: 'Leh â†’ Pangong (alt)', status: 'Open Julâ€“Sep', gradient: 'linear-gradient(135deg, #b45309, #f59e0b)' },
+    { name: 'Khardung La', elevation: '5,359 m (17,582 ft)', route: 'Leh â†’ Nubra Valley', status: 'Open Jun–Oct', gradient: 'linear-gradient(135deg, #7c3aed, #a78bfa)' },
+    { name: 'Chang La', elevation: '5,360 m (17,590 ft)', route: 'Leh â†’ Pangong Lake', status: 'Open Jun–Sep', gradient: 'linear-gradient(135deg, #0c4a6e, #06b6d4)' },
+    { name: 'Tanglang La', elevation: '5,328 m (17,480 ft)', route: 'Manali–Leh Highway', status: 'Open Jun–Oct', gradient: 'linear-gradient(135deg, #059669, #10b981)' },
+    { name: 'Zoji La', elevation: '3,528 m (11,575 ft)', route: 'Srinagar–Leh Highway', status: 'Open May–Nov', gradient: 'linear-gradient(135deg, #1e40af, #3b82f6)' },
+    { name: 'Pensi La', elevation: '4,400 m (14,436 ft)', route: 'Kargil â†’ Zanskar', status: 'Open Jun–Oct', gradient: 'linear-gradient(135deg, #475264, #64748b)' },
+    { name: 'Wari La', elevation: '5,312 m (17,428 ft)', route: 'Leh â†’ Pangong (alt)', status: 'Open Jul–Sep', gradient: 'linear-gradient(135deg, #b45309, #f59e0b)' },
   ];
 
   /* â”€â”€ Elevation Profile Data â”€â”€ */
   elevationProfiles = [
-    { name: 'Manaliâ€“Leh', distance: '479 km', days: '2 days', maxAlt: '5,328 m', color: '#059669',
+    { name: 'Manali–Leh', distance: '479 km', days: '2 days', maxAlt: '5,328 m', color: '#059669',
       points: [
         { km: 0, alt: 1950, label: 'Manali' },
         { km: 51, alt: 3978, label: 'Rohtang' },
@@ -249,7 +249,7 @@ export class Maps {
         { km: 479, alt: 3500, label: 'Leh' },
       ]
     },
-    { name: 'Srinagarâ€“Leh', distance: '434 km', days: '2 days', maxAlt: '3,528 m', color: '#1e40af',
+    { name: 'Srinagar–Leh', distance: '434 km', days: '2 days', maxAlt: '3,528 m', color: '#1e40af',
       points: [
         { km: 0, alt: 1585, label: 'Srinagar' },
         { km: 80, alt: 2740, label: 'Sonamarg' },
